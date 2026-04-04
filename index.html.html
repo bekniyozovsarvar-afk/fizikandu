@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FizikaNDU — Navoiy Davlat Universiteti</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b12;--bg2:#0e1220;--bg3:#141929;--accent:#4f8ef7;--accent2:#7c5cfc;--accent3:#00d4aa;--gold:#f5c842;--text:#e2e8f8;--muted:#5a6480;--muted2:#8892aa;--border:rgba(255,255,255,0.07);--success:#10d88a;--danger:#ff5c5c;--r:10px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.14;}
+.o1{width:550px;height:550px;background:radial-gradient(circle,#4f8ef7,transparent);top:-150px;left:-150px;animation:oF 14s ease-in-out infinite;}
+.o2{width:480px;height:480px;background:radial-gradient(circle,#7c5cfc,transparent);bottom:-150px;right:-120px;animation:oF 17s ease-in-out infinite reverse;}
+.o3{width:320px;height:320px;background:radial-gradient(circle,#00d4aa,transparent);top:40%;left:40%;animation:oF 11s ease-in-out infinite 4s;}
+@keyframes oF{0%,100%{transform:translate(0,0);}33%{transform:translate(35px,-22px);}66%{transform:translate(-22px,28px);}}
+.gbg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(79,142,247,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.028) 1px,transparent 1px);background-size:60px 60px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(8,11,18,.92);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);}
+.logo{display:flex;align-items:center;gap:.7rem;user-select:none;}
+.lb{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;box-shadow:0 4px 14px rgba(79,142,247,.35);}
+.ln{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.4px;}
+.ln span{color:var(--accent);}
+.nc{display:flex;gap:1.6rem;}
+.nc a{color:var(--muted2);font-size:.875rem;cursor:pointer;transition:.2s;font-weight:500;}
+.nc a:hover{color:var(--accent);}
+.nr{display:flex;align-items:center;gap:.6rem;}
+.bn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.46rem 1.15rem;border-radius:8px;font-weight:600;font-size:.85rem;border:none;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 4px 14px rgba(79,142,247,.3);transition:.2s;}
+.bn:hover{opacity:.9;transform:translateY(-1px);}
+.page{display:none;padding-top:64px;min-height:100vh;position:relative;z-index:1;}
+.page.active{display:block;}
+
+/* HOME */
+.hero{padding:5.5rem 5rem 3rem;text-align:center;}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(79,142,247,.08);border:1px solid rgba(79,142,247,.2);color:var(--accent);font-size:.76rem;padding:.38rem .95rem;border-radius:30px;margin-bottom:1.6rem;font-weight:500;}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:pl 1.8s ease-in-out infinite;}
+@keyframes pl{0%,100%{opacity:1;}50%{opacity:.35;}}
+.hero h1{font-family:'Sora',sans-serif;font-size:3.7rem;font-weight:800;line-height:1.1;color:#fff;margin-bottom:1.3rem;letter-spacing:-1.5px;}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hsub{color:var(--muted2);font-size:1.05rem;line-height:1.75;max-width:560px;margin:0 auto 2.2rem;}
+.hbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.bp{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.82rem 2rem;border-radius:10px;font-weight:700;font-size:.95rem;border:none;cursor:pointer;transition:.25s;font-family:'Inter',sans-serif;box-shadow:0 8px 24px rgba(79,142,247,.35);}
+.bp:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(79,142,247,.45);}
+.bg2btn{background:transparent;color:var(--text);padding:.8rem 2rem;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--border);cursor:pointer;transition:.25s;font-family:'Inter',sans-serif;}
+.bg2btn:hover{border-color:var(--accent);color:var(--accent);}
+
+/* NDU */
+.ndu{margin:2rem 5rem;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.2rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:flex-start;position:relative;overflow:hidden;}
+.ndu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));}
+.ndu-ic{width:70px;height:70px;border-radius:14px;background:linear-gradient(135deg,rgba(79,142,247,.15),rgba(124,92,252,.15));border:1px solid rgba(79,142,247,.2);display:flex;align-items:center;justify-content:center;font-size:1.9rem;flex-shrink:0;}
+.ndu-b h3{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.ndu-tag{font-size:.72rem;color:var(--accent);letter-spacing:.07em;text-transform:uppercase;font-weight:600;margin-bottom:.65rem;display:block;}
+.ndu-b p{color:var(--muted2);font-size:.875rem;line-height:1.72;}
+.ndu-st{display:flex;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;}
+.nst strong{display:block;font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;color:var(--accent);}
+.nst span{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+
+/* STATS */
+.srow{display:grid;grid-template-columns:repeat(4,1fr);margin:0 5rem 2.5rem;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.si{padding:1.5rem;text-align:center;border-right:1px solid var(--border);}
+.si:last-child{border-right:none;}
+.si strong{display:block;font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.si span{font-size:.76rem;color:var(--muted);margin-top:.2rem;display:block;}
+
+/* COURSES */
+.sec{padding:1.5rem 5rem 3rem;}
+.stag{font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.4rem;display:block;}
+.stitle{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:700;color:#fff;letter-spacing:-.4px;margin-bottom:.4rem;}
+.ssub{color:var(--muted2);font-size:.85rem;margin-bottom:1.8rem;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem;}
+.cc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.4rem;cursor:pointer;transition:.25s;position:relative;overflow:hidden;}
+.cc:hover{transform:translateY(-4px);border-color:rgba(79,142,247,.3);background:var(--bg3);}
+.ccg{position:absolute;top:-50px;right:-50px;width:130px;height:130px;border-radius:50%;opacity:.07;filter:blur(35px);}
+.cctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.9rem;}
+.ccico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.kb{font-size:.68rem;padding:.22rem .65rem;border-radius:20px;font-weight:600;}
+.k1{background:rgba(79,142,247,.14);color:var(--accent);border:1px solid rgba(79,142,247,.22);}
+.k2{background:rgba(0,212,170,.1);color:var(--accent3);border:1px solid rgba(0,212,170,.2);}
+.k3{background:rgba(124,92,252,.14);color:var(--accent2);border:1px solid rgba(124,92,252,.22);}
+.k4{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.18);}
+.cc h3{font-size:.92rem;font-weight:600;color:#fff;margin-bottom:.35rem;}
+.cc p{font-size:.78rem;color:var(--muted2);line-height:1.6;}
+.ccch{display:flex;gap:.45rem;margin-top:.9rem;flex-wrap:wrap;}
+.chip{font-size:.68rem;padding:.18rem .55rem;border-radius:5px;background:rgba(255,255,255,.05);color:var(--muted2);}
+
+/* AUTH */
+.authp{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 64px);padding:2rem;}
+.abox{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2.3rem;width:100%;max-width:430px;position:relative;overflow:hidden;}
+.abox::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);}
+.ahead{text-align:center;margin-bottom:1.8rem;}
+.aico{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin:0 auto .8rem;box-shadow:0 8px 20px rgba(79,142,247,.35);}
+.ahead h2{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;}
+.ahead p{font-size:.8rem;color:var(--muted2);margin-top:.25rem;}
+.atabs{display:flex;background:var(--bg3);border-radius:9px;padding:3px;margin-bottom:1.7rem;gap:2px;}
+.atab{flex:1;padding:.52rem;text-align:center;font-size:.83rem;cursor:pointer;border-radius:7px;color:var(--muted2);border:none;background:transparent;font-family:'Inter',sans-serif;font-weight:500;transition:.2s;}
+.atab.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;}
+.fg{margin-bottom:.95rem;}
+.fg label{display:block;font-size:.73rem;color:var(--muted2);margin-bottom:.3rem;font-weight:500;}
+.fi{width:100%;padding:.68rem .88rem;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:.88rem;outline:none;font-family:'Inter',sans-serif;transition:.2s;}
+.fi:focus{border-color:rgba(79,142,247,.45);}
+.fi option{background:var(--bg2);}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.bblock{width:100%;padding:.78rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:9px;font-weight:700;font-size:.92rem;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 6px 18px rgba(79,142,247,.28);transition:.2s;margin-top:.3rem;}
+.bblock:hover{opacity:.9;}
+.anote{text-align:center;color:var(--muted);font-size:.78rem;margin-top:.9rem;}
+
+/* VIDEOS */
+.vhdr{padding:2.2rem 5rem .8rem;}
+.vhdr h2{font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:700;color:#fff;letter-spacing:-.4px;}
+.vhdr p{color:var(--muted2);font-size:.85rem;margin-top:.3rem;}
+.vlyt{display:grid;grid-template-columns:220px 1fr;gap:1.4rem;padding:.8rem 5rem 3rem;}
+.tpan{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:.85rem;height:fit-content;position:sticky;top:74px;}
+.tph{font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;padding:0 .45rem;font-weight:600;}
+.tpg{margin-bottom:.4rem;}
+.tpk{font-size:.65rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;padding:.35rem .55rem .15rem;font-weight:600;}
+.titem{padding:.52rem .75rem;border-radius:7px;cursor:pointer;font-size:.83rem;color:var(--muted2);transition:.2s;margin-bottom:.1rem;}
+.titem:hover,.titem.on{background:rgba(79,142,247,.1);color:var(--accent);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:.95rem;}
+.vcard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:.25s;}
+.vcard:hover{transform:translateY(-3px);border-color:rgba(79,142,247,.28);}
+.vtmb{height:148px;background:linear-gradient(135deg,var(--bg3),rgba(79,142,247,.08));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.vply{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;z-index:1;position:relative;box-shadow:0 6px 18px rgba(79,142,247,.4);}
+.vinf{padding:.85rem .95rem;}
+.vinf h4{font-size:.88rem;font-weight:600;color:#fff;margin-bottom:.28rem;}
+.vinf p{font-size:.76rem;color:var(--muted2);line-height:1.5;}
+.vmeta{display:flex;justify-content:space-between;align-items:center;margin-top:.65rem;}
+.vdur{font-size:.73rem;color:var(--accent);font-family:'JetBrains Mono',monospace;}
+
+/* TEST */
+.twrap{padding:2rem 5rem;max-width:850px;margin:0 auto;}
+.tstart{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.3rem;text-align:center;margin-bottom:2rem;position:relative;overflow:hidden;}
+.tstart::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+.tstart h3{font-family:'Sora',sans-serif;font-size:1.65rem;font-weight:700;color:#fff;margin-bottom:.55rem;}
+.tstart p{color:var(--muted2);font-size:.875rem;margin-bottom:1.7rem;line-height:1.7;}
+.selrow{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.7rem;}
+.selrow select{padding:.52rem .95rem;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Inter',sans-serif;font-size:.85rem;cursor:pointer;}
+.qwrap{display:none;}
+.qwrap.on{display:block;}
+.pbar{height:3px;background:rgba(255,255,255,.07);border-radius:3px;margin-bottom:1.8rem;overflow:hidden;}
+.pfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.4s;}
+.qcard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin-bottom:1.1rem;}
+.qlbl{font-size:.7rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;font-family:'JetBrains Mono',monospace;}
+.qtxt{font-size:1rem;color:#fff;margin-bottom:1.3rem;line-height:1.65;font-weight:500;}
+.opts{display:flex;flex-direction:column;gap:.52rem;}
+.opt{padding:.75rem 1rem;border-radius:9px;border:1px solid var(--border);cursor:pointer;font-size:.875rem;color:var(--text);background:rgba(255,255,255,.02);text-align:left;font-family:'Inter',sans-serif;transition:.2s;}
+.opt:hover{border-color:rgba(79,142,247,.38);background:rgba(79,142,247,.06);}
+.opt.sel{border-color:var(--accent);background:rgba(79,142,247,.11);color:var(--accent);}
+.opt.ok{border-color:var(--success);background:rgba(16,216,138,.07);color:#6ee7b7;}
+.opt.no{border-color:var(--danger);background:rgba(255,92,92,.06);color:#fca5a5;}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;}
+.qcnt{font-size:.8rem;color:var(--muted2);font-family:'JetBrains Mono',monospace;}
+.rcard{background:var(--bg2);border:1px solid rgba(79,142,247,.2);border-radius:16px;padding:2.3rem;text-align:center;display:none;}
+.rcard.on{display:block;}
+.rpct{font-family:'Sora',sans-serif;font-size:4.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.rlbl{font-size:.88rem;color:var(--muted2);margin:.35rem 0 1.3rem;}
+.rstats{display:flex;gap:2.2rem;justify-content:center;margin:1.3rem 0;}
+.rs{text-align:center;}
+.rs strong{display:block;font-size:1.5rem;font-weight:700;}
+.rs span{font-size:.73rem;color:var(--muted);}
+.tgnote{background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.17);border-radius:8px;padding:.85rem;color:var(--accent);font-size:.85rem;margin-top:1.1rem;}
+
+/* ===== PAGE ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:scale(1);}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-24px);}to{opacity:1;transform:translateX(0);}}
+@keyframes countUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spinSlow{to{transform:rotate(360deg);}}
+@keyframes spinReverse{to{transform:rotate(-360deg);}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
+@keyframes borderPulse{0%,100%{opacity:.5;}50%{opacity:1;}}
+@keyframes particleFly{0%{transform:translateY(0) translateX(0) scale(1);opacity:.7;}100%{transform:translateY(-120px) translateX(var(--dx)) scale(0);opacity:0;}}
+@keyframes typewriter{from{width:0;}to{width:100%;}}
+@keyframes blink2{0%,100%{border-color:var(--accent);}50%{border-color:transparent;}}
+
+.page.active .hero{animation:fadeUp .6s ease both;}
+.page.active .ndu{animation:fadeUp .6s ease .1s both;}
+.page.active .srow{animation:fadeUp .6s ease .2s both;}
+.page.active .cgrid .cc:nth-child(1){animation:fadeUp .5s ease .05s both;}
+.page.active .cgrid .cc:nth-child(2){animation:fadeUp .5s ease .1s both;}
+.page.active .cgrid .cc:nth-child(3){animation:fadeUp .5s ease .15s both;}
+.page.active .cgrid .cc:nth-child(4){animation:fadeUp .5s ease .2s both;}
+.page.active .cgrid .cc:nth-child(5){animation:fadeUp .5s ease .25s both;}
+.page.active .cgrid .cc:nth-child(6){animation:fadeUp .5s ease .3s both;}
+.page.active .abox{animation:scaleIn .45s ease both;}
+.page.active .vhdr{animation:slideRight .5s ease both;}
+.page.active .vcard{animation:fadeUp .4s ease both;}
+.page.active .tstart{animation:scaleIn .45s ease both;}
+.page.active .qcard{animation:fadeUp .3s ease both;}
+
+/* Hero number animation */
+.si strong,.nst strong{display:block;animation:countUp .6s ease both;}
+
+/* Floating cards */
+.cc{position:relative;}
+.cc::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(79,142,247,.06),rgba(124,92,252,.04));opacity:0;transition:.3s;}
+.cc:hover::after{opacity:1;}
+
+/* Glowing nav logo */
+.lb{animation:floatY 4s ease-in-out infinite;}
+
+/* Progress bar animation */
+.pfill{animation:none;}
+
+/* Card hover lift */
+.vcard{will-change:transform;}
+.cc{will-change:transform;}
+
+/* Nav active indicator */
+.nc a{position:relative;}
+.nc a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--accent);transform:scaleX(0);transition:.2s;border-radius:2px;}
+.nc a:hover::after{transform:scaleX(1);}
+
+/* Button ripple */
+.bp::after,.bn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);border-radius:inherit;opacity:0;transition:.3s;}
+.bp:active::after,.bn:active::after{opacity:1;}
+.bp{position:relative;overflow:hidden;}
+.bn{position:relative;overflow:hidden;}
+
+/* Shimmer text */
+.shimmer-text{background:linear-gradient(90deg,var(--accent) 0%,var(--accent2) 30%,var(--accent3) 60%,var(--accent) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite;}
+
+/* ===== ABOUT PAGE ===== */
+.abouts{padding:2rem 5rem 4rem;}
+.about-hero-banner{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:3rem;margin-bottom:2rem;position:relative;overflow:hidden;animation:fadeUp .6s ease both;}
+.about-hero-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3),var(--accent));animation:shimmer 3s linear infinite;background-size:200% auto;}
+.ahb-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.ahb-content{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;position:relative;z-index:1;}
+.ahb-avatar{position:relative;width:120px;height:120px;flex-shrink:0;}
+.ava-ring{position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(79,142,247,.4);animation:spinSlow 8s linear infinite;}
+.ava-ring2{position:absolute;inset:-16px;border-radius:50%;border:1.5px solid rgba(124,92,252,.25);animation:spinReverse 12s linear infinite;}
+.ava-inner{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:#fff;box-shadow:0 0 40px rgba(79,142,247,.4),0 0 80px rgba(79,142,247,.15);position:relative;z-index:1;}
+.ahb-tag{font-size:.72rem;color:var(--accent3);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.5rem;}
+.ahb-name{font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:.4rem;}
+.ahb-role{font-size:.85rem;color:var(--accent);font-weight:500;margin-bottom:.9rem;}
+.ahb-desc{color:var(--muted2);font-size:.9rem;line-height:1.75;margin-bottom:1.2rem;max-width:580px;}
+.ahb-badges{display:flex;gap:.5rem;flex-wrap:wrap;}
+.ahb-badge{font-size:.72rem;padding:.28rem .75rem;border-radius:20px;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.22);color:var(--accent);font-weight:500;}
+
+/* About cards */
+.about-cards-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;margin-bottom:2rem;}
+.acard{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:.25s;}
+.acard:hover{transform:translateY(-4px);border-color:rgba(79,142,247,.3);}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:.3s;transform-origin:left;}
+.acard:hover::before{transform:scaleX(1);}
+.acard-anim{animation:fadeUp .5s ease both;}
+.acard-icon{font-size:1.8rem;margin-bottom:.8rem;}
+.acard h4{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.45rem;}
+.acard p{font-size:.8rem;color:var(--muted2);line-height:1.65;}
+
+/* Platform stats */
+.about-platform{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;animation:fadeUp .6s ease .2s both;}
+.aplatform-stats{display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;}
+.aps{text-align:center;}
+.aps-num{font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.aps-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:.2rem;}
+
+/* Particle dots in about */
+.p-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:0;animation:particleFly 3s ease-in infinite;}
+
+@media(max-width:960px){
+  .ahb-content{grid-template-columns:1fr;text-align:center;}
+  .ahb-avatar{margin:0 auto;}
+  .ahb-badges{justify-content:center;}
+  .abouts{padding:2rem 1.5rem 3rem;}
+  .about-cards-row{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .about-cards-row{grid-template-columns:1fr;}
+  .ahb-name{font-size:1.5rem;}
+}
+
+/* MODALS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.overlay.on{display:flex;}
+.mbox{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2rem;max-width:500px;width:92%;position:relative;overflow:hidden;}
+.mbox::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);}
+.mbox h3{font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.65rem;}
+.mrow{display:flex;gap:.75rem;}
+.bcl{flex:1;padding:.62rem;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted2);cursor:pointer;font-family:'Inter',sans-serif;font-size:.85rem;transition:.2s;}
+.bcl:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ADMIN */
+.admbox{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2rem;max-width:700px;width:95%;max-height:88vh;overflow-y:auto;position:relative;}
+.admbox::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);}
+.admtabs{display:flex;background:var(--bg3);border-radius:9px;padding:3px;margin-bottom:1.4rem;flex-wrap:wrap;gap:2px;}
+.admtab{flex:1;min-width:65px;padding:.46rem .28rem;text-align:center;font-size:.73rem;cursor:pointer;border-radius:7px;color:var(--muted2);border:none;background:transparent;font-family:'Inter',sans-serif;font-weight:500;transition:.2s;}
+.admtab.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;}
+
+/* USER MENU */
+.umenu{position:absolute;right:0;top:calc(100% + 8px);background:var(--bg2);border:1px solid var(--border);border-radius:12px;min-width:198px;z-index:200;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.6);}
+.umh{padding:.72rem .9rem;font-size:.75rem;color:var(--muted2);border-bottom:1px solid var(--border);}
+.umi{padding:.65rem .9rem;font-size:.85rem;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:.55rem;}
+.umi:hover{background:rgba(255,255,255,.04);}
+.umi.danger{color:var(--danger);}
+.umi.danger:hover{background:rgba(255,92,92,.06);}
+
+/* TOAST */
+.toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.82rem 1.25rem;color:var(--text);font-size:.85rem;z-index:400;transform:translateY(55px) scale(.95);opacity:0;transition:.3s cubic-bezier(.34,1.56,.64,1);max-width:310px;box-shadow:0 8px 24px rgba(0,0,0,.5);display:flex;align-items:center;gap:.55rem;}
+.toast.on{transform:translateY(0) scale(1);opacity:1;}
+.tdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* ===== PHYSICS ANIMATION SECTION ===== */
+.phys-section{padding:3rem 5rem;position:relative;overflow:hidden;}
+.phys-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(79,142,247,.05) 0%,transparent 65%);pointer-events:none;}
+.phys-title{text-align:center;margin-bottom:2.5rem;}
+.phys-title h3{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:700;color:#fff;letter-spacing:-.4px;}
+.phys-title p{color:var(--muted2);font-size:.88rem;margin-top:.4rem;}
+
+/* Two column layout */
+.phys-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+
+/* Left: Atom canvas */
+.phys-atom-box{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;}
+.phys-atom-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));background-size:200% auto;animation:shimmer 3s linear infinite;}
+.atom-label{text-align:center;margin-bottom:.8rem;}
+.atom-label span{font-size:.72rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+.atom-mol-name{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-top:.3rem;}
+#atomCanvas{border-radius:12px;max-width:100%;display:block;}
+.atom-switch-btns{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap;justify-content:center;}
+.asw-btn{padding:.35rem .9rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted2);font-size:.72rem;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;}
+.asw-btn:hover,.asw-btn.on{background:rgba(79,142,247,.12);border-color:rgba(79,142,247,.35);color:var(--accent);}
+
+/* Right: Formulas */
+.phys-formulas-box{display:flex;flex-direction:column;gap:.9rem;}
+.phys-formulas-box h4{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.pf-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.9rem;transition:.25s;position:relative;overflow:hidden;}
+.pf-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px;}
+.pf-card:hover{transform:translateX(5px);border-color:rgba(79,142,247,.28);}
+.pf-card:nth-child(2)::before{background:var(--accent);}
+.pf-card:nth-child(3)::before{background:var(--accent2);}
+.pf-card:nth-child(4)::before{background:var(--accent3);}
+.pf-card:nth-child(5)::before{background:var(--gold);}
+.pf-card:nth-child(6)::before{background:#f87171;}
+.pf-card:nth-child(7)::before{background:var(--accent);}
+.pf-card:nth-child(8)::before{background:var(--accent2);}
+.pf-info{flex:1;}
+.pf-name{font-size:.78rem;color:var(--muted2);margin-bottom:.18rem;}
+.pf-eq{font-family:'JetBrains Mono',monospace;font-size:.88rem;color:#fff;font-weight:500;}
+.pf-topic{font-size:.65rem;padding:.15rem .55rem;border-radius:10px;background:rgba(79,142,247,.1);color:var(--accent);border:1px solid rgba(79,142,247,.18);white-space:nowrap;}
+
+@media(max-width:960px){
+  .phys-section{padding:2rem 1.5rem;}
+  .phys-layout{grid-template-columns:1fr;}
+}
+@media(max-width:960px){
+  .hero{padding:4rem 1.5rem 2.5rem;}
+  .hero h1{font-size:2.6rem;}
+  .ndu,.srow,.sec,.vhdr,.vlyt,.twrap,.abouts{padding-left:1.5rem;padding-right:1.5rem;}
+  .ndu,.srow{margin-left:1.5rem;margin-right:1.5rem;}
+  .ndu{grid-template-columns:1fr;}
+  .srow{grid-template-columns:1fr 1fr;}
+  .vlyt{grid-template-columns:1fr;}
+  nav{padding:.75rem 1.2rem;}
+  .nc{gap:.9rem;}
+}
+</style>
+</head>
+<body>
+<div class="bg-fx"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<div class="gbg"></div>
+
+<nav>
+  <div class="logo" onclick="logoClick()">
+    <div class="lb">⚛</div>
+    <div class="ln">Fizika<span>NDU</span></div>
+  </div>
+  <div class="nc">
+    <a onclick="showPage('home')">Bosh sahifa</a>
+    <a onclick="showPage('videos')">Maruzalar</a>
+    <a onclick="showPage('test')">Testlar</a>
+    <a onclick="showPage('about')">Haqida</a>
+  </div>
+  <div class="nr">
+    <button id="adminBtn" onclick="openAdmin()" style="display:none;background:transparent;border:1px solid rgba(79,142,247,.3);color:var(--accent);padding:.42rem .88rem;border-radius:8px;font-size:.77rem;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;">Admin</button>
+    <div style="position:relative;">
+      <button class="bn" id="authBtn" onclick="showPage('auth')">Kirish</button>
+      <div class="umenu" id="userMenu" style="display:none;">
+        <div class="umh" id="userMenuName"></div>
+        <div class="umi danger" onclick="logout()">Hisobdan chiqish</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hbadge"><div class="pulse"></div>NDU — Navoiy Davlat Universiteti</div>
+    <h1>Fizikani <span class="shimmer-text">chuqur</span> va<br>professional o'rganing</h1>
+    <p class="hsub">Mexanika, Elektrodinamika, Kvant fizikasi va boshqa OTM kurslari boyicha video maruzalar, nazariy materiallar va interaktiv testlar.</p>
+    <div class="hbtns" id="heroBtns">
+      <button class="bp" onclick="showPage('auth')">Royxatdan otish</button>
+      <button class="bg2btn" onclick="showPage('videos')">Maruzalarga qarang</button>
+    </div>
+  </div>
+
+  <div class="ndu">
+    <div class="ndu-ic">🏛</div>
+    <div class="ndu-b">
+      <span class="ndu-tag">Navoiy Davlat Universiteti</span>
+      <h3>Fizika-matematika fakulteti — FizikaNDU platformasi</h3>
+      <p>Navoiy Davlat Universiteti 1983-yilda tashkil etilgan. FizikaNDU platformasi fizika ta'limi yo'nalishi talabalariga mo'ljallangan. Bu yerda 1-kursdan 4-kursgacha barcha fizika fanlari bo'yicha video ma'ruzalar, testlar va o'quv materiallar mavjud.</p>
+      <div class="ndu-st">
+        <div class="nst"><strong>1983</strong><span>Tashkil yili</span></div>
+        <div class="nst"><strong>4</strong><span>Kurs</span></div>
+        <div class="nst"><strong>6</strong><span>Fan</span></div>
+        <div class="nst"><strong>120+</strong><span>Talaba</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="srow">
+    <div class="si"><strong>120+</strong><span>Talaba</span></div>
+    <div class="si"><strong>60+</strong><span>Maruza</span></div>
+    <div class="si"><strong>120+</strong><span>Test savoli</span></div>
+    <div class="si"><strong>6</strong><span>Fan bolimi</span></div>
+  </div>
+
+  <!-- PHYSICS ANIMATION -->
+  <div class="phys-section">
+    <div class="phys-title">
+      <h3>Fizika <span class="shimmer-text">animatsiyasi</span></h3>
+      <p>Atom tuzilishi va asosiy formulalar</p>
+    </div>
+    <div class="phys-layout">
+
+      <!-- Chap: Atom canvas -->
+      <div class="phys-atom-box">
+        <div class="atom-label">
+          <span>Hozirgi model</span>
+          <div class="atom-mol-name" id="atomMolName">Vodorod atomi</div>
+        </div>
+        <canvas id="atomCanvas" width="340" height="340"></canvas>
+        <div class="atom-switch-btns">
+          <button class="asw-btn on" onclick="switchAtom('H',this)">Vodorod</button>
+          <button class="asw-btn" onclick="switchAtom('He',this)">Geliy</button>
+          <button class="asw-btn" onclick="switchAtom('C',this)">Uglerod</button>
+          <button class="asw-btn" onclick="switchAtom('Na',this)">Natriy</button>
+        </div>
+      </div>
+
+      <!-- O'ng: Formulalar -->
+      <div class="phys-formulas-box">
+        <h4>Asosiy <span class="shimmer-text">formulalar</span></h4>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Shredinger tenglamasi</div>
+            <div class="pf-eq">iℏ ∂ψ/∂t = Ĥψ</div>
+          </div>
+          <span class="pf-topic">Kvant</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Maksvell — Gauss qonuni</div>
+            <div class="pf-eq">∇·E = ρ/ε₀</div>
+          </div>
+          <span class="pf-topic">Elektr</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">De Broyl to'lqin uzunligi</div>
+            <div class="pf-eq">λ = h / p</div>
+          </div>
+          <span class="pf-topic">Kvant</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Eynshteyn — massa energiya</div>
+            <div class="pf-eq">E = mc²</div>
+          </div>
+          <span class="pf-topic">Yadro</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Bolsman entropiya</div>
+            <div class="pf-eq">S = k · lnW</div>
+          </div>
+          <span class="pf-topic">Termo</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Lorens kuchi</div>
+            <div class="pf-eq">F = q(E + v×B)</div>
+          </div>
+          <span class="pf-topic">Elektr</span>
+        </div>
+        <div class="pf-card">
+          <div class="pf-info">
+            <div class="pf-name">Lagrange tenglamasi</div>
+            <div class="pf-eq">d/dt(∂L/∂q̇) = ∂L/∂q</div>
+          </div>
+          <span class="pf-topic">Mexanika</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="sec">
+    <span class="stag">Oquv dasturi</span>
+    <div class="stitle">Kurslar boyicha fanlar</div>
+    <div class="ssub">1-kursdan 4-kursgacha OTM darajasida fizika kurslari</div>
+    <div class="cgrid">
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--accent);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(79,142,247,.14);">⚙️</div><span class="kb k1">1-KURS</span></div>
+        <h3>Mexanika</h3>
+        <p>Klassik mexanika, Lagrange va Hamilton formalizmi, qattiq jism mexanikasi</p>
+        <div class="ccch"><span class="chip">14 maruza</span><span class="chip">Lagrange</span><span class="chip">Hamilton</span></div>
+      </div>
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--accent3);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(0,212,170,.1);">🌡️</div><span class="kb k2">2-KURS</span></div>
+        <h3>Molekulyar fizika va Termodinamika</h3>
+        <p>Gaz kinetik nazariyasi, Bolsman, statistik fizika, termodinamika qonunlari</p>
+        <div class="ccch"><span class="chip">12 maruza</span><span class="chip">Bolsman</span><span class="chip">Entropiya</span></div>
+      </div>
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--accent2);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(124,92,252,.13);">⚡</div><span class="kb k3">3-KURS</span></div>
+        <h3>Elektrodinamika</h3>
+        <p>Maksvell tenglamalari, elektromagnit tolqinlar, retard potensiallar</p>
+        <div class="ccch"><span class="chip">16 maruza</span><span class="chip">Maksvell</span><span class="chip">Tolqinlar</span></div>
+      </div>
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--accent2);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(124,92,252,.1);">💡</div><span class="kb k3">3-KURS</span></div>
+        <h3>Optika</h3>
+        <p>Tolqin optikasi, interferensiya, diffraktsiya, lazer fizikasi asoslari</p>
+        <div class="ccch"><span class="chip">10 maruza</span><span class="chip">Diffraktsiya</span><span class="chip">Lazer</span></div>
+      </div>
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--gold);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(245,200,66,.09);">🔬</div><span class="kb k4">4-KURS</span></div>
+        <h3>Kvant fizikasi</h3>
+        <p>Shredinger tenglamasi, tolqin funksiyasi, kvant mexanikasi asoslari</p>
+        <div class="ccch"><span class="chip">12 maruza</span><span class="chip">Shredinger</span><span class="chip">Spin</span></div>
+      </div>
+      <div class="cc" onclick="showPage('videos')">
+        <div class="ccg" style="background:var(--gold);"></div>
+        <div class="cctop"><div class="ccico" style="background:rgba(245,200,66,.08);">☢️</div><span class="kb k4">4-KURS</span></div>
+        <h3>Yadro fizikasi</h3>
+        <p>Yadro tuzilishi, radioaktivlik, parchalanish qonunlari, elementar zarralar</p>
+        <div class="ccch"><span class="chip">8 maruza</span><span class="chip">Radioaktivlik</span><span class="chip">Kvarklar</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="page" id="page-auth">
+  <div class="authp">
+    <div class="abox">
+      <div class="ahead">
+        <div class="aico">⚛</div>
+        <h2>FizikaNDU</h2>
+        <p>Navoiy Davlat Universiteti talabalariga xush kelibsiz</p>
+      </div>
+      <div class="atabs">
+        <button class="atab on" onclick="switchTab('login')">Kirish</button>
+        <button class="atab" onclick="switchTab('register')">Royxatdan otish</button>
+      </div>
+      <div id="tab-login">
+        <div class="fg"><label>Telefon yoki email</label><input class="fi" type="text" id="loginUser" placeholder="+998 90 000 00 00"></div>
+        <div class="fg"><label>Parol</label><input class="fi" type="password" id="loginPass" placeholder="••••••••"></div>
+        <button class="bblock" onclick="doLogin()">Kirish</button>
+        <div class="anote">Hisob yoqmi? <a onclick="switchTab('register')" style="color:var(--accent);cursor:pointer;">Royxatdan oting</a></div>
+      </div>
+      <div id="tab-register" style="display:none;">
+        <div class="fg"><label>Toliq ism familiya</label><input class="fi" type="text" id="regName" placeholder="Ism Familiya"></div>
+        <div class="fg"><label>Telefon raqam</label><input class="fi" type="tel" id="regPhone" placeholder="+998 90 000 00 00"></div>
+        <div class="fg2">
+          <div class="fg" style="margin-bottom:0;"><label>Kurs</label>
+            <select class="fi" id="regCourse">
+              <option value="">Tanlang</option>
+              <option>1-kurs</option><option>2-kurs</option>
+              <option>3-kurs</option><option>4-kurs</option><option>Magistr</option>
+            </select>
+          </div>
+          <div class="fg" style="margin-bottom:0;"><label>Guruh</label><input class="fi" type="text" id="regGroup" placeholder="FIZ-21"></div>
+        </div>
+        <div class="fg" style="margin-top:.85rem;"><label>Parol</label><input class="fi" type="password" id="regPass" placeholder="Kamida 6 ta belgi"></div>
+        <button class="bblock" onclick="doRegister()">Royxatdan otish</button>
+        <div class="anote">Royxatdan otish bilan qoidalarga rozilik bildirasiz</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="page" id="page-videos">
+  <div class="vhdr"><h2>Video maruzalar</h2><p>Kurs va bolimlar boyicha barcha video darslar</p></div>
+  <div class="vlyt">
+    <div class="tpan"><div class="tph">Bolimlar</div><div id="topicsSidebar"></div></div>
+    <div class="vgrid" id="videosGrid"></div>
+  </div>
+</div>
+
+<!-- TEST -->
+<div class="page" id="page-test">
+  <div class="twrap">
+    <div class="tstart" id="testIntro">
+      <h3>Bilimingizni sinab koring</h3>
+      <p>Bolim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
+      <div class="selrow">
+        <select id="testTopic">
+          <option value="mix">Aralash barcha</option>
+          <option value="mexanika">Mexanika (1-kurs)</option>
+          <option value="molterm">Mol. fizika va Termodinamika (2-kurs)</option>
+          <option value="elektr">Elektrodinamika (3-kurs)</option>
+          <option value="optika">Optika (3-kurs)</option>
+          <option value="kvant">Kvant fizikasi (4-kurs)</option>
+          <option value="yadro">Yadro fizikasi (4-kurs)</option>
+        </select>
+        <select id="testCount">
+          <option value="10">10 savol</option>
+          <option value="20" selected>20 savol</option>
+          <option value="30">30 savol</option>
+        </select>
+      </div>
+      <button class="bp" onclick="startTest()">Testni boshlash</button>
+    </div>
+    <div class="qwrap" id="quizWrap">
+      <div class="pbar"><div class="pfill" id="progressFill" style="width:0%"></div></div>
+      <div id="questionArea"></div>
+      <div class="qnav">
+        <span class="qcnt" id="qCounter">1 / 20</span>
+        <div style="display:flex;gap:.65rem;">
+          <button class="bcl" onclick="skipQ()" style="padding:.52rem 1rem;">Otkazish</button>
+          <button class="bp" onclick="nextQ()" style="padding:.52rem 1.25rem;font-size:.85rem;">Keyingisi</button>
+        </div>
+      </div>
+    </div>
+    <div class="rcard" id="resultCard">
+      <div style="font-size:2.2rem;margin-bottom:.4rem;">🎓</div>
+      <div class="rpct" id="resultScore">0%</div>
+      <div class="rlbl" id="resultLabel">Natija</div>
+      <div class="rstats">
+        <div class="rs"><strong id="rsCorrect" style="color:var(--success);">0</strong><span>Togri</span></div>
+        <div class="rs"><strong id="rsWrong" style="color:var(--danger);">0</strong><span>Notogri</span></div>
+        <div class="rs"><strong id="rsSkipped" style="color:var(--muted2);">0</strong><span>Otkazilgan</span></div>
+      </div>
+      <div class="tgnote" id="tgNote">Natijangiz Telegram botga yuborildi!</div>
+      <div style="display:flex;gap:.9rem;justify-content:center;margin-top:1.4rem;">
+        <button class="bp" onclick="resetTest()">Qayta boshlash</button>
+        <button class="bg2btn" onclick="showPage('home')">Bosh sahifa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="abouts">
+
+    <div class="about-hero-banner">
+      <div class="ahb-particles" id="aboutParticles"></div>
+      <div class="ahb-content">
+        <div class="ahb-avatar" onclick="isAdmin && document.getElementById('photoUpload').click()" id="avatarWrap" style="cursor:default;">
+          <div class="ava-ring"></div>
+          <div class="ava-ring2"></div>
+          <div class="ava-inner" id="avaInner">SB</div>
+          <img id="avaPhoto" src="" alt="" style="display:none;position:absolute;inset:0;width:120px;height:120px;border-radius:50%;object-fit:cover;z-index:2;">
+          <div class="ava-edit-hint" id="avaEditHint" style="display:none;position:absolute;bottom:0;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:.6rem;padding:.18rem .5rem;border-radius:6px;white-space:nowrap;z-index:3;">📷 Rasm o'zgartirish</div>
+          <input type="file" id="photoUpload" accept="image/*" style="display:none;" onchange="uploadPhoto(this)">
+        </div>
+        <div class="ahb-info">
+          <div class="ahb-tag">FizikaNDU asoschisi</div>
+          <h2 class="ahb-name">Sarvar Bekniyozov</h2>
+          <div class="ahb-role">Fizika fani magistri · Navoiy Davlat Universiteti</div>
+          <p class="ahb-desc">NDU Fizika-matematika fakulteti magistri. Mexanika, elektrodinamika va kvant fizikasi kurslarini olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
+          <div class="ahb-badges">
+            <span class="ahb-badge">Fizika magistri</span>
+            <span class="ahb-badge">NDU</span>
+            <span class="ahb-badge">Kvant fizikasi</span>
+            <span class="ahb-badge">Elektrodinamika</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-cards-row">
+      <div class="acard acard-anim">
+        <div class="acard-icon">🏛</div>
+        <h4>Navoiy Davlat Universiteti</h4>
+        <p>1983-yilda tashkil etilgan NDU Fizika-matematika fakulteti. O'zbekistonning yetakchi oliy ta'lim muassasalaridan biri.</p>
+      </div>
+      <div class="acard acard-anim" style="animation-delay:.1s;">
+        <div class="acard-icon">🎓</div>
+        <h4>Ta'lim sifati</h4>
+        <p>OTM darajasida chuqur nazariy va amaliy fizika kurslari. 1-kursdan 4-kursgacha barcha fanlar qamrab olingan.</p>
+      </div>
+      <div class="acard acard-anim" style="animation-delay:.2s;">
+        <div class="acard-icon">📱</div>
+        <h4>Telegram integratsiya</h4>
+        <p>Test natijalari va yangi talabalar ro'yxatdan o'tishi haqidagi xabarlar muallimga Telegram orqali darhol yuboriladi.</p>
+      </div>
+      <div class="acard acard-anim" style="animation-delay:.3s;">
+        <div class="acard-icon">⚡</div>
+        <h4>Interaktiv testlar</h4>
+        <p>Har mavzuda 20 tadan OTM darajasidagi savollar. Real vaqtda natija ko'rsatish va tahlil qilish imkoniyati.</p>
+      </div>
+    </div>
+
+    <div class="about-platform">
+      <span class="stag">Platforma haqida</span>
+      <div class="stitle" style="margin-bottom:.7rem;">FizikaNDU</div>
+      <p style="color:var(--muted2);line-height:1.85;font-size:.9rem;max-width:680px;">Navoiy Davlat Universiteti talabalariga mo'ljallangan fizika ta'lim platformasi. Barcha ma'ruzalar video formatda, testlar real vaqtda tekshiriladi va natijalar hamda yangi ro'yxatdan o'tishlar Telegram bot orqali muallimga yuboriladi.</p>
+      <div class="aplatform-stats">
+        <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Faol talaba</div></div>
+        <div class="aps"><div class="aps-num">60+</div><div class="aps-lbl">Video ma'ruza</div></div>
+        <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Test savoli</div></div>
+        <div class="aps"><div class="aps-num">6</div><div class="aps-lbl">Fan bo'limi</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- VIDEO PLAYER -->
+<div class="overlay" id="videoModal" onclick="handleVideoOverlay(event)">
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.3rem;max-width:790px;width:95%;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);"></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.85rem;">
+      <div>
+        <div style="font-family:'Sora',sans-serif;font-size:1.08rem;font-weight:600;color:#fff;" id="playerTitle"></div>
+        <div style="font-size:.76rem;color:var(--muted2);margin-top:.18rem;" id="playerDesc"></div>
+      </div>
+      <button onclick="closeVideo()" style="background:rgba(255,255,255,.07);border:1px solid var(--border);color:var(--muted2);width:29px;height:29px;border-radius:7px;cursor:pointer;flex-shrink:0;margin-left:1rem;font-size:.88rem;">X</button>
+    </div>
+    <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:#000;">
+      <iframe id="ytFrame" src="" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="adminLoginModal">
+  <div class="mbox" style="max-width:355px;">
+    <div style="text-align:center;margin-bottom:1.4rem;">
+      <div style="font-size:1.9rem;margin-bottom:.45rem;">🔐</div>
+      <h3>Admin kirish</h3>
+      <p style="font-size:.77rem;color:var(--muted2);margin-bottom:0;">Faqat sayt egasi uchun</p>
+    </div>
+    <div class="fg"><label>Admin paroli</label><input class="fi" type="password" id="adminPassInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPass()"></div>
+    <div id="adminPassErr" style="color:var(--danger);font-size:.78rem;margin-bottom:.65rem;display:none;">Parol notogri</div>
+    <div class="mrow">
+      <button class="bcl" onclick="document.getElementById('adminLoginModal').classList.remove('on')">Bekor</button>
+      <button class="bblock" onclick="checkAdminPass()" style="flex:2;margin-top:0;">Kirish</button>
+    </div>
+    <div style="margin-top:.9rem;font-size:.72rem;color:var(--muted);text-align:center;">Standart parol: <span style="color:var(--accent);">admin123</span></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="overlay" id="adminModal">
+  <div class="admbox">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;">
+      <span style="font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;">Admin panel</span>
+      <button onclick="closeAdmin()" style="background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted2);width:29px;height:29px;border-radius:7px;cursor:pointer;font-size:.88rem;">X</button>
+    </div>
+    <div class="admtabs">
+      <button class="admtab on" id="atab-videos" onclick="switchAdminTab('videos')">Videolar</button>
+      <button class="admtab" id="atab-topics" onclick="switchAdminTab('topics')">Bolimlar</button>
+      <button class="admtab" id="atab-lessons" onclick="switchAdminTab('lessons')">Maruza</button>
+      <button class="admtab" id="atab-students" onclick="switchAdminTab('students')">Talabalar</button>
+      <button class="admtab" id="atab-tg" onclick="switchAdminTab('tg')">Telegram</button>
+      <button class="admtab" id="atab-pass" onclick="switchAdminTab('pass')">Parol</button>
+    </div>
+
+    <div id="adminTab-videos">
+      <p style="color:var(--muted2);font-size:.8rem;margin-bottom:.9rem;">Har bir maruza uchun YouTube link kiriting.</p>
+      <div id="adminVideoList"></div>
+      <div style="margin-top:.7rem;font-size:.72rem;color:var(--muted);">Misol: https://youtu.be/ID yoki 11 belgili ID</div>
+    </div>
+
+    <div id="adminTab-topics" style="display:none;">
+      <p style="color:var(--muted2);font-size:.8rem;margin-bottom:.9rem;">Bolimlarni tahrirlash yoki yangi qoshish.</p>
+      <div id="topicsAdminList"></div>
+      <div style="margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border);">
+        <div style="font-size:.76rem;color:var(--muted2);margin-bottom:.5rem;font-weight:500;">Yangi bolim:</div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <input class="fi" type="text" id="newTopicIcon" placeholder="Emoji" style="width:52px;text-align:center;">
+          <input class="fi" type="text" id="newTopicName" placeholder="Bolim nomi" style="flex:1;min-width:110px;">
+          <input class="fi" type="text" id="newTopicKey" placeholder="kalit" style="width:80px;">
+          <input class="fi" type="text" id="newTopicKurs" placeholder="1-kurs" style="width:75px;">
+          <button onclick="addTopic()" style="padding:.45rem .82rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:7px;font-weight:600;cursor:pointer;font-size:.8rem;">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminTab-lessons" style="display:none;">
+      <p style="color:var(--muted2);font-size:.8rem;margin-bottom:1rem;">Yangi video maruza qoshing.</p>
+      <div style="display:flex;flex-direction:column;gap:.8rem;">
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Bolim</div><select class="fi" id="newLessonTopic"></select></div>
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Maruza nomi</div><input class="fi" type="text" id="newLessonTitle" placeholder="Lagrange tenglamalari"></div>
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Qisqa tavsif</div><input class="fi" type="text" id="newLessonDesc" placeholder="Umumlashgan koordinatalar"></div>
+        <div style="display:flex;gap:.75rem;">
+          <div style="flex:1;"><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Davomiylik</div><input class="fi" type="text" id="newLessonDur" placeholder="45 daq"></div>
+          <div style="flex:2;"><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">YouTube link</div><input class="fi" type="text" id="newLessonYt" placeholder="https://youtu.be/..."></div>
+        </div>
+        <button onclick="addLesson()" style="padding:.68rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:9px;font-weight:700;cursor:pointer;font-size:.88rem;font-family:'Inter',sans-serif;">+ Maruza qoshish</button>
+      </div>
+    </div>
+
+    <div id="adminTab-students" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;">
+        <p style="color:var(--muted2);font-size:.8rem;">Royxatdan otgan barcha talabalar.</p>
+        <button onclick="sendStudentsToTG()" style="padding:.4rem .82rem;background:rgba(79,142,247,.11);color:var(--accent);border:1px solid rgba(79,142,247,.22);border-radius:7px;font-size:.75rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;">Telegramga yuborish</button>
+      </div>
+      <div id="studentsList"></div>
+    </div>
+
+    <div id="adminTab-tg" style="display:none;">
+      <p style="color:var(--muted2);font-size:.8rem;margin-bottom:1rem;">Test natijalari va yangi royxatdan otishlar shu botga yuboriladi.</p>
+      <div style="display:flex;flex-direction:column;gap:.82rem;max-width:400px;">
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Bot Token</div><input class="fi" type="text" id="adminBotToken" placeholder="1234567890:ABCdef..."></div>
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Chat ID</div><input class="fi" type="text" id="adminChatId" placeholder="123456789"></div>
+        <button onclick="saveTgSettings()" style="padding:.62rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">Saqlash</button>
+      </div>
+      <div style="margin-top:.9rem;padding:.82rem;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.15);border-radius:8px;font-size:.76rem;color:var(--accent);line-height:1.7;">Chat ID topish: Telegramda @userinfobot ga /start yozing.</div>
+    </div>
+
+    <div id="adminTab-pass" style="display:none;">
+      <p style="color:var(--muted2);font-size:.8rem;margin-bottom:1rem;">Admin parolini ozgartiring.</p>
+      <div style="display:flex;flex-direction:column;gap:.82rem;max-width:330px;">
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Yangi parol</div><input class="fi" type="password" id="newAdminPass" placeholder="Kamida 4 ta belgi"></div>
+        <div><div style="font-size:.72rem;color:var(--muted2);margin-bottom:.25rem;text-transform:uppercase;font-weight:500;">Tasdiqlash</div><input class="fi" type="password" id="confirmAdminPass" placeholder="Qayta kiriting"></div>
+        <button onclick="changeAdminPass()" style="padding:.62rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">Saqlash</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><div class="tdot" id="toastDot"></div><span id="toastMsg"></span></div>
+
+<script>
+var currentUser = JSON.parse(localStorage.getItem('fnduUser') || 'null');
+var isAdmin = false;
+var logoClicks = 0;
+var quizQuestions = [];
+var currentQ = 0;
+var answers = [];
+var answered = false;
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('page-' + id).classList.add('active');
+  if (id === 'videos') renderVideos('all');
+  if (id === 'home') updateHeroBtns();
+  document.getElementById('userMenu').style.display = 'none';
+}
+
+function updateHeroBtns() {
+  var b = document.getElementById('heroBtns');
+  if (currentUser) {
+    b.innerHTML = '<button class="bp" onclick="showPage(\'videos\')">Maruza va darslarga otish</button><button class="bg2btn" onclick="showPage(\'test\')">Testlarni boshlash</button>';
+  } else {
+    b.innerHTML = '<button class="bp" onclick="showPage(\'auth\')">Royxatdan otish</button><button class="bg2btn" onclick="showPage(\'videos\')">Maruzalarga qarang</button>';
+  }
+}
+
+function updateNav() {
+  var btn = document.getElementById('authBtn');
+  if (currentUser) {
+    btn.textContent = currentUser.name.split(' ')[0];
+    btn.onclick = toggleUserMenu;
+    document.getElementById('userMenuName').innerHTML = '<b style="color:#fff;font-size:.83rem;">' + currentUser.name + '</b><br>' + currentUser.course + ' - ' + currentUser.group;
+  } else {
+    btn.textContent = 'Kirish';
+    btn.onclick = function() { showPage('auth'); };
+    document.getElementById('userMenu').style.display = 'none';
+  }
+}
+
+function toggleUserMenu() {
+  var m = document.getElementById('userMenu');
+  m.style.display = m.style.display === 'block' ? 'none' : 'block';
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('fnduUser');
+  isAdmin = false;
+  document.getElementById('adminBtn').style.display = 'none';
+  document.getElementById('userMenu').style.display = 'none';
+  updateNav();
+  updateHeroBtns();
+  showPage('home');
+  showToast('Hisobdan chiqdingiz');
+}
+
+document.addEventListener('click', function(e) {
+  var btn = document.getElementById('authBtn');
+  var menu = document.getElementById('userMenu');
+  if (menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+    menu.style.display = 'none';
+  }
+});
+
+function switchTab(tab) {
+  document.querySelectorAll('.atab').forEach(function(t, i) {
+    t.classList.toggle('on', (tab === 'login' && i === 0) || (tab === 'register' && i === 1));
+  });
+  document.getElementById('tab-login').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('tab-register').style.display = tab === 'register' ? 'block' : 'none';
+}
+
+function doLogin() {
+  var u = document.getElementById('loginUser').value.trim();
+  var p = document.getElementById('loginPass').value;
+  if (!u || !p) { showToast("Malumotlarni toliq kiriting", 'err'); return; }
+  var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
+  var found = null;
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].phone === u && users[i].pass === p) { found = users[i]; break; }
+  }
+  if (!found) { showToast("Login yoki parol notogri", 'err'); return; }
+  currentUser = found;
+  localStorage.setItem('fnduUser', JSON.stringify(currentUser));
+  updateNav(); updateHeroBtns(); showPage('home');
+  showToast('Xush kelibsiz, ' + currentUser.name + '!');
+}
+
+function doRegister() {
+  var name = document.getElementById('regName').value.trim();
+  var phone = document.getElementById('regPhone').value.trim();
+  var course = document.getElementById('regCourse').value;
+  var group = document.getElementById('regGroup').value.trim();
+  var pass = document.getElementById('regPass').value;
+  if (!name || !phone || !course || !group || !pass) { showToast("Barcha maydonlarni toldiring", 'err'); return; }
+  if (pass.length < 6) { showToast("Parol kamida 6 ta belgi bolsin", 'err'); return; }
+  var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].phone === phone) { showToast("Bu raqam allaqachon royxatda", 'err'); return; }
+  }
+  var user = { name: name, phone: phone, course: course, group: group, pass: pass, id: Date.now(), regDate: new Date().toLocaleDateString('uz-UZ') };
+  users.push(user);
+  localStorage.setItem('fnduUsers', JSON.stringify(users));
+  currentUser = user;
+  localStorage.setItem('fnduUser', JSON.stringify(currentUser));
+  updateNav(); updateHeroBtns(); showPage('home');
+  showToast("Royxatdan otdingiz! Xush kelibsiz, " + name);
+  notifyNewStudent(user);
+}
+
+function notifyNewStudent(user) {
+  var token = localStorage.getItem('tgToken') || '';
+  var chatId = localStorage.getItem('tgChatId') || '';
+  if (!token || !chatId) return;
+  var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
+  fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: msg })
+  }).catch(function() {});
+}
+
+function logoClick() {
+  logoClicks++;
+  if (logoClicks >= 5) {
+    logoClicks = 0;
+    document.getElementById('adminPassInput').value = '';
+    document.getElementById('adminPassErr').style.display = 'none';
+    document.getElementById('adminLoginModal').classList.add('on');
+    setTimeout(function() { document.getElementById('adminPassInput').focus(); }, 100);
+  }
+}
+
+function checkAdminPass() {
+  var input = document.getElementById('adminPassInput').value;
+  var saved = localStorage.getItem('adminPassNDU') || 'admin123';
+  if (input === saved) {
+    isAdmin = true;
+    document.getElementById('adminBtn').style.display = 'inline-block';
+    document.getElementById('adminLoginModal').classList.remove('on');
+    document.getElementById('adminPassInput').value = '';
+    showToast('Admin rejimiga kirdingiz');
+    updateAvatarAdminHint();
+    openAdmin();
+  } else {
+    document.getElementById('adminPassErr').style.display = 'block';
+  }
+}
+
+function changeAdminPass() {
+  var np = document.getElementById('newAdminPass').value.trim();
+  var cp = document.getElementById('confirmAdminPass').value.trim();
+  if (!np || np.length < 4) { showToast("Parol kamida 4 ta belgi bolsin", 'err'); return; }
+  if (np !== cp) { showToast("Parollar mos emas", 'err'); return; }
+  localStorage.setItem('adminPassNDU', np);
+  document.getElementById('newAdminPass').value = '';
+  document.getElementById('confirmAdminPass').value = '';
+  showToast("Parol ozgartirildi!");
+}
+
+var defaultTopics = [
+  { key: 'mexanika', name: 'Mexanika', icon: 'M', kurs: '1-kurs' },
+  { key: 'molterm', name: 'Mol. fizika va Termodinamika', icon: 'T', kurs: '2-kurs' },
+  { key: 'elektr', name: 'Elektrodinamika', icon: 'E', kurs: '3-kurs' },
+  { key: 'optika', name: 'Optika', icon: 'O', kurs: '3-kurs' },
+  { key: 'kvant', name: 'Kvant fizikasi', icon: 'K', kurs: '4-kurs' },
+  { key: 'yadro', name: 'Yadro fizikasi', icon: 'Y', kurs: '4-kurs' }
+];
+
+function getTopics() {
+  var s = localStorage.getItem('fnduTopics');
+  return s ? JSON.parse(s) : defaultTopics;
+}
+function saveTopics(a) { localStorage.setItem('fnduTopics', JSON.stringify(a)); }
+function topicName(k) {
+  var topics = getTopics();
+  for (var i = 0; i < topics.length; i++) { if (topics[i].key === k) return topics[i].name; }
+  return k;
+}
+function topicColor(k) {
+  var topics = getTopics();
+  for (var i = 0; i < topics.length; i++) {
+    if (topics[i].key === k) {
+      var kurs = topics[i].kurs || '';
+      if (kurs === '1-kurs') return 'color:var(--accent);background:rgba(79,142,247,.1);';
+      if (kurs === '2-kurs') return 'color:var(--accent3);background:rgba(0,212,170,.09);';
+      if (kurs === '3-kurs') return 'color:var(--accent2);background:rgba(124,92,252,.1);';
+      if (kurs === '4-kurs') return 'color:var(--gold);background:rgba(245,200,66,.09);';
+    }
+  }
+  return 'color:var(--accent);background:rgba(79,142,247,.1);';
+}
+
+function renderSidebar() {
+  var topics = getTopics();
+  var grouped = {};
+  for (var i = 0; i < topics.length; i++) {
+    var k = topics[i].kurs || 'Boshqa';
+    if (!grouped[k]) grouped[k] = [];
+    grouped[k].push(topics[i]);
+  }
+  var html = '<div class="titem on" onclick="filterVideos(\'all\',this)">Barchasi</div>';
+  var keys = Object.keys(grouped).sort();
+  for (var ki = 0; ki < keys.length; ki++) {
+    var kurs = keys[ki];
+    html += '<div class="tpg"><div class="tpk">' + kurs + '</div>';
+    for (var ti = 0; ti < grouped[kurs].length; ti++) {
+      var t = grouped[kurs][ti];
+      html += '<div class="titem" onclick="filterVideos(\'' + t.key + '\',this)">' + t.name + '</div>';
+    }
+    html += '</div>';
+  }
+  document.getElementById('topicsSidebar').innerHTML = html;
+}
+
+function renderTopicsAdmin() {
+  var topics = getTopics();
+  var html = '';
+  for (var i = 0; i < topics.length; i++) {
+    var t = topics[i];
+    html += '<div style="display:flex;align-items:center;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--border);">' +
+      '<input type="text" value="' + t.name + '" id="tnm_' + i + '" class="fi" style="flex:1;">' +
+      '<input type="text" value="' + (t.kurs || '') + '" id="tks_' + i + '" class="fi" style="width:75px;" placeholder="1-kurs">' +
+      '<span style="font-size:.68rem;color:var(--muted);min-width:45px;">' + t.key + '</span>' +
+      '<button onclick="saveTopic(' + i + ')" style="padding:.32rem .7rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:.75rem;">OK</button>' +
+      '<button onclick="deleteTopic(\'' + t.key + '\')" style="padding:.32rem .62rem;background:rgba(255,92,92,.09);color:var(--danger);border:1px solid rgba(255,92,92,.18);border-radius:6px;cursor:pointer;font-size:.75rem;">X</button>' +
+      '</div>';
+  }
+  document.getElementById('topicsAdminList').innerHTML = html;
+}
+
+function saveTopic(i) {
+  var t = getTopics();
+  t[i].name = document.getElementById('tnm_' + i).value.trim() || t[i].name;
+  t[i].kurs = document.getElementById('tks_' + i).value.trim() || t[i].kurs;
+  saveTopics(t); renderSidebar(); renderTopicsAdmin(); showToast("Bolim yangilandi");
+}
+
+function deleteTopic(key) {
+  if (!confirm("Bu bolimni ochirasizmi?")) return;
+  var topics = getTopics().filter(function(t) { return t.key !== key; });
+  saveTopics(topics);
+  var vids = getVideos().filter(function(v) { return v.topic !== key; });
+  saveVideos(vids);
+  renderSidebar(); renderTopicsAdmin(); renderVideos('all'); showToast("Bolim ochirildi");
+}
+
+function addTopic() {
+  var name = document.getElementById('newTopicName').value.trim();
+  var key = document.getElementById('newTopicKey').value.trim().toLowerCase().replace(/\s+/g, '');
+  var kurs = document.getElementById('newTopicKurs').value.trim();
+  var icon = document.getElementById('newTopicIcon').value.trim();
+  if (!name || !key) { showToast("Nom va kalitni kiriting", 'err'); return; }
+  var t = getTopics();
+  for (var i = 0; i < t.length; i++) { if (t[i].key === key) { showToast("Bu kalit mavjud", 'err'); return; } }
+  t.push({ key: key, name: name, icon: icon || 'F', kurs: kurs });
+  saveTopics(t);
+  document.getElementById('newTopicIcon').value = '';
+  document.getElementById('newTopicName').value = '';
+  document.getElementById('newTopicKey').value = '';
+  document.getElementById('newTopicKurs').value = '';
+  renderSidebar(); renderTopicsAdmin(); renderLessonTopicSelect();
+  showToast("Bolim qoshildi: " + name);
+}
+
+var defaultVideos = [
+  { id:1, title:"Klassik mexanika asoslari", topic:"mexanika", desc:"Harakat qonunlari va koordinata tizimlari", dur:"45 daq", ytId:"" },
+  { id:2, title:"Lagrange tenglamalari", topic:"mexanika", desc:"Umumlashgan koordinatalar va qollanish", dur:"50 daq", ytId:"" },
+  { id:3, title:"Hamilton formalizmi", topic:"mexanika", desc:"Fazoviy koordinatalar va kanonik tenglamalar", dur:"48 daq", ytId:"" },
+  { id:4, title:"Gaz kinetik nazariyasi", topic:"molterm", desc:"Molekulalar harakati va taqsimotlar", dur:"44 daq", ytId:"" },
+  { id:5, title:"Bolsman taqsimoti va entropiya", topic:"molterm", desc:"Statistik fizika asoslari", dur:"46 daq", ytId:"" },
+  { id:6, title:"Termodinamika qonunlari", topic:"molterm", desc:"I, II, III qonunlar va ilovalar", dur:"44 daq", ytId:"" },
+  { id:7, title:"Maksvell tenglamalari", topic:"elektr", desc:"Toliq differential shakl va ilovalar", dur:"55 daq", ytId:"" },
+  { id:8, title:"Elektromagnit tolqinlar", topic:"elektr", desc:"Tolqin tenglamasi va tarqalish", dur:"50 daq", ytId:"" },
+  { id:9, title:"Tolqin optikasi", topic:"optika", desc:"Interferensiya va diffraktsiya nazariyasi", dur:"48 daq", ytId:"" },
+  { id:10, title:"Lazer fizikasi asoslari", topic:"optika", desc:"Majburiy emissiya va lazer", dur:"46 daq", ytId:"" },
+  { id:11, title:"Shredinger tenglamasi", topic:"kvant", desc:"Vaqtga bogliq va mustaqil hollar", dur:"58 daq", ytId:"" },
+  { id:12, title:"Kvant mexanikasi asoslari", topic:"kvant", desc:"Belirsizlik va tolqin funksiyasi", dur:"52 daq", ytId:"" },
+  { id:13, title:"Yadro tuzilishi va xossalari", topic:"yadro", desc:"Yadro modellari va bogllanish energiyasi", dur:"50 daq", ytId:"" },
+  { id:14, title:"Radioaktiv parchalanish", topic:"yadro", desc:"Alfa, beta, gamma parchalanishlar", dur:"45 daq", ytId:"" }
+];
+
+function getVideos() {
+  var s = localStorage.getItem('fnduVideos');
+  return s ? JSON.parse(s) : defaultVideos;
+}
+function saveVideos(a) { localStorage.setItem('fnduVideos', JSON.stringify(a)); }
+
+function extractYtId(input) {
+  input = input.trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(input)) return input;
+  var m = input.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function renderVideos(filter) {
+  var grid = document.getElementById('videosGrid');
+  var vids = getVideos();
+  var list = filter === 'all' ? vids : vids.filter(function(v) { return v.topic === filter; });
+  if (!list.length) {
+    grid.innerHTML = '<div style="color:var(--muted2);padding:2rem;grid-column:1/-1">Bu bolimda maruza yoq.</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < list.length; i++) {
+    var v = list[i];
+    var clr = topicColor(v.topic);
+    html += '<div class="vcard" onclick="openVideo(' + v.id + ')">' +
+      '<div class="vtmb" style="position:relative;overflow:hidden;">' +
+      (v.ytId ? '<img src="https://img.youtube.com/vi/' + v.ytId + '/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display=\'none\'">' : '') +
+      '<div class="vply">&#9654;</div>' +
+      '</div>' +
+      '<div class="vinf">' +
+      '<h4>' + v.title + '</h4>' +
+      '<p>' + v.desc + '</p>' +
+      '<div class="vmeta">' +
+      '<span class="vdur">' + v.dur + '</span>' +
+      '<span style="font-size:.68rem;padding:.18rem .55rem;border-radius:5px;font-weight:500;' + clr + '">' + topicName(v.topic) + '</span>' +
+      (!v.ytId ? '<span style="font-size:.7rem;color:var(--danger);">Link yoq</span>' : '') +
+      '</div></div></div>';
+  }
+  grid.innerHTML = html;
+}
+
+function filterVideos(topic, el) {
+  document.querySelectorAll('.titem').forEach(function(t) { t.classList.remove('on'); });
+  el.classList.add('on');
+  renderVideos(topic);
+}
+
+function openVideo(id) {
+  if (!currentUser) { showToast("Korish uchun avval kiring", 'err'); showPage('auth'); return; }
+  var vids = getVideos();
+  var v = null;
+  for (var i = 0; i < vids.length; i++) { if (vids[i].id === id) { v = vids[i]; break; } }
+  if (!v) return;
+  if (!v.ytId) { showToast("Bu maruza uchun video hali yoq"); return; }
+  document.getElementById('playerTitle').textContent = v.title;
+  document.getElementById('playerDesc').textContent = v.desc + ' - ' + v.dur;
+  document.getElementById('ytFrame').src = 'https://www.youtube.com/embed/' + v.ytId + '?rel=0&modestbranding=1';
+  document.getElementById('videoModal').classList.add('on');
+}
+
+function closeVideo() {
+  document.getElementById('videoModal').classList.remove('on');
+  document.getElementById('ytFrame').src = '';
+}
+
+function handleVideoOverlay(e) {
+  if (e.target === document.getElementById('videoModal')) closeVideo();
+}
+
+function switchAdminTab(tab) {
+  var tabs = ['videos', 'topics', 'lessons', 'students', 'tg', 'pass'];
+  for (var i = 0; i < tabs.length; i++) {
+    var t = tabs[i];
+    document.getElementById('adminTab-' + t).style.display = t === tab ? 'block' : 'none';
+    var b = document.getElementById('atab-' + t);
+    if (b) {
+      b.classList.toggle('on', t === tab);
+      b.style.background = t === tab ? 'linear-gradient(135deg,var(--accent),var(--accent2))' : 'transparent';
+      b.style.color = t === tab ? '#fff' : 'var(--muted2)';
+    }
+  }
+  if (tab === 'tg') {
+    document.getElementById('adminBotToken').value = localStorage.getItem('tgToken') || '';
+    document.getElementById('adminChatId').value = localStorage.getItem('tgChatId') || '';
+  }
+  if (tab === 'students') renderStudentsList();
+  if (tab === 'pass') addPhotoDeleteBtn();
+}
+
+function saveTgSettings() {
+  var t = document.getElementById('adminBotToken').value.trim();
+  var c = document.getElementById('adminChatId').value.trim();
+  if (!t || !c) { showToast("Ikkala maydonni toldiring", 'err'); return; }
+  localStorage.setItem('tgToken', t); localStorage.setItem('tgChatId', c);
+  showToast('Telegram bot saqlandi!');
+}
+
+function renderStudentsList() {
+  var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
+  if (!users.length) {
+    document.getElementById('studentsList').innerHTML = '<div style="color:var(--muted2);padding:1rem;font-size:.83rem;">Hali talaba yoq.</div>';
+    return;
+  }
+  var html = '<div style="font-size:.7rem;color:var(--muted);margin-bottom:.45rem;">Jami: ' + users.length + ' ta talaba</div>';
+  for (var i = 0; i < users.length; i++) {
+    var u = users[i];
+    html += '<div style="display:flex;align-items:center;gap:.7rem;padding:.5rem 0;border-bottom:1px solid var(--border);">' +
+      '<div style="width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0;">' + (i + 1) + '</div>' +
+      '<div style="flex:1;min-width:0;"><div style="font-size:.83rem;font-weight:500;color:#fff;">' + u.name + '</div>' +
+      '<div style="font-size:.72rem;color:var(--muted2);">' + u.phone + ' - ' + u.course + ' - ' + u.group + '</div></div>' +
+      '<div style="font-size:.7rem;color:var(--muted);">' + (u.regDate || '') + '</div>' +
+      '</div>';
+  }
+  document.getElementById('studentsList').innerHTML = html;
+}
+
+function sendStudentsToTG() {
+  var token = localStorage.getItem('tgToken') || '';
+  var chatId = localStorage.getItem('tgChatId') || '';
+  if (!token || !chatId) { showToast('Telegram bot sozlanmagan!', 'err'); return; }
+  var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
+  if (!users.length) { showToast("Hali talaba yoq", 'err'); return; }
+  var list = '';
+  for (var i = 0; i < users.length; i++) {
+    list += (i + 1) + '. ' + users[i].name + ' | ' + users[i].course + ' | ' + users[i].group + ' | ' + users[i].phone + '\n';
+  }
+  var msg = "Talabalar royxati - FizikaNDU\nNavoiy Davlat Universiteti\nSana: " + new Date().toLocaleDateString('uz-UZ') + "\nJami: " + users.length + " ta\n\n" + list;
+  fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: msg })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.ok) showToast("Royxat Telegramga yuborildi!");
+    else showToast('Xato: ' + (d.description || ''), 'err');
+  }).catch(function() { showToast('Tarmoq xatosi', 'err'); });
+}
+
+function openAdmin() {
+  var vids = getVideos();
+  var html = '';
+  for (var i = 0; i < vids.length; i++) {
+    var v = vids[i];
+    html += '<div style="display:flex;align-items:center;gap:.6rem;padding:.52rem 0;border-bottom:1px solid var(--border);">' +
+      '<div style="flex:1;min-width:0;"><div style="font-size:.83rem;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + v.title + '</div>' +
+      '<div style="font-size:.7rem;color:var(--muted2);">' + topicName(v.topic) + '</div></div>' +
+      '<input type="text" placeholder="YouTube link yoki ID" value="' + (v.ytId || '') + '" id="yt_' + v.id + '" class="fi" style="flex:2;">' +
+      '<button onclick="saveVideoLink(' + v.id + ')" style="padding:.33rem .75rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:.75rem;white-space:nowrap;">OK</button>' +
+      '<button onclick="deleteLesson(' + v.id + ')" style="padding:.33rem .55rem;background:rgba(255,92,92,.08);color:var(--danger);border:1px solid rgba(255,92,92,.18);border-radius:6px;cursor:pointer;font-size:.75rem;">X</button>' +
+      '</div>';
+  }
+  document.getElementById('adminVideoList').innerHTML = html;
+  renderTopicsAdmin(); renderLessonTopicSelect();
+  switchAdminTab('videos');
+  document.getElementById('adminModal').classList.add('on');
+}
+
+function saveVideoLink(id) {
+  var raw = document.getElementById('yt_' + id).value.trim();
+  var ytId = raw ? extractYtId(raw) : '';
+  if (raw && !ytId) { showToast("Notogri YouTube link", 'err'); return; }
+  var vids = getVideos();
+  for (var i = 0; i < vids.length; i++) {
+    if (vids[i].id === id) { vids[i].ytId = ytId || ''; saveVideos(vids); renderVideos('all'); showToast(vids[i].title + ' saqlandi'); return; }
+  }
+}
+
+function deleteLesson(id) {
+  var vids = getVideos();
+  var v = null;
+  for (var i = 0; i < vids.length; i++) { if (vids[i].id === id) { v = vids[i]; break; } }
+  if (!v || !confirm(v.title + ' ni ochirasizmi?')) return;
+  saveVideos(vids.filter(function(x) { return x.id !== id; }));
+  openAdmin(); renderVideos('all'); showToast("Maruza ochirildi");
+}
+
+function renderLessonTopicSelect() {
+  var topics = getTopics();
+  var html = '';
+  for (var i = 0; i < topics.length; i++) {
+    html += '<option value="' + topics[i].key + '">' + topics[i].name + ' (' + (topics[i].kurs || '') + ')</option>';
+  }
+  document.getElementById('newLessonTopic').innerHTML = html;
+}
+
+function addLesson() {
+  var topic = document.getElementById('newLessonTopic').value;
+  var title = document.getElementById('newLessonTitle').value.trim();
+  var desc = document.getElementById('newLessonDesc').value.trim();
+  var dur = document.getElementById('newLessonDur').value.trim() || '--';
+  var ytRaw = document.getElementById('newLessonYt').value.trim();
+  if (!title) { showToast("Maruza nomini kiriting", 'err'); return; }
+  var ytId = ytRaw ? (extractYtId(ytRaw) || '') : '';
+  var vids = getVideos();
+  var maxId = 0;
+  for (var i = 0; i < vids.length; i++) { if (vids[i].id > maxId) maxId = vids[i].id; }
+  vids.push({ id: maxId + 1, title: title, topic: topic, desc: desc || title, dur: dur, ytId: ytId });
+  saveVideos(vids);
+  ['newLessonTitle', 'newLessonDesc', 'newLessonDur', 'newLessonYt'].forEach(function(id) { document.getElementById(id).value = ''; });
+  renderVideos('all'); openAdmin(); showToast("Maruza qoshildi: " + title);
+}
+
+function closeAdmin() { document.getElementById('adminModal').classList.remove('on'); }
+
+var allQuestions = [
+  { q:"Lagrange tenglamasi qaysi?", opts:["d/dt(dL/dq') - dL/dq = 0","F = ma","E = mc2","nabla E = rho/e0"], ans:0, topic:"mexanika" },
+  { q:"Kinetik energiya impuls orqali T = ?", opts:["p2/2m","mv/2","p*v","m2v"], ans:0, topic:"mexanika" },
+  { q:"Mexanik energiya saqlanish qonuni qachon oritinli?", opts:["Konservativ kuchlar tasirida","Har doim","Faqat vakuumda","Faqat bir olchovda"], ans:0, topic:"mexanika" },
+  { q:"Impuls saqlanish qonuni qachon ortinli?", opts:["Tashqi kuchlar nolga teng bo'lganda","Energiya saqlanib qolganda","Massa doimiy bo'lganda","Har doim"], ans:0, topic:"mexanika" },
+  { q:"Qattiq jism kinetik energiyasi aylanishda?", opts:["T = I*omega2/2","T = mv2/2","T = I*omega","T = m*omega2"], ans:0, topic:"mexanika" },
+  { q:"Inersiya momenti (nuqtaviy massa)?", opts:["I = mr2","I = m/r2","I = mr","I = m2r"], ans:0, topic:"mexanika" },
+  { q:"Burchak momenti L = ?", opts:["r x p","r dot p","m x v","I*omega/r"], ans:0, topic:"mexanika" },
+  { q:"Noether teoremasi nima haqida?", opts:["Simmetriya va saqlanish qonunlari bog'liqligi","Energiya saqlanishi","Impuls saqlanishi","Massa saqlanishi"], ans:0, topic:"mexanika" },
+  { q:"Hamilton funksiyasi H = ?", opts:["p*q' - L","T + U","T - U","L - T"], ans:0, topic:"mexanika" },
+  { q:"Poisson qavslari {q,p} = ?", opts:["1","0","-1","cheksiz"], ans:0, topic:"mexanika" },
+  { q:"Elastik to'qnashuvda nima saqlanadi?", opts:["Energiya va impuls","Faqat energiya","Faqat impuls","Moment"], ans:0, topic:"mexanika" },
+  { q:"Sentral kuch maydonida nima saqlanadi?", opts:["Burchak momenti","Impuls","Energiya","Tezlik"], ans:0, topic:"mexanika" },
+  { q:"Koriolis kuchi qaysi formulada?", opts:["F = -2m(omega x v)","F = m*omega2*r","F = ma","F = mv2/r"], ans:0, topic:"mexanika" },
+  { q:"Absolut notekis to'qnashuvda nima saqlanadi?", opts:["Faqat impuls","Energiya va impuls","Faqat energiya","Hech narsa"], ans:0, topic:"mexanika" },
+  { q:"Kanonik transformatsiya nima saqlab qoldiradi?", opts:["Hamiltonian strukturasini","Energiyani","Massani","Tezlikni"], ans:0, topic:"mexanika" },
+  { q:"Virialь teoremasi: T o'rtacha = ?", opts:["-1/2 * <r dot F>","<U>","<E>","<p2/2m>"], ans:0, topic:"mexanika" },
+  { q:"Ikki jism muammosida qisqartirilgan massa?", opts:["m1*m2/(m1+m2)","m1+m2","m1-m2","m1*m2"], ans:0, topic:"mexanika" },
+  { q:"Markazdan qochma kuch?", opts:["F = m*omega2*r","F = m*omega*r","F = m/omega2*r","F = m*omega/r"], ans:0, topic:"mexanika" },
+  { q:"Og'irlik kuchi formulasi?", opts:["G = mg","G = mv","G = ma","G = mh"], ans:0, topic:"mexanika" },
+  { q:"Lagrange erkinlik darajasi nima?", opts:["Mustaqil umumlashgan koordinatalar soni","Energiya darajalari soni","Zarrachalar soni","Olchov birligi"], ans:0, topic:"mexanika" },
+
+  { q:"Bolsman taqsimoti f(E) = ?", opts:["C*exp(-E/kT)","C*exp(E/kT)","E/kT","kT/E"], ans:0, topic:"molterm" },
+  { q:"Entropiya (Bolsman): S = ?", opts:["k*lnW","Q/T","-k*lnW","W/k"], ans:0, topic:"molterm" },
+  { q:"Termodinamika II qonuni?", opts:["Izolyatsiyalangan sistemada S kamayib ketmaydi","Energiya saqlanadi","Temperatura o'sadi","Bosim doimiy"], ans:0, topic:"molterm" },
+  { q:"Gibbs erkin energiyasi G = ?", opts:["H - TS","U + PV","F + PV","U - TS"], ans:0, topic:"molterm" },
+  { q:"Gelmgolts erkin energiyasi F = ?", opts:["U - TS","H - TS","U + PV","G - PV"], ans:0, topic:"molterm" },
+  { q:"Kimyoviy potensial mu = ?", opts:["(dG/dN) T,P","G/N","kT*lnN","F/N"], ans:0, topic:"molterm" },
+  { q:"Karnot FIK = ?", opts:["1 - T2/T1","T1/T2","Q2/Q1","1 - Q2/Q1"], ans:0, topic:"molterm" },
+  { q:"Ideal gaz ichki energiyasi U = ?", opts:["nCvT","nRT","PV","nCpT"], ans:0, topic:"molterm" },
+  { q:"O'rtacha kinetik energiya E o'rtacha = ?", opts:["3kT/2","kT","3kT","kT/2"], ans:0, topic:"molterm" },
+  { q:"Adiabatik jarayonda gamma = ?", opts:["Cp/Cv","Cv/Cp","Cp - Cv","Cp + Cv"], ans:0, topic:"molterm" },
+  { q:"Van der Waals gaz tenglamasi?", opts:["(P + a/V2)(V - b) = RT","PV = RT","PV = nRT + a","P(V-b) = RT"], ans:0, topic:"molterm" },
+  { q:"Ideal gaz tenglamasi?", opts:["PV = nRT","PV = RT","P = nRT","PV = nR"], ans:0, topic:"molterm" },
+  { q:"Boyль-Mariott (T=const)?", opts:["P1V1 = P2V2","P/T = const","V/T = const","PV/T = const"], ans:0, topic:"molterm" },
+  { q:"Gay-Lussak (V=const)?", opts:["P/T = const","PV = const","V/T = const","PT = const"], ans:0, topic:"molterm" },
+  { q:"Sharlь qonuni (P=const)?", opts:["V/T = const","PV = const","P/T = const","PT = const"], ans:0, topic:"molterm" },
+  { q:"Avogadro soni taxminan?", opts:["6.02 * 10^23","3 * 10^8","9 * 10^9","1.67 * 10^-27"], ans:0, topic:"molterm" },
+  { q:"Bolsman konstantasi k = ?", opts:["1.38 * 10^-23 J/K","8.314 J/K","6.02 * 10^23 J/K","3 * 10^8 J/K"], ans:0, topic:"molterm" },
+  { q:"Entalpiya H = ?", opts:["U + PV","U - PV","G + TS","F + PV"], ans:0, topic:"molterm" },
+  { q:"Termodinamika III qonuni?", opts:["T 0 ga yaqinlashganda S 0 ga yaqinlashadi","Energiya saqlanadi","Entropiya doimiy","T saqlanadi"], ans:0, topic:"molterm" },
+  { q:"Suvning solishtirma issiqligi?", opts:["4200 J/(kg*K)","2100 J/(kg*K)","1000 J/(kg*K)","8400 J/(kg*K)"], ans:0, topic:"molterm" },
+
+  { q:"Maksvell: nabla dot E = ?", opts:["rho/epsilon0","mu0*J","0","-dB/dt"], ans:0, topic:"elektr" },
+  { q:"Maksvell: nabla x B = ?", opts:["mu0*J + mu0*epsilon0*dE/dt","rho/epsilon0","0","-dB/dt"], ans:0, topic:"elektr" },
+  { q:"Elektromagnit tolqin tezligi c = ?", opts:["1/sqrt(mu0*epsilon0)","sqrt(mu0*epsilon0)","mu0*epsilon0","1/(mu0*epsilon0)"], ans:0, topic:"elektr" },
+  { q:"Poyting vektori S = ?", opts:["(1/mu0)(E x B)","E x B","epsilon*E2","B2/mu0"], ans:0, topic:"elektr" },
+  { q:"Faradey qonuni?", opts:["nabla x E = -dB/dt","nabla dot E = rho/epsilon0","nabla x B = mu0*J","nabla dot B = 0"], ans:0, topic:"elektr" },
+  { q:"Magnit monopollar: nabla dot B = ?", opts:["0 (mavjud emas deb hisoblanadi)","rho/epsilon0","mu0*rhom","1"], ans:0, topic:"elektr" },
+  { q:"Lorens kuchi F = ?", opts:["q(E + v x B)","qE","qvB","q(E - v x B)"], ans:0, topic:"elektr" },
+  { q:"Biot-Savart qonuni?", opts:["dB = mu0*I(dl x r_hat)/4pi*r2","dB = mu0*I/2pi*r","dB = mu0*I*l","dB = I x r"], ans:0, topic:"elektr" },
+  { q:"Energiya zichligi u = ?", opts:["(epsilon0*E2 + B2/mu0)/2","epsilon0*E2","B2/mu0","epsilon0*E2/2"], ans:0, topic:"elektr" },
+  { q:"Lorens kalibri sharti?", opts:["nabla dot A + (1/c2)*dphi/dt = 0","nabla dot A = 0","dA/dt = 0","nabla*phi = 0"], ans:0, topic:"elektr" },
+  { q:"Dielektrikda D = ?", opts:["epsilon0*E + P","epsilon0*E","P","epsilon0*E - P"], ans:0, topic:"elektr" },
+  { q:"Magnit materialda H = ?", opts:["B/mu0 - M","B/mu0","mu0*B","B + M"], ans:0, topic:"elektr" },
+  { q:"Plazma chastotasi omega_p = ?", opts:["sqrt(n*e2/m*epsilon0)","n*e2/m*epsilon0","n*e/m*epsilon0","sqrt(m*e2/n*epsilon0)"], ans:0, topic:"elektr" },
+  { q:"Solenoid ichidagi maydon B = ?", opts:["mu0*n*I","mu0*I/2pi*r","mu0*I","n*I"], ans:0, topic:"elektr" },
+  { q:"Kondensator energiyasi W = ?", opts:["Q2/2C","Q*C/2","Q/2C","C/2Q"], ans:0, topic:"elektr" },
+  { q:"Om qonuni j = ?", opts:["sigma*E","epsilon*E","mu*E","E/sigma"], ans:0, topic:"elektr" },
+  { q:"Transformatorda kuchlanish nisbati?", opts:["U1/U2 = N1/N2","U1*N1 = U2*N2","U1/N1 = U2/N2","U1 = U2"], ans:0, topic:"elektr" },
+  { q:"Elektromagnit tolqin qutblanishi?", opts:["E vektorining tebranish yonalishi","B vektorining yonalishi","Tolqin tarqalish yonalishi","Energiya oqimi yonalishi"], ans:0, topic:"elektr" },
+  { q:"Kul-Faradey qonuni?", opts:["kontur boyicha E dot dl = -dPhi_B/dt","kontur boyicha B dot dl = mu0*I","kontur boyicha E dot dA = Q/epsilon0","kontur boyicha B dot dA = 0"], ans:0, topic:"elektr" },
+  { q:"Elektr dipol potensiali?", opts:["V = p dot r_hat / (4pi*epsilon0*r2)","V = q/(4pi*epsilon0*r)","V = p/r","V = q/r2"], ans:0, topic:"elektr" },
+
+  { q:"Tolqin optikasi tenglamasi?", opts:["nabla2*E = (1/c2)*d2E/dt2","nabla*E = 0","E = h*nu","E = mc2"], ans:0, topic:"optika" },
+  { q:"Interferensiya maksimum sharti?", opts:["Delta = m*lambda","Delta = (m+0.5)*lambda","Delta = lambda/2","Delta = 2*lambda"], ans:0, topic:"optika" },
+  { q:"Diffraktsiya minimum sharti (bitta tirqish)?", opts:["a*sin(theta) = m*lambda","a*sin(theta) = (m+0.5)*lambda","a*cos(theta) = m*lambda","2a*sin(theta) = m*lambda"], ans:0, topic:"optika" },
+  { q:"Rayleigh ajratish mezoni?", opts:["theta_min = 1.22*lambda/D","theta_min = lambda/D","theta_min = 2*lambda/D","theta_min = lambda/2D"], ans:0, topic:"optika" },
+  { q:"Lazer qo'zgalish mexanizmi?", opts:["Majburiy emissiya","Spontan emissiya","Yutilish","Interferensiya"], ans:0, topic:"optika" },
+  { q:"Snell qonuni?", opts:["n1*sin(alpha1) = n2*sin(alpha2)","n1*alpha1 = n2*alpha2","sin(alpha) = n","n = c/v"], ans:0, topic:"optika" },
+  { q:"Brewster burchagi?", opts:["tan(theta_B) = n2/n1","sin(theta_B) = n","cos(theta_B) = n","tan(theta_B) = n1/n2"], ans:0, topic:"optika" },
+  { q:"Fotoelektrik effekt: E_k = ?", opts:["h*nu - W","h*nu","h*nu + W","W - h*nu"], ans:0, topic:"optika" },
+  { q:"Kompton tolqin uzunligi ozgarishi?", opts:["Delta_lambda = (h/me*c)*(1-cos(theta))","Delta_lambda = h*nu/c","Delta_lambda = h/p","Delta_lambda = lambda/2"], ans:0, topic:"optika" },
+  { q:"Faradey optik effekti?", opts:["Magnit maydonida qutblanish tekisligining aylanishi","Elektr maydonida sinish","Nur yutilishi","Interferensiya"], ans:0, topic:"optika" },
+  { q:"Koherentlik uzunligi l_c = ?", opts:["lambda2/Delta_lambda","lambda/Delta_lambda","Delta_lambda/lambda2","lambda*Delta_lambda"], ans:0, topic:"optika" },
+  { q:"Holografiya nima yozadi?", opts:["Tolqin fazasi va amplitudasi","Faqat intensivlik","Rang","Qutblanish"], ans:0, topic:"optika" },
+  { q:"Optik tor uchun asosiy tenglama?", opts:["d*sin(theta) = m*lambda","d*cos(theta) = m*lambda","2d*sin(theta) = m*lambda","d/sin(theta) = m*lambda"], ans:0, topic:"optika" },
+  { q:"Dispersiya nima?", opts:["Sinish korsatkichining tolqin uzunligiga bogliqligi","Nur yutilishi","Nur tarqalishi","Qutblanish"], ans:0, topic:"optika" },
+  { q:"Toliq ichki qaytish sharti?", opts:["Nur zich muhitdan siyrakka o'tganda va theta > theta_c","Har doim","Faqat kozguda","Faqat linzada"], ans:0, topic:"optika" },
+  { q:"Qizil siljish (Doppler) Delta_lambda/lambda = ?", opts:["v/c","c/v","Delta_f/f","1/v"], ans:0, topic:"optika" },
+  { q:"Bragg difraktsiya sharti?", opts:["2d*sin(theta) = n*lambda","d*sin(theta) = n*lambda","d*cos(theta) = n*lambda","2d*cos(theta) = n*lambda"], ans:0, topic:"optika" },
+  { q:"Shtark effekti nima?", opts:["Elektr maydonidagi spektral chiziqlar parchalanishi","Magnit maydonidagi parchalanish","Bosim tasiri","Harorat tasiri"], ans:0, topic:"optika" },
+  { q:"Zeeman effekti nima?", opts:["Magnit maydonidagi spektral chiziqlar parchalanishi","Elektr maydonidagi parchalanish","Nur intensivligi ozgarishi","Nur tezligi ozgarishi"], ans:0, topic:"optika" },
+  { q:"Abbе formulasi (sinish korsatkichi)?", opts:["n = sin((A+delta_min)/2)/sin(A/2)","n = sin(theta)","n = lambda/d","n = c/v"], ans:0, topic:"optika" },
+
+  { q:"De Broyl tolqin uzunligi lambda = ?", opts:["h/p","h*p","h/mv","p/h"], ans:0, topic:"kvant" },
+  { q:"Geyzenberg belirsizlik munosabati?", opts:["Delta_x * Delta_p >= hbar/2","Delta_x * Delta_p = 0","Delta_x * Delta_p = h","Delta_x * Delta_p <= hbar"], ans:0, topic:"kvant" },
+  { q:"Vaqtga bogliq Shredinger tenglamasi?", opts:["i*hbar*d_psi/dt = H_hat*psi","H_hat*psi = E*psi","nabla2*psi = 0","p*psi = E*psi"], ans:0, topic:"kvant" },
+  { q:"Kvant mexanikasida impuls operatori p_hat = ?", opts:["-i*hbar*nabla","i*hbar*nabla","hbar*nabla","p"], ans:0, topic:"kvant" },
+  { q:"Komutator [x_hat, p_hat] = ?", opts:["i*hbar","-i*hbar","0","hbar"], ans:0, topic:"kvant" },
+  { q:"Vodorod atomi energiya sathlari E_n = ?", opts:["-13.6/n2 eV","13.6/n eV","-13.6*n2 eV","n*13.6 eV"], ans:0, topic:"kvant" },
+  { q:"Spin s = 1/2 uchun Sx qiymatlari?", opts:["±hbar/2","±hbar","±1","0"], ans:0, topic:"kvant" },
+  { q:"Pauli printsipi nima deydi?", opts:["Bir kvant holatda ikkita fermion bola olmaydi","Bozonlar soni cheksiz","Energiya saqlanadi","Burchak momenti saqlanadi"], ans:0, topic:"kvant" },
+  { q:"Kvant tunel effekti nima?", opts:["Klassik taqiqlangan tosiqdan otish","Energiyaning saqlanishi","Impulsning saqlanishi","Tolqinning qaytishi"], ans:0, topic:"kvant" },
+  { q:"Garmoshka ossillyator nol nuqta energiyasi E0 = ?", opts:["hbar*omega/2","0","hbar*omega","2*hbar*omega"], ans:0, topic:"kvant" },
+  { q:"|psi|2 ning fizik maonosi (Born)?", opts:["Ehtimollik zichligi","Zaryadlanish","Energiya","Tezlik"], ans:0, topic:"kvant" },
+  { q:"Bor magneton mu_B = ?", opts:["e*hbar/2me","e*hbar/me","hbar/2me","e*hbar"], ans:0, topic:"kvant" },
+  { q:"Fermionlarga qaysilar kiradi?", opts:["Elektronlar, protonlar, neytronlar","Fotonlar","Pionlar","Alfa zarralar"], ans:0, topic:"kvant" },
+  { q:"Bose-Eynshteyn statistikasi qaysi zarrachalar uchun?", opts:["Butun spinli zarrachalar (bozonlar)","Yarim butun spinli","Elektronlar","Protonlar"], ans:0, topic:"kvant" },
+  { q:"Fermi-Dirak taqsimoti f(E) = ?", opts:["1/(exp((E-mu)/kT)+1)","exp(-E/kT)","1/(exp(E/kT)-1)","exp(E/kT)"], ans:0, topic:"kvant" },
+  { q:"Superpozitsiya printsipi?", opts:["Holat vektorlari yigindisi ham holat vektori","Energiyalar yigindisi","Impulslar yigindisi","Massalar yigindisi"], ans:0, topic:"kvant" },
+  { q:"EPR paradoksi nima haqida?", opts:["Kvant mexanikasidagi mahalliy-realizmga qarshi argument","Kvant teleportatsiya","Kvant kompyuter","Kvant kriptografiya"], ans:0, topic:"kvant" },
+  { q:"Kvant mexanikasida olchov muammosi nima?", opts:["Olchov natijada holat ozgarishi","Energiya saqlanmasligi","Impuls saqlanmasligi","Tolqin interferensiyasi"], ans:0, topic:"kvant" },
+  { q:"Shredinger mushugining paradoksi nima haqida?", opts:["Olchov oldidan sistemaning superpozitsiya holatda bolishi","Mushuk fizikasi","Klassik mexanika","Termodinamika"], ans:0, topic:"kvant" },
+  { q:"Kvant mexanikasida Dirak tenglamasi nima beradi?", opts:["Relativistik kvant tavsifi va spinni bashorat qiladi","Klassik harakat tavsifi","Energiya saqlanishi","Impuls saqlanishi"], ans:0, topic:"kvant" },
+
+  { q:"Yadro bogllanish energiyasi — Bethe-Weizsacker formulasida qaysi had yoq?", opts:["Elektron qobigini hisobga oluvchi had","Hajm hadi","Yuza hadi","Kulon hadi"], ans:0, topic:"yadro" },
+  { q:"Radioaktiv parchalanish N(t) = ?", opts:["N0 * exp(-lambda*t)","N0*lambda*t","N0/t","N0*(1-exp(-lambda*t))"], ans:0, topic:"yadro" },
+  { q:"Aktivlik A = ?", opts:["lambda*N","N/lambda","lambda/N","dN/dt"], ans:0, topic:"yadro" },
+  { q:"Yarim parchalanish davri T1/2 = ?", opts:["ln2/lambda","lambda/ln2","1/lambda","2/lambda"], ans:0, topic:"yadro" },
+  { q:"Alfa parchalanishda A va Z qanday ozgaradi?", opts:["A 4 ga, Z 2 ga kamayadi","A 2 ga, Z 1 ga kamayadi","A 4 ga, Z 2 ga ortadi","A ozgarmaydi"], ans:0, topic:"yadro" },
+  { q:"Beta minus parchalanish?", opts:["n ga p + elektron + antineytrinoye","p ga n + pozitron + neytrinoye","n ga p + pozitron","p ga n + elektron"], ans:0, topic:"yadro" },
+  { q:"Yadro reaksiyasida Q qiymati = ?", opts:["(M_reactants - M_products)*c2","Delta_E","m*c2","E_kin"], ans:0, topic:"yadro" },
+  { q:"Kritik massa nima?", opts:["Zanjir reaksiyasi oz-ozini davom ettiradigan minimal massa","Maksimal massa","Parchalanmaydigan massa","Yadro massasi"], ans:0, topic:"yadro" },
+  { q:"Qobiq model qaysi hodisani tushuntiradi?", opts:["Sehrli sonlar (2,8,20,28,50,82,126)","Radioaktivlik","Yadro bolinishi","Termoyadro"], ans:0, topic:"yadro" },
+  { q:"D-T termoyadro reaksiyasi: 2H + 3H ga nima hosil boladi?", opts:["4He + n + 17.6 MeV","4He + p","3He + 2n","5He"], ans:0, topic:"yadro" },
+  { q:"Eynshteyn mass-energiya: E = ?", opts:["m*c2","m*v2","m*v2/2","m*g*h"], ans:0, topic:"yadro" },
+  { q:"Foton tinchlik massasi?", opts:["0","me","me/2","hbar/c2"], ans:0, topic:"yadro" },
+  { q:"Yadro kuchlarining xususiyati?", opts:["Qisqa masofa, kuchli, zaryadsiz","Uzoq masofa, kuchsiz","Faqat protonlar orasida","Faqat neytronlar orasida"], ans:0, topic:"yadro" },
+  { q:"Standart model nechta fundamental kuchni birlashtiradi?", opts:["3 (kuchli, kuchsiz, elektromagnit)","4","2","5"], ans:0, topic:"yadro" },
+  { q:"Kvark nechta avlod?", opts:["3 avlod (u,d; c,s; t,b)","2 avlod","4 avlod","6 avlod"], ans:0, topic:"yadro" },
+  { q:"Yadro densitometi taxminan?", opts:["2*10^17 kg/m3","10^6 kg/m3","10^3 kg/m3","10^24 kg/m3"], ans:0, topic:"yadro" },
+  { q:"Atom bombasida qaysi reaksiya?", opts:["Yadro parchalanishi (fission)","Yadro qoshilishi (fusion)","Kimyoviy portlash","Elektromagnit"], ans:0, topic:"yadro" },
+  { q:"Neytron moderatori nima qiladi?", opts:["Neytronlarni sekinlashtiradi","Neytronlarni yutadi","Yadro bolinishini toqtatadi","Energiya beradi"], ans:0, topic:"yadro" },
+  { q:"Proton soni nima deyiladi?", opts:["Atom raqami (Z)","Mass raqami (A)","Neytron soni (N)","Elektron soni"], ans:0, topic:"yadro" },
+  { q:"Neytrinoning asosiy xususiyati?", opts:["Juda kichik massali va zaif tasir qiladi","Kuchli tasir qiladi","Zaryadlangan","Yadro tarkibida"], ans:0, topic:"yadro" }
+];
+
+function startTest() {
+  if (!currentUser) { showToast('Test uchun avval kiring', 'err'); showPage('auth'); return; }
+  var topic = document.getElementById('testTopic').value;
+  var count = parseInt(document.getElementById('testCount').value);
+  var pool = [];
+  if (topic === 'mix') {
+    pool = allQuestions.slice();
+  } else {
+    for (var i = 0; i < allQuestions.length; i++) {
+      if (allQuestions[i].topic === topic) pool.push(allQuestions[i]);
+    }
+  }
+  if (pool.length < count) {
+    var extra = allQuestions.slice();
+    while (pool.length < count) pool.push(extra[pool.length % extra.length]);
+  }
+  pool = shuffle(pool);
+  quizQuestions = pool.slice(0, count);
+  currentQ = 0;
+  answers = [];
+  for (var j = 0; j < quizQuestions.length; j++) answers.push(null);
+  document.getElementById('testIntro').style.display = 'none';
+  document.getElementById('quizWrap').classList.add('on');
+  document.getElementById('resultCard').classList.remove('on');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  var q = quizQuestions[currentQ];
+  var total = quizQuestions.length;
+  answered = answers[currentQ] !== null;
+  document.getElementById('progressFill').style.width = ((currentQ + 1) / total * 100) + '%';
+  document.getElementById('qCounter').textContent = (currentQ + 1) + ' / ' + total;
+  var html = '<div class="qcard"><div class="qlbl">Savol ' + (currentQ + 1) + '</div>' +
+    '<div class="qtxt">' + q.q + '</div><div class="opts">';
+  for (var i = 0; i < q.opts.length; i++) {
+    var cls = 'opt';
+    if (answered) {
+      if (i === q.ans) cls += ' ok';
+      else if (i === answers[currentQ]) cls += ' no';
+    } else {
+      if (answers[currentQ] === i) cls += ' sel';
+    }
+    html += '<button class="' + cls + '" onclick="selectAnswer(' + i + ')">' + String.fromCharCode(65 + i) + ') ' + q.opts[i] + '</button>';
+  }
+  html += '</div></div>';
+  document.getElementById('questionArea').innerHTML = html;
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answers[currentQ] = idx; answered = true; renderQuestion();
+}
+
+function nextQ() {
+  if (currentQ < quizQuestions.length - 1) { currentQ++; renderQuestion(); }
+  else showResult();
+}
+
+function skipQ() {
+  if (!answered) answers[currentQ] = null;
+  nextQ();
+}
+
+function showResult() {
+  document.getElementById('quizWrap').classList.remove('on');
+  document.getElementById('resultCard').classList.add('on');
+  var correct = 0, wrong = 0, skipped = 0;
+  for (var i = 0; i < quizQuestions.length; i++) {
+    if (answers[i] === null) skipped++;
+    else if (answers[i] === quizQuestions[i].ans) correct++;
+    else wrong++;
+  }
+  var pct = Math.round(correct / quizQuestions.length * 100);
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('rsCorrect').textContent = correct;
+  document.getElementById('rsWrong').textContent = wrong;
+  document.getElementById('rsSkipped').textContent = skipped;
+  var lbl = pct >= 85 ? "Alo natija!" : pct >= 70 ? "Yaxshi!" : pct >= 50 ? "Ortacha" : "Koproq oqung";
+  document.getElementById('resultLabel').textContent = lbl;
+  sendToTelegram(correct, wrong, skipped, pct);
+}
+
+function sendToTelegram(correct, wrong, skipped, pct) {
+  var token = localStorage.getItem('tgToken') || '';
+  var chatId = localStorage.getItem('tgChatId') || '';
+  var note = document.getElementById('tgNote');
+  if (!token || !chatId) {
+    note.textContent = 'Telegram bot sozlanmagan.';
+    note.style.background = 'rgba(255,92,92,.08)';
+    note.style.color = 'var(--danger)';
+    return;
+  }
+  var topic = document.getElementById('testTopic').value;
+  var msg = "FizikaNDU - Test natijasi\nNavoiy Davlat Universiteti\n\nTalaba: " + currentUser.name +
+    "\nTel: " + currentUser.phone + "\n" + currentUser.course + " | Guruh: " + currentUser.group +
+    "\n\nBolim: " + topicName(topic) + "\nVaqt: " + new Date().toLocaleString('uz-UZ') +
+    "\n\nTogri: " + correct + "\nNotogri: " + wrong + "\nOtkazilgan: " + skipped + "\nNatija: " + pct + "%";
+  fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: msg })
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.ok) {
+      note.textContent = 'Natijangiz Telegram botga yuborildi!';
+      note.style.background = 'rgba(79,142,247,.07)';
+      note.style.color = 'var(--accent)';
+    } else {
+      note.textContent = 'Xato: ' + (d.description || '');
+      note.style.color = 'var(--danger)';
+    }
+  }).catch(function() { note.textContent = 'Tarmoq xatosi.'; });
+}
+
+function resetTest() {
+  document.getElementById('testIntro').style.display = 'block';
+  document.getElementById('quizWrap').classList.remove('on');
+  document.getElementById('resultCard').classList.remove('on');
+}
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  var dot = document.getElementById('toastDot');
+  document.getElementById('toastMsg').textContent = msg;
+  dot.style.background = type === 'err' ? 'var(--danger)' : 'var(--success)';
+  t.classList.add('on');
+  setTimeout(function() { t.classList.remove('on'); }, 3000);
+}
+
+// ===== PHOTO UPLOAD =====
+function uploadPhoto(input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var dataUrl = e.target.result;
+    localStorage.setItem('teacherPhoto', dataUrl);
+    applyTeacherPhoto(dataUrl);
+    showToast('Rasm muvaffaqiyatli yuklandi!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyTeacherPhoto(src) {
+  var photo = document.getElementById('avaPhoto');
+  var inner = document.getElementById('avaInner');
+  if (src) {
+    photo.src = src;
+    photo.style.display = 'block';
+    inner.style.display = 'none';
+  } else {
+    photo.style.display = 'none';
+    inner.style.display = 'flex';
+  }
+}
+
+function loadTeacherPhoto() {
+  var saved = localStorage.getItem('teacherPhoto');
+  if (saved) applyTeacherPhoto(saved);
+}
+
+function updateAvatarAdminHint() {
+  var wrap = document.getElementById('avatarWrap');
+  var hint = document.getElementById('avaEditHint');
+  if (!wrap || !hint) return;
+  if (isAdmin) {
+    wrap.style.cursor = 'pointer';
+    wrap.onmouseenter = function() { hint.style.display = 'block'; };
+    wrap.onmouseleave = function() { hint.style.display = 'none'; };
+  } else {
+    wrap.style.cursor = 'default';
+    wrap.onmouseenter = null;
+    wrap.onmouseleave = null;
+    hint.style.display = 'none';
+  }
+}
+
+// Admin panelga rasm o'chirish tugmasi qo'shish
+function addPhotoDeleteBtn() {
+  var saved = localStorage.getItem('teacherPhoto');
+  var passTab = document.getElementById('adminTab-pass');
+  if (!passTab) return;
+  var existing = document.getElementById('photoDeleteRow');
+  if (existing) existing.remove();
+  var row = document.createElement('div');
+  row.id = 'photoDeleteRow';
+  row.style.cssText = 'margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border);';
+  row.innerHTML = '<div style="font-size:.78rem;color:var(--muted2);margin-bottom:.6rem;font-weight:500;">Muallim rasmi</div>' +
+    '<div style="display:flex;align-items:center;gap:.8rem;">' +
+    (saved ? '<img src="' + saved + '" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);">' : '<div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.9rem;">SB</div>') +
+    '<div>' +
+    '<button onclick="document.getElementById(\'photoUpload2\').click()" style="padding:.4rem .85rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:7px;font-size:.78rem;font-weight:600;cursor:pointer;margin-right:.5rem;">📷 Rasm yuklash</button>' +
+    (saved ? '<button onclick="deletePhoto()" style="padding:.4rem .85rem;background:rgba(255,92,92,.1);color:var(--danger);border:1px solid rgba(255,92,92,.2);border-radius:7px;font-size:.78rem;cursor:pointer;">O\'chirish</button>' : '') +
+    '<input type="file" id="photoUpload2" accept="image/*" style="display:none;" onchange="uploadPhoto(this)">' +
+    '</div></div>';
+  passTab.appendChild(row);
+}
+
+function deletePhoto() {
+  localStorage.removeItem('teacherPhoto');
+  applyTeacherPhoto(null);
+  addPhotoDeleteBtn();
+  showToast('Rasm o\'chirildi');
+}
+
+// ===== ATOM CANVAS ANIMATION =====
+var atomAnimId = null;
+
+var atomModels = {
+  'H':  { name:'Vodorod atomi',  nucleus:14, color:'#4f8ef7', orbits:[{r:100,electrons:1,speed:.9,color:'#4f8ef7'}] },
+  'He': { name:'Geliy atomi',    nucleus:16, color:'#00d4aa', orbits:[{r:100,electrons:2,speed:.7,color:'#00d4aa'}] },
+  'C':  { name:'Uglerod atomi',  nucleus:18, color:'#7c5cfc', orbits:[{r:80,electrons:2,speed:.9,color:'#4f8ef7'},{r:125,electrons:4,speed:.55,color:'#7c5cfc'}] },
+  'Na': { name:'Natriy atomi',   nucleus:20, color:'#f5c842', orbits:[{r:68,electrons:2,speed:1.1,color:'#4f8ef7'},{r:105,electrons:8,speed:.6,color:'#7c5cfc'},{r:140,electrons:1,speed:.35,color:'#f5c842'}] }
+};
+var currentAtom = 'H';
+
+function switchAtom(key, btn) {
+  currentAtom = key;
+  document.querySelectorAll('.asw-btn').forEach(function(b){ b.classList.remove('on'); });
+  if (btn) btn.classList.add('on');
+  var el = document.getElementById('atomMolName');
+  if (el) el.textContent = atomModels[key].name;
+}
+
+function initAtom() {
+  var canvas = document.getElementById('atomCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var cx = W / 2, cy = H / 2;
+  var t = 0;
+
+  if (atomAnimId) cancelAnimationFrame(atomAnimId);
+
+  function hexToRgb(hex) {
+    var r = parseInt(hex.slice(1,3),16);
+    var g = parseInt(hex.slice(3,5),16);
+    var b = parseInt(hex.slice(5,7),16);
+    return r+','+g+','+b;
+  }
+
+  function drawOrbitCircle(radius, color) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba('+hexToRgb(color)+',.18)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,6]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function drawElectron(radius, angle, color) {
+    var ex = cx + radius * Math.cos(angle);
+    var ey = cy + radius * Math.sin(angle);
+    // Trail
+    for (var i = 8; i >= 1; i--) {
+      var ta = angle - i * 0.12;
+      var tx2 = cx + radius * Math.cos(ta);
+      var ty2 = cy + radius * Math.sin(ta);
+      ctx.beginPath();
+      ctx.arc(tx2, ty2, 2.5 * (1 - i/10), 0, Math.PI*2);
+      ctx.fillStyle = 'rgba('+hexToRgb(color)+','+(0.06*(8-i)/8)+')';
+      ctx.fill();
+    }
+    // Glow
+    var g = ctx.createRadialGradient(ex, ey, 0, ex, ey, 12);
+    g.addColorStop(0, 'rgba('+hexToRgb(color)+',.9)');
+    g.addColorStop(1, 'rgba('+hexToRgb(color)+',0)');
+    ctx.beginPath();
+    ctx.arc(ex, ey, 12, 0, Math.PI*2);
+    ctx.fillStyle = g;
+    ctx.fill();
+    // Core
+    ctx.beginPath();
+    ctx.arc(ex, ey, 4, 0, Math.PI*2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(ex-1, ey-1, 1.5, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,.6)';
+    ctx.fill();
+  }
+
+  function drawNucleus(model) {
+    var nr = model.nucleus;
+    // Outer glow pulse
+    var pulse = 0.18 + Math.sin(t*1.8)*0.06;
+    var g1 = ctx.createRadialGradient(cx,cy,0,cx,cy,nr+20);
+    g1.addColorStop(0,'rgba('+hexToRgb(model.color)+','+pulse+')');
+    g1.addColorStop(1,'rgba('+hexToRgb(model.color)+',0)');
+    ctx.beginPath();
+    ctx.arc(cx,cy,nr+20,0,Math.PI*2);
+    ctx.fillStyle=g1; ctx.fill();
+    // Body
+    var g2 = ctx.createRadialGradient(cx-nr*.25,cy-nr*.25,0,cx,cy,nr);
+    g2.addColorStop(0,'#a8c8ff');
+    g2.addColorStop(.5,model.color);
+    g2.addColorStop(1,'#1a2a6c');
+    ctx.beginPath();
+    ctx.arc(cx,cy,nr,0,Math.PI*2);
+    ctx.fillStyle=g2; ctx.fill();
+    // Shine
+    ctx.beginPath();
+    ctx.arc(cx-nr*.3,cy-nr*.3,nr*.3,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,.22)';
+    ctx.fill();
+    // Proton/neutron dots
+    var dots=[{dx:-.3,dy:-.25,c:'#7c5cfc'},{dx:.28,dy:-.28,c:'#00d4aa'},{dx:.05,dy:.35,c:'#f5c842'},{dx:-.25,dy:.2,c:'#f87171'}];
+    dots.forEach(function(d){
+      ctx.beginPath();
+      ctx.arc(cx+d.dx*nr,cy+d.dy*nr,nr*.18,0,Math.PI*2);
+      ctx.fillStyle=d.c; ctx.fill();
+    });
+    // Symbol
+    ctx.font='bold '+Math.round(nr*.6)+'px Sora,sans-serif';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillStyle='rgba(255,255,255,.9)';
+    ctx.fillText(currentAtom, cx, cy+1);
+  }
+
+  function frame() {
+    ctx.clearRect(0,0,W,H);
+    t += 0.016;
+    var model = atomModels[currentAtom];
+
+    // Draw orbit circles
+    model.orbits.forEach(function(o){ drawOrbitCircle(o.r, o.color); });
+
+    // Draw electrons
+    model.orbits.forEach(function(o){
+      for(var e=0;e<o.electrons;e++){
+        var baseAngle = t * o.speed + (e * Math.PI*2 / o.electrons);
+        drawElectron(o.r, baseAngle, o.color);
+      }
+    });
+
+    // Nucleus on top
+    drawNucleus(model);
+
+    atomAnimId = requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+function initMolBg() { /* removed - no molBg element anymore */ }
+
+
+// INIT
+updateNav();
+updateHeroBtns();
+renderSidebar();
+renderVideos('all');
+loadTeacherPhoto();
+initAtom();
+initMolBg();
+
+// About particles animation
+function createAboutParticles() {
+  var container = document.getElementById('aboutParticles');
+  if (!container) return;
+  container.innerHTML = '';
+  var colors = ['#4f8ef7','#7c5cfc','#00d4aa','#f5c842'];
+  for (var i = 0; i < 18; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'p-dot';
+    dot.style.left = (Math.random() * 100) + '%';
+    dot.style.top = (40 + Math.random() * 55) + '%';
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.setProperty('--dx', (Math.random() * 60 - 30) + 'px');
+    dot.style.animationDelay = (Math.random() * 3) + 's';
+    dot.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+    dot.style.width = (3 + Math.random() * 4) + 'px';
+    dot.style.height = dot.style.width;
+    container.appendChild(dot);
+  }
+}
+
+// Re-create particles when about page shown
+var origShowPage = showPage;
+showPage = function(id) {
+  origShowPage(id);
+  if (id === 'about') setTimeout(createAboutParticles, 100);
+};
+
+// Animate stat numbers
+function animateNumbers() {
+  document.querySelectorAll('.si strong, .nst strong, .aps-num').forEach(function(el) {
+    var text = el.textContent;
+    var num = parseInt(text);
+    if (isNaN(num)) return;
+    var hasPlus = text.includes('+');
+    var duration = 1200;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * num) + (hasPlus && progress >= 1 ? '+' : '');
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// Trigger number animation when home shown
+setTimeout(animateNumbers, 400);
+</script>
+</body>
+</html>
