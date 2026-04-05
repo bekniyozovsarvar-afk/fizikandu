@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FizikaNDU — Navoiy Davlat Universiteti</title>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+var firebaseConfig = {
+  databaseURL: "https://fizikandu-default-rtdb.firebaseio.com"
+};
+firebase.initializeApp(firebaseConfig);
+var db = firebase.database();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#080b12;--bg2:#0e1220;--bg3:#141929;--accent:#4f8ef7;--accent2:#7c5cfc;--accent3:#00d4aa;--gold:#f5c842;--text:#e2e8f8;--muted:#5a6480;--muted2:#8892aa;--border:rgba(255,255,255,0.07);--success:#10d88a;--danger:#ff5c5c;--r:10px;}
@@ -661,8 +670,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="ahb-avatar" onclick="isAdmin && document.getElementById('photoUpload').click()" id="avatarWrap" style="cursor:default;">
           <div class="ava-ring"></div>
           <div class="ava-ring2"></div>
-          <div class="ava-inner" id="avaInner">SB</div>
-          <img id="avaPhoto" src="" alt="" style="display:none;position:absolute;inset:0;width:120px;height:120px;border-radius:50%;object-fit:cover;z-index:2;">
+          <div class="ava-inner" id="avaInner" style="display:none;">SB</div>
+          <img id="avaPhoto" src="data:image/jpeg;base64,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" alt="Sarvar Bekniyozov" style="display:block;position:absolute;inset:0;width:120px;height:120px;border-radius:50%;object-fit:cover;z-index:2;" onerror="this.style.display='none';document.getElementById('avaInner').style.display='flex';">
           <div class="ava-edit-hint" id="avaEditHint" style="display:none;position:absolute;bottom:0;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;font-size:.6rem;padding:.18rem .5rem;border-radius:6px;white-space:nowrap;z-index:3;">📷 Rasm o'zgartirish</div>
           <input type="file" id="photoUpload" accept="image/*" style="display:none;" onchange="uploadPhoto(this)">
         </div>
@@ -947,8 +956,8 @@ function doRegister() {
 }
 
 function notifyNewStudent(user) {
-  var token = localStorage.getItem('tgToken') || '';
-  var chatId = localStorage.getItem('tgChatId') || '';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var chatId = localStorage.getItem('tgChatId') || '794415806';
   if (!token || !chatId) return;
   var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
   fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
@@ -1008,7 +1017,10 @@ function getTopics() {
   var s = localStorage.getItem('fnduTopics');
   return s ? JSON.parse(s) : defaultTopics;
 }
-function saveTopics(a) { localStorage.setItem('fnduTopics', JSON.stringify(a)); }
+function saveTopics(a) {
+  localStorage.setItem('fnduTopics', JSON.stringify(a));
+  db.ref('topics').set(a);
+}
 function topicName(k) {
   var topics = getTopics();
   for (var i = 0; i < topics.length; i++) { if (topics[i].key === k) return topics[i].name; }
@@ -1121,7 +1133,10 @@ function getVideos() {
   var s = localStorage.getItem('fnduVideos');
   return s ? JSON.parse(s) : defaultVideos;
 }
-function saveVideos(a) { localStorage.setItem('fnduVideos', JSON.stringify(a)); }
+function saveVideos(a) {
+  localStorage.setItem('fnduVideos', JSON.stringify(a));
+  db.ref('videos').set(a);
+}
 
 function extractYtId(input) {
   input = input.trim();
@@ -1235,8 +1250,8 @@ function renderStudentsList() {
 }
 
 function sendStudentsToTG() {
-  var token = localStorage.getItem('tgToken') || '';
-  var chatId = localStorage.getItem('tgChatId') || '';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var chatId = localStorage.getItem('tgChatId') || '794415806';
   if (!token || !chatId) { showToast('Telegram bot sozlanmagan!', 'err'); return; }
   var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
   if (!users.length) { showToast("Hali talaba yoq", 'err'); return; }
@@ -1321,131 +1336,131 @@ function addLesson() {
 function closeAdmin() { document.getElementById('adminModal').classList.remove('on'); }
 
 var allQuestions = [
-  { q:"Lagrange tenglamasi qaysi?", opts:["d/dt(dL/dq') - dL/dq = 0","F = ma","E = mc2","nabla E = rho/e0"], ans:0, topic:"mexanika" },
-  { q:"Kinetik energiya impuls orqali T = ?", opts:["p2/2m","mv/2","p*v","m2v"], ans:0, topic:"mexanika" },
-  { q:"Mexanik energiya saqlanish qonuni qachon oritinli?", opts:["Konservativ kuchlar tasirida","Har doim","Faqat vakuumda","Faqat bir olchovda"], ans:0, topic:"mexanika" },
-  { q:"Impuls saqlanish qonuni qachon ortinli?", opts:["Tashqi kuchlar nolga teng bo'lganda","Energiya saqlanib qolganda","Massa doimiy bo'lganda","Har doim"], ans:0, topic:"mexanika" },
-  { q:"Qattiq jism kinetik energiyasi aylanishda?", opts:["T = I*omega2/2","T = mv2/2","T = I*omega","T = m*omega2"], ans:0, topic:"mexanika" },
-  { q:"Inersiya momenti (nuqtaviy massa)?", opts:["I = mr2","I = m/r2","I = mr","I = m2r"], ans:0, topic:"mexanika" },
-  { q:"Burchak momenti L = ?", opts:["r x p","r dot p","m x v","I*omega/r"], ans:0, topic:"mexanika" },
-  { q:"Noether teoremasi nima haqida?", opts:["Simmetriya va saqlanish qonunlari bog'liqligi","Energiya saqlanishi","Impuls saqlanishi","Massa saqlanishi"], ans:0, topic:"mexanika" },
-  { q:"Hamilton funksiyasi H = ?", opts:["p*q' - L","T + U","T - U","L - T"], ans:0, topic:"mexanika" },
-  { q:"Poisson qavslari {q,p} = ?", opts:["1","0","-1","cheksiz"], ans:0, topic:"mexanika" },
-  { q:"Elastik to'qnashuvda nima saqlanadi?", opts:["Energiya va impuls","Faqat energiya","Faqat impuls","Moment"], ans:0, topic:"mexanika" },
-  { q:"Sentral kuch maydonida nima saqlanadi?", opts:["Burchak momenti","Impuls","Energiya","Tezlik"], ans:0, topic:"mexanika" },
-  { q:"Koriolis kuchi qaysi formulada?", opts:["F = -2m(omega x v)","F = m*omega2*r","F = ma","F = mv2/r"], ans:0, topic:"mexanika" },
-  { q:"Absolut notekis to'qnashuvda nima saqlanadi?", opts:["Faqat impuls","Energiya va impuls","Faqat energiya","Hech narsa"], ans:0, topic:"mexanika" },
-  { q:"Kanonik transformatsiya nima saqlab qoldiradi?", opts:["Hamiltonian strukturasini","Energiyani","Massani","Tezlikni"], ans:0, topic:"mexanika" },
-  { q:"Virialь teoremasi: T o'rtacha = ?", opts:["-1/2 * <r dot F>","<U>","<E>","<p2/2m>"], ans:0, topic:"mexanika" },
-  { q:"Ikki jism muammosida qisqartirilgan massa?", opts:["m1*m2/(m1+m2)","m1+m2","m1-m2","m1*m2"], ans:0, topic:"mexanika" },
-  { q:"Markazdan qochma kuch?", opts:["F = m*omega2*r","F = m*omega*r","F = m/omega2*r","F = m*omega/r"], ans:0, topic:"mexanika" },
-  { q:"Og'irlik kuchi formulasi?", opts:["G = mg","G = mv","G = ma","G = mh"], ans:0, topic:"mexanika" },
+  { q:"Lagrange tenglamasi qaysi?", opts:["E = mc2","F = ma","nabla E = rho/e0","d/dt(dL/dq') - dL/dq = 0"], ans:3, topic:"mexanika" },
+  { q:"Kinetik energiya impuls orqali T = ?", opts:["m2v","p*v","p2/2m","mv/2"], ans:2, topic:"mexanika" },
+  { q:"Mexanik energiya saqlanish qonuni qachon oritinli?", opts:["Har doim","Faqat bir olchovda","Faqat vakuumda","Konservativ kuchlar tasirida"], ans:3, topic:"mexanika" },
+  { q:"Impuls saqlanish qonuni qachon ortinli?", opts:["Energiya saqlanib qolganda","Massa doimiy bo'lganda","Tashqi kuchlar nolga teng bo'lganda","Har doim"], ans:2, topic:"mexanika" },
+  { q:"Qattiq jism kinetik energiyasi aylanishda?", opts:["T = mv2/2","T = I*omega","T = m*omega2","T = I*omega2/2"], ans:3, topic:"mexanika" },
+  { q:"Inersiya momenti (nuqtaviy massa)?", opts:["I = m/r2","I = m2r","I = mr","I = mr2"], ans:3, topic:"mexanika" },
+  { q:"Burchak momenti L = ?", opts:["m x v","r dot p","r x p","I*omega/r"], ans:2, topic:"mexanika" },
+  { q:"Noether teoremasi nima haqida?", opts:["Energiya saqlanishi","Massa saqlanishi","Simmetriya va saqlanish qonunlari bog'liqligi","Impuls saqlanishi"], ans:2, topic:"mexanika" },
+  { q:"Hamilton funksiyasi H = ?", opts:["p*q' - L","T - U","T + U","L - T"], ans:0, topic:"mexanika" },
+  { q:"Poisson qavslari {q,p} = ?", opts:["-1","cheksiz","1","0"], ans:2, topic:"mexanika" },
+  { q:"Elastik to'qnashuvda nima saqlanadi?", opts:["Faqat impuls","Faqat energiya","Moment","Energiya va impuls"], ans:3, topic:"mexanika" },
+  { q:"Sentral kuch maydonida nima saqlanadi?", opts:["Tezlik","Energiya","Impuls","Burchak momenti"], ans:3, topic:"mexanika" },
+  { q:"Koriolis kuchi qaysi formulada?", opts:["F = mv2/r","F = m*omega2*r","F = -2m(omega x v)","F = ma"], ans:2, topic:"mexanika" },
+  { q:"Absolut notekis to'qnashuvda nima saqlanadi?", opts:["Faqat energiya","Hech narsa","Energiya va impuls","Faqat impuls"], ans:3, topic:"mexanika" },
+  { q:"Kanonik transformatsiya nima saqlab qoldiradi?", opts:["Hamiltonian strukturasini","Energiyani","Tezlikni","Massani"], ans:0, topic:"mexanika" },
+  { q:"Virialь teoremasi: T o'rtacha = ?", opts:["<p2/2m>","-1/2 * <r dot F>","<E>","<U>"], ans:1, topic:"mexanika" },
+  { q:"Ikki jism muammosida qisqartirilgan massa?", opts:["m1+m2","m1*m2","m1-m2","m1*m2/(m1+m2)"], ans:3, topic:"mexanika" },
+  { q:"Markazdan qochma kuch?", opts:["F = m*omega*r","F = m*omega/r","F = m*omega2*r","F = m/omega2*r"], ans:2, topic:"mexanika" },
+  { q:"Og'irlik kuchi formulasi?", opts:["G = mh","G = ma","G = mv","G = mg"], ans:3, topic:"mexanika" },
   { q:"Lagrange erkinlik darajasi nima?", opts:["Mustaqil umumlashgan koordinatalar soni","Energiya darajalari soni","Zarrachalar soni","Olchov birligi"], ans:0, topic:"mexanika" },
 
-  { q:"Bolsman taqsimoti f(E) = ?", opts:["C*exp(-E/kT)","C*exp(E/kT)","E/kT","kT/E"], ans:0, topic:"molterm" },
-  { q:"Entropiya (Bolsman): S = ?", opts:["k*lnW","Q/T","-k*lnW","W/k"], ans:0, topic:"molterm" },
-  { q:"Termodinamika II qonuni?", opts:["Izolyatsiyalangan sistemada S kamayib ketmaydi","Energiya saqlanadi","Temperatura o'sadi","Bosim doimiy"], ans:0, topic:"molterm" },
-  { q:"Gibbs erkin energiyasi G = ?", opts:["H - TS","U + PV","F + PV","U - TS"], ans:0, topic:"molterm" },
-  { q:"Gelmgolts erkin energiyasi F = ?", opts:["U - TS","H - TS","U + PV","G - PV"], ans:0, topic:"molterm" },
-  { q:"Kimyoviy potensial mu = ?", opts:["(dG/dN) T,P","G/N","kT*lnN","F/N"], ans:0, topic:"molterm" },
-  { q:"Karnot FIK = ?", opts:["1 - T2/T1","T1/T2","Q2/Q1","1 - Q2/Q1"], ans:0, topic:"molterm" },
-  { q:"Ideal gaz ichki energiyasi U = ?", opts:["nCvT","nRT","PV","nCpT"], ans:0, topic:"molterm" },
-  { q:"O'rtacha kinetik energiya E o'rtacha = ?", opts:["3kT/2","kT","3kT","kT/2"], ans:0, topic:"molterm" },
+  { q:"Bolsman taqsimoti f(E) = ?", opts:["C*exp(-E/kT)","E/kT","kT/E","C*exp(E/kT)"], ans:0, topic:"molterm" },
+  { q:"Entropiya (Bolsman): S = ?", opts:["k*lnW","W/k","-k*lnW","Q/T"], ans:0, topic:"molterm" },
+  { q:"Termodinamika II qonuni?", opts:["Energiya saqlanadi","Bosim doimiy","Temperatura o'sadi","Izolyatsiyalangan sistemada S kamayib ketmaydi"], ans:3, topic:"molterm" },
+  { q:"Gibbs erkin energiyasi G = ?", opts:["F + PV","U - TS","H - TS","U + PV"], ans:2, topic:"molterm" },
+  { q:"Gelmgolts erkin energiyasi F = ?", opts:["U + PV","U - TS","H - TS","G - PV"], ans:1, topic:"molterm" },
+  { q:"Kimyoviy potensial mu = ?", opts:["G/N","F/N","(dG/dN) T,P","kT*lnN"], ans:2, topic:"molterm" },
+  { q:"Karnot FIK = ?", opts:["1 - Q2/Q1","Q2/Q1","T1/T2","1 - T2/T1"], ans:3, topic:"molterm" },
+  { q:"Ideal gaz ichki energiyasi U = ?", opts:["nRT","nCpT","nCvT","PV"], ans:2, topic:"molterm" },
+  { q:"O'rtacha kinetik energiya E o'rtacha = ?", opts:["kT/2","kT","3kT/2","3kT"], ans:2, topic:"molterm" },
   { q:"Adiabatik jarayonda gamma = ?", opts:["Cp/Cv","Cv/Cp","Cp - Cv","Cp + Cv"], ans:0, topic:"molterm" },
-  { q:"Van der Waals gaz tenglamasi?", opts:["(P + a/V2)(V - b) = RT","PV = RT","PV = nRT + a","P(V-b) = RT"], ans:0, topic:"molterm" },
-  { q:"Ideal gaz tenglamasi?", opts:["PV = nRT","PV = RT","P = nRT","PV = nR"], ans:0, topic:"molterm" },
+  { q:"Van der Waals gaz tenglamasi?", opts:["PV = nRT + a","(P + a/V2)(V - b) = RT","P(V-b) = RT","PV = RT"], ans:1, topic:"molterm" },
+  { q:"Ideal gaz tenglamasi?", opts:["PV = nRT","PV = nR","P = nRT","PV = RT"], ans:0, topic:"molterm" },
   { q:"Boyль-Mariott (T=const)?", opts:["P1V1 = P2V2","P/T = const","V/T = const","PV/T = const"], ans:0, topic:"molterm" },
-  { q:"Gay-Lussak (V=const)?", opts:["P/T = const","PV = const","V/T = const","PT = const"], ans:0, topic:"molterm" },
-  { q:"Sharlь qonuni (P=const)?", opts:["V/T = const","PV = const","P/T = const","PT = const"], ans:0, topic:"molterm" },
-  { q:"Avogadro soni taxminan?", opts:["6.02 * 10^23","3 * 10^8","9 * 10^9","1.67 * 10^-27"], ans:0, topic:"molterm" },
-  { q:"Bolsman konstantasi k = ?", opts:["1.38 * 10^-23 J/K","8.314 J/K","6.02 * 10^23 J/K","3 * 10^8 J/K"], ans:0, topic:"molterm" },
-  { q:"Entalpiya H = ?", opts:["U + PV","U - PV","G + TS","F + PV"], ans:0, topic:"molterm" },
-  { q:"Termodinamika III qonuni?", opts:["T 0 ga yaqinlashganda S 0 ga yaqinlashadi","Energiya saqlanadi","Entropiya doimiy","T saqlanadi"], ans:0, topic:"molterm" },
-  { q:"Suvning solishtirma issiqligi?", opts:["4200 J/(kg*K)","2100 J/(kg*K)","1000 J/(kg*K)","8400 J/(kg*K)"], ans:0, topic:"molterm" },
+  { q:"Gay-Lussak (V=const)?", opts:["PV = const","PT = const","P/T = const","V/T = const"], ans:2, topic:"molterm" },
+  { q:"Sharlь qonuni (P=const)?", opts:["PV = const","P/T = const","V/T = const","PT = const"], ans:2, topic:"molterm" },
+  { q:"Avogadro soni taxminan?", opts:["3 * 10^8","9 * 10^9","1.67 * 10^-27","6.02 * 10^23"], ans:3, topic:"molterm" },
+  { q:"Bolsman konstantasi k = ?", opts:["8.314 J/K","1.38 * 10^-23 J/K","6.02 * 10^23 J/K","3 * 10^8 J/K"], ans:1, topic:"molterm" },
+  { q:"Entalpiya H = ?", opts:["U + PV","G + TS","U - PV","F + PV"], ans:0, topic:"molterm" },
+  { q:"Termodinamika III qonuni?", opts:["Energiya saqlanadi","T 0 ga yaqinlashganda S 0 ga yaqinlashadi","T saqlanadi","Entropiya doimiy"], ans:1, topic:"molterm" },
+  { q:"Suvning solishtirma issiqligi?", opts:["8400 J/(kg*K)","2100 J/(kg*K)","1000 J/(kg*K)","4200 J/(kg*K)"], ans:3, topic:"molterm" },
 
-  { q:"Maksvell: nabla dot E = ?", opts:["rho/epsilon0","mu0*J","0","-dB/dt"], ans:0, topic:"elektr" },
-  { q:"Maksvell: nabla x B = ?", opts:["mu0*J + mu0*epsilon0*dE/dt","rho/epsilon0","0","-dB/dt"], ans:0, topic:"elektr" },
-  { q:"Elektromagnit tolqin tezligi c = ?", opts:["1/sqrt(mu0*epsilon0)","sqrt(mu0*epsilon0)","mu0*epsilon0","1/(mu0*epsilon0)"], ans:0, topic:"elektr" },
-  { q:"Poyting vektori S = ?", opts:["(1/mu0)(E x B)","E x B","epsilon*E2","B2/mu0"], ans:0, topic:"elektr" },
-  { q:"Faradey qonuni?", opts:["nabla x E = -dB/dt","nabla dot E = rho/epsilon0","nabla x B = mu0*J","nabla dot B = 0"], ans:0, topic:"elektr" },
-  { q:"Magnit monopollar: nabla dot B = ?", opts:["0 (mavjud emas deb hisoblanadi)","rho/epsilon0","mu0*rhom","1"], ans:0, topic:"elektr" },
-  { q:"Lorens kuchi F = ?", opts:["q(E + v x B)","qE","qvB","q(E - v x B)"], ans:0, topic:"elektr" },
-  { q:"Biot-Savart qonuni?", opts:["dB = mu0*I(dl x r_hat)/4pi*r2","dB = mu0*I/2pi*r","dB = mu0*I*l","dB = I x r"], ans:0, topic:"elektr" },
-  { q:"Energiya zichligi u = ?", opts:["(epsilon0*E2 + B2/mu0)/2","epsilon0*E2","B2/mu0","epsilon0*E2/2"], ans:0, topic:"elektr" },
-  { q:"Lorens kalibri sharti?", opts:["nabla dot A + (1/c2)*dphi/dt = 0","nabla dot A = 0","dA/dt = 0","nabla*phi = 0"], ans:0, topic:"elektr" },
-  { q:"Dielektrikda D = ?", opts:["epsilon0*E + P","epsilon0*E","P","epsilon0*E - P"], ans:0, topic:"elektr" },
-  { q:"Magnit materialda H = ?", opts:["B/mu0 - M","B/mu0","mu0*B","B + M"], ans:0, topic:"elektr" },
-  { q:"Plazma chastotasi omega_p = ?", opts:["sqrt(n*e2/m*epsilon0)","n*e2/m*epsilon0","n*e/m*epsilon0","sqrt(m*e2/n*epsilon0)"], ans:0, topic:"elektr" },
-  { q:"Solenoid ichidagi maydon B = ?", opts:["mu0*n*I","mu0*I/2pi*r","mu0*I","n*I"], ans:0, topic:"elektr" },
-  { q:"Kondensator energiyasi W = ?", opts:["Q2/2C","Q*C/2","Q/2C","C/2Q"], ans:0, topic:"elektr" },
-  { q:"Om qonuni j = ?", opts:["sigma*E","epsilon*E","mu*E","E/sigma"], ans:0, topic:"elektr" },
+  { q:"Maksvell: nabla dot E = ?", opts:["-dB/dt","mu0*J","rho/epsilon0","0"], ans:2, topic:"elektr" },
+  { q:"Maksvell: nabla x B = ?", opts:["0","rho/epsilon0","mu0*J + mu0*epsilon0*dE/dt","-dB/dt"], ans:2, topic:"elektr" },
+  { q:"Elektromagnit tolqin tezligi c = ?", opts:["1/(mu0*epsilon0)","sqrt(mu0*epsilon0)","mu0*epsilon0","1/sqrt(mu0*epsilon0)"], ans:3, topic:"elektr" },
+  { q:"Poyting vektori S = ?", opts:["B2/mu0","(1/mu0)(E x B)","epsilon*E2","E x B"], ans:1, topic:"elektr" },
+  { q:"Faradey qonuni?", opts:["nabla dot E = rho/epsilon0","nabla x E = -dB/dt","nabla dot B = 0","nabla x B = mu0*J"], ans:1, topic:"elektr" },
+  { q:"Magnit monopollar: nabla dot B = ?", opts:["mu0*rhom","0 (mavjud emas deb hisoblanadi)","1","rho/epsilon0"], ans:1, topic:"elektr" },
+  { q:"Lorens kuchi F = ?", opts:["q(E - v x B)","qE","qvB","q(E + v x B)"], ans:3, topic:"elektr" },
+  { q:"Biot-Savart qonuni?", opts:["dB = mu0*I/2pi*r","dB = mu0*I*l","dB = mu0*I(dl x r_hat)/4pi*r2","dB = I x r"], ans:2, topic:"elektr" },
+  { q:"Energiya zichligi u = ?", opts:["epsilon0*E2/2","(epsilon0*E2 + B2/mu0)/2","epsilon0*E2","B2/mu0"], ans:1, topic:"elektr" },
+  { q:"Lorens kalibri sharti?", opts:["nabla dot A = 0","dA/dt = 0","nabla*phi = 0","nabla dot A + (1/c2)*dphi/dt = 0"], ans:3, topic:"elektr" },
+  { q:"Dielektrikda D = ?", opts:["epsilon0*E - P","epsilon0*E","P","epsilon0*E + P"], ans:3, topic:"elektr" },
+  { q:"Magnit materialda H = ?", opts:["B/mu0","B + M","mu0*B","B/mu0 - M"], ans:3, topic:"elektr" },
+  { q:"Plazma chastotasi omega_p = ?", opts:["sqrt(n*e2/m*epsilon0)","sqrt(m*e2/n*epsilon0)","n*e/m*epsilon0","n*e2/m*epsilon0"], ans:0, topic:"elektr" },
+  { q:"Solenoid ichidagi maydon B = ?", opts:["mu0*n*I","mu0*I","n*I","mu0*I/2pi*r"], ans:0, topic:"elektr" },
+  { q:"Kondensator energiyasi W = ?", opts:["C/2Q","Q2/2C","Q/2C","Q*C/2"], ans:1, topic:"elektr" },
+  { q:"Om qonuni j = ?", opts:["sigma*E","E/sigma","epsilon*E","mu*E"], ans:0, topic:"elektr" },
   { q:"Transformatorda kuchlanish nisbati?", opts:["U1/U2 = N1/N2","U1*N1 = U2*N2","U1/N1 = U2/N2","U1 = U2"], ans:0, topic:"elektr" },
-  { q:"Elektromagnit tolqin qutblanishi?", opts:["E vektorining tebranish yonalishi","B vektorining yonalishi","Tolqin tarqalish yonalishi","Energiya oqimi yonalishi"], ans:0, topic:"elektr" },
-  { q:"Kul-Faradey qonuni?", opts:["kontur boyicha E dot dl = -dPhi_B/dt","kontur boyicha B dot dl = mu0*I","kontur boyicha E dot dA = Q/epsilon0","kontur boyicha B dot dA = 0"], ans:0, topic:"elektr" },
-  { q:"Elektr dipol potensiali?", opts:["V = p dot r_hat / (4pi*epsilon0*r2)","V = q/(4pi*epsilon0*r)","V = p/r","V = q/r2"], ans:0, topic:"elektr" },
+  { q:"Elektromagnit tolqin qutblanishi?", opts:["B vektorining yonalishi","Tolqin tarqalish yonalishi","Energiya oqimi yonalishi","E vektorining tebranish yonalishi"], ans:3, topic:"elektr" },
+  { q:"Kul-Faradey qonuni?", opts:["kontur boyicha E dot dA = Q/epsilon0","kontur boyicha B dot dA = 0","kontur boyicha B dot dl = mu0*I","kontur boyicha E dot dl = -dPhi_B/dt"], ans:3, topic:"elektr" },
+  { q:"Elektr dipol potensiali?", opts:["V = q/r2","V = p dot r_hat / (4pi*epsilon0*r2)","V = p/r","V = q/(4pi*epsilon0*r)"], ans:1, topic:"elektr" },
 
-  { q:"Tolqin optikasi tenglamasi?", opts:["nabla2*E = (1/c2)*d2E/dt2","nabla*E = 0","E = h*nu","E = mc2"], ans:0, topic:"optika" },
-  { q:"Interferensiya maksimum sharti?", opts:["Delta = m*lambda","Delta = (m+0.5)*lambda","Delta = lambda/2","Delta = 2*lambda"], ans:0, topic:"optika" },
-  { q:"Diffraktsiya minimum sharti (bitta tirqish)?", opts:["a*sin(theta) = m*lambda","a*sin(theta) = (m+0.5)*lambda","a*cos(theta) = m*lambda","2a*sin(theta) = m*lambda"], ans:0, topic:"optika" },
-  { q:"Rayleigh ajratish mezoni?", opts:["theta_min = 1.22*lambda/D","theta_min = lambda/D","theta_min = 2*lambda/D","theta_min = lambda/2D"], ans:0, topic:"optika" },
-  { q:"Lazer qo'zgalish mexanizmi?", opts:["Majburiy emissiya","Spontan emissiya","Yutilish","Interferensiya"], ans:0, topic:"optika" },
-  { q:"Snell qonuni?", opts:["n1*sin(alpha1) = n2*sin(alpha2)","n1*alpha1 = n2*alpha2","sin(alpha) = n","n = c/v"], ans:0, topic:"optika" },
-  { q:"Brewster burchagi?", opts:["tan(theta_B) = n2/n1","sin(theta_B) = n","cos(theta_B) = n","tan(theta_B) = n1/n2"], ans:0, topic:"optika" },
-  { q:"Fotoelektrik effekt: E_k = ?", opts:["h*nu - W","h*nu","h*nu + W","W - h*nu"], ans:0, topic:"optika" },
-  { q:"Kompton tolqin uzunligi ozgarishi?", opts:["Delta_lambda = (h/me*c)*(1-cos(theta))","Delta_lambda = h*nu/c","Delta_lambda = h/p","Delta_lambda = lambda/2"], ans:0, topic:"optika" },
-  { q:"Faradey optik effekti?", opts:["Magnit maydonida qutblanish tekisligining aylanishi","Elektr maydonida sinish","Nur yutilishi","Interferensiya"], ans:0, topic:"optika" },
-  { q:"Koherentlik uzunligi l_c = ?", opts:["lambda2/Delta_lambda","lambda/Delta_lambda","Delta_lambda/lambda2","lambda*Delta_lambda"], ans:0, topic:"optika" },
-  { q:"Holografiya nima yozadi?", opts:["Tolqin fazasi va amplitudasi","Faqat intensivlik","Rang","Qutblanish"], ans:0, topic:"optika" },
-  { q:"Optik tor uchun asosiy tenglama?", opts:["d*sin(theta) = m*lambda","d*cos(theta) = m*lambda","2d*sin(theta) = m*lambda","d/sin(theta) = m*lambda"], ans:0, topic:"optika" },
-  { q:"Dispersiya nima?", opts:["Sinish korsatkichining tolqin uzunligiga bogliqligi","Nur yutilishi","Nur tarqalishi","Qutblanish"], ans:0, topic:"optika" },
-  { q:"Toliq ichki qaytish sharti?", opts:["Nur zich muhitdan siyrakka o'tganda va theta > theta_c","Har doim","Faqat kozguda","Faqat linzada"], ans:0, topic:"optika" },
-  { q:"Qizil siljish (Doppler) Delta_lambda/lambda = ?", opts:["v/c","c/v","Delta_f/f","1/v"], ans:0, topic:"optika" },
-  { q:"Bragg difraktsiya sharti?", opts:["2d*sin(theta) = n*lambda","d*sin(theta) = n*lambda","d*cos(theta) = n*lambda","2d*cos(theta) = n*lambda"], ans:0, topic:"optika" },
-  { q:"Shtark effekti nima?", opts:["Elektr maydonidagi spektral chiziqlar parchalanishi","Magnit maydonidagi parchalanish","Bosim tasiri","Harorat tasiri"], ans:0, topic:"optika" },
-  { q:"Zeeman effekti nima?", opts:["Magnit maydonidagi spektral chiziqlar parchalanishi","Elektr maydonidagi parchalanish","Nur intensivligi ozgarishi","Nur tezligi ozgarishi"], ans:0, topic:"optika" },
-  { q:"Abbе formulasi (sinish korsatkichi)?", opts:["n = sin((A+delta_min)/2)/sin(A/2)","n = sin(theta)","n = lambda/d","n = c/v"], ans:0, topic:"optika" },
+  { q:"Tolqin optikasi tenglamasi?", opts:["nabla*E = 0","E = h*nu","E = mc2","nabla2*E = (1/c2)*d2E/dt2"], ans:3, topic:"optika" },
+  { q:"Interferensiya maksimum sharti?", opts:["Delta = 2*lambda","Delta = lambda/2","Delta = m*lambda","Delta = (m+0.5)*lambda"], ans:2, topic:"optika" },
+  { q:"Diffraktsiya minimum sharti (bitta tirqish)?", opts:["a*sin(theta) = (m+0.5)*lambda","2a*sin(theta) = m*lambda","a*sin(theta) = m*lambda","a*cos(theta) = m*lambda"], ans:2, topic:"optika" },
+  { q:"Rayleigh ajratish mezoni?", opts:["theta_min = 1.22*lambda/D","theta_min = lambda/D","theta_min = lambda/2D","theta_min = 2*lambda/D"], ans:0, topic:"optika" },
+  { q:"Lazer qo'zgalish mexanizmi?", opts:["Interferensiya","Majburiy emissiya","Yutilish","Spontan emissiya"], ans:1, topic:"optika" },
+  { q:"Snell qonuni?", opts:["sin(alpha) = n","n1*alpha1 = n2*alpha2","n1*sin(alpha1) = n2*sin(alpha2)","n = c/v"], ans:2, topic:"optika" },
+  { q:"Brewster burchagi?", opts:["sin(theta_B) = n","cos(theta_B) = n","tan(theta_B) = n2/n1","tan(theta_B) = n1/n2"], ans:2, topic:"optika" },
+  { q:"Fotoelektrik effekt: E_k = ?", opts:["W - h*nu","h*nu","h*nu + W","h*nu - W"], ans:3, topic:"optika" },
+  { q:"Kompton tolqin uzunligi ozgarishi?", opts:["Delta_lambda = (h/me*c)*(1-cos(theta))","Delta_lambda = lambda/2","Delta_lambda = h*nu/c","Delta_lambda = h/p"], ans:0, topic:"optika" },
+  { q:"Faradey optik effekti?", opts:["Elektr maydonida sinish","Magnit maydonida qutblanish tekisligining aylanishi","Nur yutilishi","Interferensiya"], ans:1, topic:"optika" },
+  { q:"Koherentlik uzunligi l_c = ?", opts:["Delta_lambda/lambda2","lambda/Delta_lambda","lambda*Delta_lambda","lambda2/Delta_lambda"], ans:3, topic:"optika" },
+  { q:"Holografiya nima yozadi?", opts:["Faqat intensivlik","Qutblanish","Tolqin fazasi va amplitudasi","Rang"], ans:2, topic:"optika" },
+  { q:"Optik tor uchun asosiy tenglama?", opts:["2d*sin(theta) = m*lambda","d/sin(theta) = m*lambda","d*sin(theta) = m*lambda","d*cos(theta) = m*lambda"], ans:2, topic:"optika" },
+  { q:"Dispersiya nima?", opts:["Nur tarqalishi","Sinish korsatkichining tolqin uzunligiga bogliqligi","Qutblanish","Nur yutilishi"], ans:1, topic:"optika" },
+  { q:"Toliq ichki qaytish sharti?", opts:["Faqat linzada","Nur zich muhitdan siyrakka o'tganda va theta > theta_c","Har doim","Faqat kozguda"], ans:1, topic:"optika" },
+  { q:"Qizil siljish (Doppler) Delta_lambda/lambda = ?", opts:["Delta_f/f","1/v","c/v","v/c"], ans:3, topic:"optika" },
+  { q:"Bragg difraktsiya sharti?", opts:["d*sin(theta) = n*lambda","2d*cos(theta) = n*lambda","d*cos(theta) = n*lambda","2d*sin(theta) = n*lambda"], ans:3, topic:"optika" },
+  { q:"Shtark effekti nima?", opts:["Magnit maydonidagi parchalanish","Bosim tasiri","Harorat tasiri","Elektr maydonidagi spektral chiziqlar parchalanishi"], ans:3, topic:"optika" },
+  { q:"Zeeman effekti nima?", opts:["Magnit maydonidagi spektral chiziqlar parchalanishi","Nur intensivligi ozgarishi","Elektr maydonidagi parchalanish","Nur tezligi ozgarishi"], ans:0, topic:"optika" },
+  { q:"Abbе formulasi (sinish korsatkichi)?", opts:["n = lambda/d","n = sin((A+delta_min)/2)/sin(A/2)","n = c/v","n = sin(theta)"], ans:1, topic:"optika" },
 
-  { q:"De Broyl tolqin uzunligi lambda = ?", opts:["h/p","h*p","h/mv","p/h"], ans:0, topic:"kvant" },
-  { q:"Geyzenberg belirsizlik munosabati?", opts:["Delta_x * Delta_p >= hbar/2","Delta_x * Delta_p = 0","Delta_x * Delta_p = h","Delta_x * Delta_p <= hbar"], ans:0, topic:"kvant" },
-  { q:"Vaqtga bogliq Shredinger tenglamasi?", opts:["i*hbar*d_psi/dt = H_hat*psi","H_hat*psi = E*psi","nabla2*psi = 0","p*psi = E*psi"], ans:0, topic:"kvant" },
-  { q:"Kvant mexanikasida impuls operatori p_hat = ?", opts:["-i*hbar*nabla","i*hbar*nabla","hbar*nabla","p"], ans:0, topic:"kvant" },
-  { q:"Komutator [x_hat, p_hat] = ?", opts:["i*hbar","-i*hbar","0","hbar"], ans:0, topic:"kvant" },
-  { q:"Vodorod atomi energiya sathlari E_n = ?", opts:["-13.6/n2 eV","13.6/n eV","-13.6*n2 eV","n*13.6 eV"], ans:0, topic:"kvant" },
-  { q:"Spin s = 1/2 uchun Sx qiymatlari?", opts:["±hbar/2","±hbar","±1","0"], ans:0, topic:"kvant" },
-  { q:"Pauli printsipi nima deydi?", opts:["Bir kvant holatda ikkita fermion bola olmaydi","Bozonlar soni cheksiz","Energiya saqlanadi","Burchak momenti saqlanadi"], ans:0, topic:"kvant" },
-  { q:"Kvant tunel effekti nima?", opts:["Klassik taqiqlangan tosiqdan otish","Energiyaning saqlanishi","Impulsning saqlanishi","Tolqinning qaytishi"], ans:0, topic:"kvant" },
-  { q:"Garmoshka ossillyator nol nuqta energiyasi E0 = ?", opts:["hbar*omega/2","0","hbar*omega","2*hbar*omega"], ans:0, topic:"kvant" },
-  { q:"|psi|2 ning fizik maonosi (Born)?", opts:["Ehtimollik zichligi","Zaryadlanish","Energiya","Tezlik"], ans:0, topic:"kvant" },
-  { q:"Bor magneton mu_B = ?", opts:["e*hbar/2me","e*hbar/me","hbar/2me","e*hbar"], ans:0, topic:"kvant" },
-  { q:"Fermionlarga qaysilar kiradi?", opts:["Elektronlar, protonlar, neytronlar","Fotonlar","Pionlar","Alfa zarralar"], ans:0, topic:"kvant" },
-  { q:"Bose-Eynshteyn statistikasi qaysi zarrachalar uchun?", opts:["Butun spinli zarrachalar (bozonlar)","Yarim butun spinli","Elektronlar","Protonlar"], ans:0, topic:"kvant" },
-  { q:"Fermi-Dirak taqsimoti f(E) = ?", opts:["1/(exp((E-mu)/kT)+1)","exp(-E/kT)","1/(exp(E/kT)-1)","exp(E/kT)"], ans:0, topic:"kvant" },
-  { q:"Superpozitsiya printsipi?", opts:["Holat vektorlari yigindisi ham holat vektori","Energiyalar yigindisi","Impulslar yigindisi","Massalar yigindisi"], ans:0, topic:"kvant" },
-  { q:"EPR paradoksi nima haqida?", opts:["Kvant mexanikasidagi mahalliy-realizmga qarshi argument","Kvant teleportatsiya","Kvant kompyuter","Kvant kriptografiya"], ans:0, topic:"kvant" },
-  { q:"Kvant mexanikasida olchov muammosi nima?", opts:["Olchov natijada holat ozgarishi","Energiya saqlanmasligi","Impuls saqlanmasligi","Tolqin interferensiyasi"], ans:0, topic:"kvant" },
-  { q:"Shredinger mushugining paradoksi nima haqida?", opts:["Olchov oldidan sistemaning superpozitsiya holatda bolishi","Mushuk fizikasi","Klassik mexanika","Termodinamika"], ans:0, topic:"kvant" },
-  { q:"Kvant mexanikasida Dirak tenglamasi nima beradi?", opts:["Relativistik kvant tavsifi va spinni bashorat qiladi","Klassik harakat tavsifi","Energiya saqlanishi","Impuls saqlanishi"], ans:0, topic:"kvant" },
+  { q:"De Broyl tolqin uzunligi lambda = ?", opts:["h/mv","h/p","p/h","h*p"], ans:1, topic:"kvant" },
+  { q:"Geyzenberg belirsizlik munosabati?", opts:["Delta_x * Delta_p >= hbar/2","Delta_x * Delta_p = h","Delta_x * Delta_p = 0","Delta_x * Delta_p <= hbar"], ans:0, topic:"kvant" },
+  { q:"Vaqtga bogliq Shredinger tenglamasi?", opts:["i*hbar*d_psi/dt = H_hat*psi","p*psi = E*psi","H_hat*psi = E*psi","nabla2*psi = 0"], ans:0, topic:"kvant" },
+  { q:"Kvant mexanikasida impuls operatori p_hat = ?", opts:["hbar*nabla","p","-i*hbar*nabla","i*hbar*nabla"], ans:2, topic:"kvant" },
+  { q:"Komutator [x_hat, p_hat] = ?", opts:["hbar","0","i*hbar","-i*hbar"], ans:2, topic:"kvant" },
+  { q:"Vodorod atomi energiya sathlari E_n = ?", opts:["13.6/n eV","n*13.6 eV","-13.6/n2 eV","-13.6*n2 eV"], ans:2, topic:"kvant" },
+  { q:"Spin s = 1/2 uchun Sx qiymatlari?", opts:["±hbar","±hbar/2","±1","0"], ans:1, topic:"kvant" },
+  { q:"Pauli printsipi nima deydi?", opts:["Bozonlar soni cheksiz","Burchak momenti saqlanadi","Energiya saqlanadi","Bir kvant holatda ikkita fermion bola olmaydi"], ans:3, topic:"kvant" },
+  { q:"Kvant tunel effekti nima?", opts:["Tolqinning qaytishi","Impulsning saqlanishi","Klassik taqiqlangan tosiqdan otish","Energiyaning saqlanishi"], ans:2, topic:"kvant" },
+  { q:"Garmoshka ossillyator nol nuqta energiyasi E0 = ?", opts:["hbar*omega","hbar*omega/2","2*hbar*omega","0"], ans:1, topic:"kvant" },
+  { q:"|psi|2 ning fizik maonosi (Born)?", opts:["Tezlik","Ehtimollik zichligi","Energiya","Zaryadlanish"], ans:1, topic:"kvant" },
+  { q:"Bor magneton mu_B = ?", opts:["e*hbar","hbar/2me","e*hbar/me","e*hbar/2me"], ans:3, topic:"kvant" },
+  { q:"Fermionlarga qaysilar kiradi?", opts:["Alfa zarralar","Fotonlar","Elektronlar, protonlar, neytronlar","Pionlar"], ans:2, topic:"kvant" },
+  { q:"Bose-Eynshteyn statistikasi qaysi zarrachalar uchun?", opts:["Butun spinli zarrachalar (bozonlar)","Elektronlar","Protonlar","Yarim butun spinli"], ans:0, topic:"kvant" },
+  { q:"Fermi-Dirak taqsimoti f(E) = ?", opts:["1/(exp((E-mu)/kT)+1)","exp(E/kT)","1/(exp(E/kT)-1)","exp(-E/kT)"], ans:0, topic:"kvant" },
+  { q:"Superpozitsiya printsipi?", opts:["Impulslar yigindisi","Holat vektorlari yigindisi ham holat vektori","Energiyalar yigindisi","Massalar yigindisi"], ans:1, topic:"kvant" },
+  { q:"EPR paradoksi nima haqida?", opts:["Kvant kompyuter","Kvant kriptografiya","Kvant teleportatsiya","Kvant mexanikasidagi mahalliy-realizmga qarshi argument"], ans:3, topic:"kvant" },
+  { q:"Kvant mexanikasida olchov muammosi nima?", opts:["Energiya saqlanmasligi","Tolqin interferensiyasi","Impuls saqlanmasligi","Olchov natijada holat ozgarishi"], ans:3, topic:"kvant" },
+  { q:"Shredinger mushugining paradoksi nima haqida?", opts:["Termodinamika","Mushuk fizikasi","Olchov oldidan sistemaning superpozitsiya holatda bolishi","Klassik mexanika"], ans:2, topic:"kvant" },
+  { q:"Kvant mexanikasida Dirak tenglamasi nima beradi?", opts:["Energiya saqlanishi","Klassik harakat tavsifi","Impuls saqlanishi","Relativistik kvant tavsifi va spinni bashorat qiladi"], ans:3, topic:"kvant" },
 
-  { q:"Yadro bogllanish energiyasi — Bethe-Weizsacker formulasida qaysi had yoq?", opts:["Elektron qobigini hisobga oluvchi had","Hajm hadi","Yuza hadi","Kulon hadi"], ans:0, topic:"yadro" },
-  { q:"Radioaktiv parchalanish N(t) = ?", opts:["N0 * exp(-lambda*t)","N0*lambda*t","N0/t","N0*(1-exp(-lambda*t))"], ans:0, topic:"yadro" },
-  { q:"Aktivlik A = ?", opts:["lambda*N","N/lambda","lambda/N","dN/dt"], ans:0, topic:"yadro" },
-  { q:"Yarim parchalanish davri T1/2 = ?", opts:["ln2/lambda","lambda/ln2","1/lambda","2/lambda"], ans:0, topic:"yadro" },
-  { q:"Alfa parchalanishda A va Z qanday ozgaradi?", opts:["A 4 ga, Z 2 ga kamayadi","A 2 ga, Z 1 ga kamayadi","A 4 ga, Z 2 ga ortadi","A ozgarmaydi"], ans:0, topic:"yadro" },
-  { q:"Beta minus parchalanish?", opts:["n ga p + elektron + antineytrinoye","p ga n + pozitron + neytrinoye","n ga p + pozitron","p ga n + elektron"], ans:0, topic:"yadro" },
-  { q:"Yadro reaksiyasida Q qiymati = ?", opts:["(M_reactants - M_products)*c2","Delta_E","m*c2","E_kin"], ans:0, topic:"yadro" },
-  { q:"Kritik massa nima?", opts:["Zanjir reaksiyasi oz-ozini davom ettiradigan minimal massa","Maksimal massa","Parchalanmaydigan massa","Yadro massasi"], ans:0, topic:"yadro" },
-  { q:"Qobiq model qaysi hodisani tushuntiradi?", opts:["Sehrli sonlar (2,8,20,28,50,82,126)","Radioaktivlik","Yadro bolinishi","Termoyadro"], ans:0, topic:"yadro" },
-  { q:"D-T termoyadro reaksiyasi: 2H + 3H ga nima hosil boladi?", opts:["4He + n + 17.6 MeV","4He + p","3He + 2n","5He"], ans:0, topic:"yadro" },
-  { q:"Eynshteyn mass-energiya: E = ?", opts:["m*c2","m*v2","m*v2/2","m*g*h"], ans:0, topic:"yadro" },
-  { q:"Foton tinchlik massasi?", opts:["0","me","me/2","hbar/c2"], ans:0, topic:"yadro" },
-  { q:"Yadro kuchlarining xususiyati?", opts:["Qisqa masofa, kuchli, zaryadsiz","Uzoq masofa, kuchsiz","Faqat protonlar orasida","Faqat neytronlar orasida"], ans:0, topic:"yadro" },
-  { q:"Standart model nechta fundamental kuchni birlashtiradi?", opts:["3 (kuchli, kuchsiz, elektromagnit)","4","2","5"], ans:0, topic:"yadro" },
-  { q:"Kvark nechta avlod?", opts:["3 avlod (u,d; c,s; t,b)","2 avlod","4 avlod","6 avlod"], ans:0, topic:"yadro" },
-  { q:"Yadro densitometi taxminan?", opts:["2*10^17 kg/m3","10^6 kg/m3","10^3 kg/m3","10^24 kg/m3"], ans:0, topic:"yadro" },
-  { q:"Atom bombasida qaysi reaksiya?", opts:["Yadro parchalanishi (fission)","Yadro qoshilishi (fusion)","Kimyoviy portlash","Elektromagnit"], ans:0, topic:"yadro" },
-  { q:"Neytron moderatori nima qiladi?", opts:["Neytronlarni sekinlashtiradi","Neytronlarni yutadi","Yadro bolinishini toqtatadi","Energiya beradi"], ans:0, topic:"yadro" },
-  { q:"Proton soni nima deyiladi?", opts:["Atom raqami (Z)","Mass raqami (A)","Neytron soni (N)","Elektron soni"], ans:0, topic:"yadro" },
-  { q:"Neytrinoning asosiy xususiyati?", opts:["Juda kichik massali va zaif tasir qiladi","Kuchli tasir qiladi","Zaryadlangan","Yadro tarkibida"], ans:0, topic:"yadro" }
+  { q:"Yadro bogllanish energiyasi — Bethe-Weizsacker formulasida qaysi had yoq?", opts:["Kulon hadi","Hajm hadi","Elektron qobigini hisobga oluvchi had","Yuza hadi"], ans:2, topic:"yadro" },
+  { q:"Radioaktiv parchalanish N(t) = ?", opts:["N0*lambda*t","N0 * exp(-lambda*t)","N0*(1-exp(-lambda*t))","N0/t"], ans:1, topic:"yadro" },
+  { q:"Aktivlik A = ?", opts:["N/lambda","lambda*N","dN/dt","lambda/N"], ans:1, topic:"yadro" },
+  { q:"Yarim parchalanish davri T1/2 = ?", opts:["1/lambda","ln2/lambda","2/lambda","lambda/ln2"], ans:1, topic:"yadro" },
+  { q:"Alfa parchalanishda A va Z qanday ozgaradi?", opts:["A 2 ga, Z 1 ga kamayadi","A ozgarmaydi","A 4 ga, Z 2 ga ortadi","A 4 ga, Z 2 ga kamayadi"], ans:3, topic:"yadro" },
+  { q:"Beta minus parchalanish?", opts:["p ga n + elektron","n ga p + elektron + antineytrinoye","p ga n + pozitron + neytrinoye","n ga p + pozitron"], ans:1, topic:"yadro" },
+  { q:"Yadro reaksiyasida Q qiymati = ?", opts:["E_kin","Delta_E","(M_reactants - M_products)*c2","m*c2"], ans:2, topic:"yadro" },
+  { q:"Kritik massa nima?", opts:["Parchalanmaydigan massa","Zanjir reaksiyasi oz-ozini davom ettiradigan minimal massa","Maksimal massa","Yadro massasi"], ans:1, topic:"yadro" },
+  { q:"Qobiq model qaysi hodisani tushuntiradi?", opts:["Termoyadro","Radioaktivlik","Yadro bolinishi","Sehrli sonlar (2,8,20,28,50,82,126)"], ans:3, topic:"yadro" },
+  { q:"D-T termoyadro reaksiyasi: 2H + 3H ga nima hosil boladi?", opts:["4He + p","5He","4He + n + 17.6 MeV","3He + 2n"], ans:2, topic:"yadro" },
+  { q:"Eynshteyn mass-energiya: E = ?", opts:["m*g*h","m*v2","m*c2","m*v2/2"], ans:2, topic:"yadro" },
+  { q:"Foton tinchlik massasi?", opts:["0","hbar/c2","me/2","me"], ans:0, topic:"yadro" },
+  { q:"Yadro kuchlarining xususiyati?", opts:["Uzoq masofa, kuchsiz","Qisqa masofa, kuchli, zaryadsiz","Faqat protonlar orasida","Faqat neytronlar orasida"], ans:1, topic:"yadro" },
+  { q:"Standart model nechta fundamental kuchni birlashtiradi?", opts:["4","2","5","3 (kuchli, kuchsiz, elektromagnit)"], ans:3, topic:"yadro" },
+  { q:"Kvark nechta avlod?", opts:["4 avlod","6 avlod","2 avlod","3 avlod (u,d; c,s; t,b)"], ans:3, topic:"yadro" },
+  { q:"Yadro densitometi taxminan?", opts:["10^6 kg/m3","10^3 kg/m3","2*10^17 kg/m3","10^24 kg/m3"], ans:2, topic:"yadro" },
+  { q:"Atom bombasida qaysi reaksiya?", opts:["Elektromagnit","Yadro parchalanishi (fission)","Yadro qoshilishi (fusion)","Kimyoviy portlash"], ans:1, topic:"yadro" },
+  { q:"Neytron moderatori nima qiladi?", opts:["Neytronlarni yutadi","Energiya beradi","Neytronlarni sekinlashtiradi","Yadro bolinishini toqtatadi"], ans:2, topic:"yadro" },
+  { q:"Proton soni nima deyiladi?", opts:["Elektron soni","Neytron soni (N)","Mass raqami (A)","Atom raqami (Z)"], ans:3, topic:"yadro" },
+  { q:"Neytrinoning asosiy xususiyati?", opts:["Yadro tarkibida","Zaryadlangan","Juda kichik massali va zaif tasir qiladi","Kuchli tasir qiladi"], ans:2, topic:"yadro" }
 ];
 
 function startTest() {
@@ -1532,8 +1547,8 @@ function showResult() {
 }
 
 function sendToTelegram(correct, wrong, skipped, pct) {
-  var token = localStorage.getItem('tgToken') || '';
-  var chatId = localStorage.getItem('tgChatId') || '';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var chatId = localStorage.getItem('tgChatId') || '794415806';
   var note = document.getElementById('tgNote');
   if (!token || !chatId) {
     note.textContent = 'Telegram bot sozlanmagan.';
@@ -1615,6 +1630,7 @@ function applyTeacherPhoto(src) {
 function loadTeacherPhoto() {
   var saved = localStorage.getItem('teacherPhoto');
   if (saved) applyTeacherPhoto(saved);
+  // Agar saqlangan rasm bo'lmasa, Drive rasmi ko'rinadi (HTML da allaqachon src bor)
 }
 
 function updateAvatarAdminHint() {
@@ -1807,11 +1823,42 @@ function initMolBg() { /* removed - no molBg element anymore */ }
 // INIT
 updateNav();
 updateHeroBtns();
-renderSidebar();
-renderVideos('all');
 loadTeacherPhoto();
 initAtom();
 initMolBg();
+
+// Firebase dan ma'lumotlarni yuklash
+db.ref('videos').on('value', function(snap) {
+  if (snap.exists()) {
+    var data = snap.val();
+    // Firebase array bo'lishi mumkin
+    if (Array.isArray(data)) {
+      localStorage.setItem('fnduVideos', JSON.stringify(data));
+    } else {
+      var arr = Object.values(data);
+      localStorage.setItem('fnduVideos', JSON.stringify(arr));
+    }
+    renderVideos('all');
+  }
+});
+
+db.ref('topics').on('value', function(snap) {
+  if (snap.exists()) {
+    var data = snap.val();
+    if (Array.isArray(data)) {
+      localStorage.setItem('fnduTopics', JSON.stringify(data));
+    } else {
+      var arr = Object.values(data);
+      localStorage.setItem('fnduTopics', JSON.stringify(arr));
+    }
+    renderSidebar();
+  } else {
+    renderSidebar();
+  }
+});
+
+renderSidebar();
+renderVideos('all');
 
 // About particles animation
 function createAboutParticles() {
