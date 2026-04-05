@@ -18,6 +18,7 @@ db.ref('settings').once('value').then(function(snap){
     var s = snap.val();
     if(s.token){ window._tgToken = s.token; localStorage.setItem('tgToken', s.token); }
     if(s.chatId){ window._tgChatId = s.chatId; localStorage.setItem('tgChatId', s.chatId); }
+    if(s.adminPass){ window._adminPass = s.adminPass; localStorage.setItem('adminPassNDU', s.adminPass); }
   }
 });
 </script>
@@ -987,7 +988,7 @@ function logoClick() {
 
 function checkAdminPass() {
   var input = document.getElementById('adminPassInput').value;
-  var saved = localStorage.getItem('adminPassNDU') || 'admin123';
+  var saved = localStorage.getItem('adminPassNDU') || window._adminPass || 'admin123';
   if (input === saved) {
     isAdmin = true;
     document.getElementById('adminBtn').style.display = 'inline-block';
@@ -1007,6 +1008,8 @@ function changeAdminPass() {
   if (!np || np.length < 4) { showToast("Parol kamida 4 ta belgi bolsin", 'err'); return; }
   if (np !== cp) { showToast("Parollar mos emas", 'err'); return; }
   localStorage.setItem('adminPassNDU', np);
+  window._adminPass = np;
+  db.ref('settings/adminPass').set(np);
   document.getElementById('newAdminPass').value = '';
   document.getElementById('confirmAdminPass').value = '';
   showToast("Parol ozgartirildi!");
