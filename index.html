@@ -12,6 +12,14 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
+// Load TG settings from Firebase
+db.ref('settings').once('value').then(function(snap){
+  if(snap.exists()){
+    var s = snap.val();
+    if(s.token){ window._tgToken = s.token; localStorage.setItem('tgToken', s.token); }
+    if(s.chatId){ window._tgChatId = s.chatId; localStorage.setItem('tgChatId', s.chatId); }
+  }
+});
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -956,8 +964,8 @@ function doRegister() {
 }
 
 function notifyNewStudent(user) {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
-  var chatId = localStorage.getItem('tgChatId') || '794415806';
+  var token = localStorage.getItem('tgToken') || window._tgToken || '';
+  var chatId = localStorage.getItem('tgChatId') || window._tgChatId || '';
   if (!token || !chatId) return;
   var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
   fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
@@ -1227,6 +1235,8 @@ function saveTgSettings() {
   var c = document.getElementById('adminChatId').value.trim();
   if (!t || !c) { showToast("Ikkala maydonni toldiring", 'err'); return; }
   localStorage.setItem('tgToken', t); localStorage.setItem('tgChatId', c);
+  window._tgToken = t; window._tgChatId = c;
+  db.ref('settings').set({ token: t, chatId: c });
   showToast('Telegram bot saqlandi!');
 }
 
@@ -1250,8 +1260,8 @@ function renderStudentsList() {
 }
 
 function sendStudentsToTG() {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
-  var chatId = localStorage.getItem('tgChatId') || '794415806';
+  var token = localStorage.getItem('tgToken') || window._tgToken || '';
+  var chatId = localStorage.getItem('tgChatId') || window._tgChatId || '';
   if (!token || !chatId) { showToast('Telegram bot sozlanmagan!', 'err'); return; }
   var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
   if (!users.length) { showToast("Hali talaba yoq", 'err'); return; }
@@ -1547,8 +1557,8 @@ function showResult() {
 }
 
 function sendToTelegram(correct, wrong, skipped, pct) {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
-  var chatId = localStorage.getItem('tgChatId') || '794415806';
+  var token = localStorage.getItem('tgToken') || window._tgToken || '';
+  var chatId = localStorage.getItem('tgChatId') || window._tgChatId || '';
   var note = document.getElementById('tgNote');
   if (!token || !chatId) {
     note.textContent = 'Telegram bot sozlanmagan.';
