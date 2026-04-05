@@ -956,7 +956,7 @@ function doRegister() {
 }
 
 function notifyNewStudent(user) {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
   var chatId = localStorage.getItem('tgChatId') || '794415806';
   if (!token || !chatId) return;
   var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
@@ -1250,7 +1250,7 @@ function renderStudentsList() {
 }
 
 function sendStudentsToTG() {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
   var chatId = localStorage.getItem('tgChatId') || '794415806';
   if (!token || !chatId) { showToast('Telegram bot sozlanmagan!', 'err'); return; }
   var users = JSON.parse(localStorage.getItem('fnduUsers') || '[]');
@@ -1547,7 +1547,7 @@ function showResult() {
 }
 
 function sendToTelegram(correct, wrong, skipped, pct) {
-  var token = localStorage.getItem('tgToken') || '8737175092:AAFJqC5wSgV6xoVwHlBp8W1Wk8fj8t1gByk';
+  var token = localStorage.getItem('tgToken') || '8737175092:AAGXPWGtHRw6X0bxq5vyIihY9VlNsD_l464';
   var chatId = localStorage.getItem('tgChatId') || '794415806';
   var note = document.getElementById('tgNote');
   if (!token || !chatId) {
