@@ -609,7 +609,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 
 <!-- VIDEOS -->
 <div class="page" id="page-videos">
-  <div class="vhdr"><h2>Video maruzalar</h2><p>Kurs va bolimlar bo'yicha barcha video darslar</p></div>
+  <div class="vhdr"><h2>Video ma'ruzalar</h2><p>Kurs va bo'limlar bo'yicha barcha video darslar</p></div>
   <div class="vlyt">
     <div class="tpan"><div class="tph">Bo'limlar</div><div id="topicsSidebar"></div></div>
     <div class="vgrid" id="videosGrid"></div>
@@ -621,7 +621,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   <div class="twrap">
     <div class="tstart" id="testIntro">
       <h3>Bilimingizni sinab ko'ring</h3>
-      <p>Bolim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
+      <p>Bo'lim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
       <div class="selrow">
         <select id="testTopic">
           <option value="mix">Aralash barcha</option>
@@ -686,9 +686,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         </div>
         <div class="ahb-info">
           <div class="ahb-tag">FizikaNDU asoschisi</div>
-          <h2 class="ahb-name">Sarvar Bekniyozov</h2>
+          <h2 class="ahb-name">Bekniyozov Sarvar Qudratovich</h2>
           <div class="ahb-role">Aniq va tabiiy fanlarni o'qitish metodikasi (Fizika va Astronomiya) magistri · NDU</div>
-          <p class="ahb-desc">NDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
+          <p class="ahb-desc"> Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
           <div class="ahb-badges">
             <span class="ahb-badge">Fizika va Astronomiya</span>
             <span class="ahb-badge">NDU</span>
@@ -727,7 +727,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <div class="stitle" style="margin-bottom:.7rem;">FizikaNDU</div>
       <p style="color:var(--muted2);line-height:1.85;font-size:.9rem;max-width:680px;">Navoiy Davlat Universiteti talabalariga mo'ljallangan fizika ta'lim platformasi. Barcha ma'ruzalar video formatda, testlar real vaqtda tekshiriladi va natijalar hamda yangi ro'yxatdan o'tishlar Telegram bot orqali muallimga yuboriladi.</p>
       <div class="aplatform-stats">
-        <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Faol talaba</div></div>
+        <div class="aps"><div class="aps-num">50+</div><div class="aps-lbl">Faol talaba</div></div>
         <div class="aps"><div class="aps-num">60+</div><div class="aps-lbl">Video ma'ruza</div></div>
         <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Test savoli</div></div>
         <div class="aps"><div class="aps-num">6</div><div class="aps-lbl">Fan bo'limi</div></div>
@@ -968,7 +968,7 @@ function notifyNewStudent(user) {
   var token = localStorage.getItem('tgToken') || window._tgToken || '';
   var chatId = localStorage.getItem('tgChatId') || window._tgChatId || '';
   if (!token || !chatId) return;
-  var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
+  var msg = "Yangi talaba royxatdan o'tdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
   fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: chatId, text: msg })
@@ -1012,7 +1012,7 @@ function changeAdminPass() {
   db.ref('settings/adminPass').set(np);
   document.getElementById('newAdminPass').value = '';
   document.getElementById('confirmAdminPass').value = '';
-  showToast("Parol ozgartirildi!");
+  showToast("Parol o'zgartirildi!");
 }
 
 var defaultTopics = [
