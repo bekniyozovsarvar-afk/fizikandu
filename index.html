@@ -4,23 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FizikaNDU — Navoiy Davlat Universiteti</title>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 <script>
-var firebaseConfig = {
-  databaseURL: "https://fizikandu-default-rtdb.firebaseio.com"
-};
-firebase.initializeApp(firebaseConfig);
-var db = firebase.database();
-// Load TG settings from Firebase
-db.ref('settings').once('value').then(function(snap){
-  if(snap.exists()){
-    var s = snap.val();
-    if(s.token){ window._tgToken = s.token; localStorage.setItem('tgToken', s.token); }
-    if(s.chatId){ window._tgChatId = s.chatId; localStorage.setItem('tgChatId', s.chatId); }
-    if(s.adminPass){ window._adminPass = s.adminPass; localStorage.setItem('adminPassNDU', s.adminPass); }
+// Firebase yuklanishini kutish
+window._fbReady = false;
+window._tgToken = '';
+window._tgChatId = '';
+window._adminPass = '';
+
+function initFirebase() {
+  try {
+    var firebaseConfig = { databaseURL: "https://fizikandu-default-rtdb.firebaseio.com" };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+    window._fbReady = true;
+    window.db.ref('settings').on('value', function(snap){
+      if(snap.exists()){
+        var s = snap.val();
+        if(s.token){ window._tgToken = s.token; localStorage.setItem('tgToken', s.token); }
+        if(s.chatId){ window._tgChatId = s.chatId; localStorage.setItem('tgChatId', s.chatId); }
+        if(s.adminPass){ window._adminPass = s.adminPass; localStorage.setItem('adminPassNDU', s.adminPass); }
+      }
+    });
+    window.window.db.ref('videos').on('value', function(snap){
+      if(snap.exists()){
+        var data = snap.val();
+        var arr = Array.isArray(data) ? data : Object.values(data);
+        localStorage.setItem('fnduVideos', JSON.stringify(arr));
+        if(typeof renderVideos === 'function') renderVideos('all');
+      }
+    });
+    window.window.db.ref('topics').on('value', function(snap){
+      if(snap.exists()){
+        var data = snap.val();
+        var arr = Array.isArray(data) ? data : Object.values(data);
+        localStorage.setItem('fnduTopics', JSON.stringify(arr));
+        if(typeof renderSidebar === 'function') renderSidebar();
+      }
+    });
+  } catch(e) {
+    console.log('Firebase xato:', e);
+    window.db = { ref: function(){ return { on: function(){}, set: function(){}, update: function(){}, once: function(){ return Promise.resolve({ exists: function(){ return false; }, val: function(){ return null; } }); } }; } };
   }
-});
+}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -386,7 +413,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   </div>
   <div class="nc">
     <a onclick="showPage('home')">Bosh sahifa</a>
-    <a onclick="showPage('videos')">Ma'ruzalar</a>
+    <a onclick="showPage('videos')">Maruzalar</a>
     <a onclick="showPage('test')">Testlar</a>
     <a onclick="showPage('about')">Haqida</a>
   </div>
@@ -407,10 +434,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   <div class="hero">
     <div class="hbadge"><div class="pulse"></div>NDU — Navoiy Davlat Universiteti</div>
     <h1>Fizikani <span class="shimmer-text">chuqur</span> va<br>professional o'rganing</h1>
-    <p class="hsub">Mexanika, Elektrodinamika, Kvant fizikasi va boshqa OTM kurslari bo'yicha video ma'ruzalar, nazariy materiallar va interaktiv testlar.</p>
+    <p class="hsub">Mexanika, Elektrodinamika, Kvant fizikasi va boshqa OTM kurslari boyicha video maruzalar, nazariy materiallar va interaktiv testlar.</p>
     <div class="hbtns" id="heroBtns">
-      <button class="bp" onclick="showPage('auth')">Ro'yxatdan o'tish</button>
-      <button class="bg2btn" onclick="showPage('videos')">Ma'ruzalarga qarang</button>
+      <button class="bp" onclick="showPage('auth')">Royxatdan otish</button>
+      <button class="bg2btn" onclick="showPage('videos')">Maruzalarga qarang</button>
     </div>
   </div>
 
@@ -418,22 +445,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
     <div class="ndu-ic">🏛</div>
     <div class="ndu-b">
       <span class="ndu-tag">Navoiy Davlat Universiteti</span>
-      <h3> Aniqfan fanlar kafedrasi — FizikaNDU platformasi</h3>
-      <p>Navoiy Davlat Universiteti 1983-yilda tashkil etilgan. FizikaNDU platformasi fizikava astronomiya ta'limi yo'nalishi talabalariga mo'ljallangan. Bu platformada  barcha fizika fanlari bo'yicha video ma'ruzalar, testlar va o'quv materiallar mavjud.</p>
+      <h3>Tabiiy fanlar kafedrasi — FizikaNDU platformasi</h3>
+      <p>Navoiy Davlat Universiteti 1983-yilda tashkil etilgan. FizikaNDU platformasi fizika ta'limi yo'nalishi talabalariga mo'ljallangan. Bu yerda 1-kursdan 4-kursgacha barcha fizika fanlari bo'yicha video ma'ruzalar, testlar va o'quv materiallar mavjud.</p>
       <div class="ndu-st">
         <div class="nst"><strong>1983</strong><span>Tashkil yili</span></div>
         <div class="nst"><strong>4</strong><span>Kurs</span></div>
-        <div class="nst"><strong>6</strong><span>Bo'lim</span></div>
-        <div class="nst"><strong>50+</strong><span>Talaba</span></div>
+        <div class="nst"><strong>6</strong><span>Fan</span></div>
+        <div class="nst"><strong>120+</strong><span>Talaba</span></div>
       </div>
     </div>
   </div>
 
   <div class="srow">
-    <div class="si"><strong>50+</strong><span>Talaba</span></div>
-    <div class="si"><strong>60+</strong><span>Ma'ruza</span></div>
+    <div class="si"><strong>120+</strong><span>Talaba</span></div>
+    <div class="si"><strong>60+</strong><span>Maruza</span></div>
     <div class="si"><strong>120+</strong><span>Test savoli</span></div>
-    <div class="si"><strong>6</strong><span>Fan bo'limi</span></div>
+    <div class="si"><strong>6</strong><span>Fan bolimi</span></div>
   </div>
 
   <!-- PHYSICS ANIMATION -->
@@ -506,7 +533,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         </div>
         <div class="pf-card">
           <div class="pf-info">
-            <div class="pf-name">Lagrang tenglamasi</div>
+            <div class="pf-name">Lagrange tenglamasi</div>
             <div class="pf-eq">d/dt(∂L/∂q̇) = ∂L/∂q</div>
           </div>
           <span class="pf-topic">Mexanika</span>
@@ -517,8 +544,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   </div>
 
   <div class="sec">
-    <span class="stag">O'quv dasturi</span>
-    <div class="stitle">Kurslar bo'yicha fanlar</div>
+    <span class="stag">Oquv dasturi</span>
+    <div class="stitle">Kurslar boyicha fanlar</div>
     <div class="ssub">1-kursdan 4-kursgacha OTM darajasida fizika kurslari</div>
     <div class="cgrid">
       <div class="cc" onclick="showPage('videos')">
@@ -539,7 +566,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="ccg" style="background:var(--accent2);"></div>
         <div class="cctop"><div class="ccico" style="background:rgba(124,92,252,.13);">⚡</div><span class="kb k3">3-KURS</span></div>
         <h3>Elektrodinamika</h3>
-        <p>Maksvell tenglamalari, elektromagnit to'lqinlar, retard potensiallar</p>
+        <p>Maksvell tenglamalari, elektromagnit tolqinlar, retard potensiallar</p>
         <div class="ccch"><span class="chip">16 maruza</span><span class="chip">Maksvell</span><span class="chip">Tolqinlar</span></div>
       </div>
       <div class="cc" onclick="showPage('videos')">
@@ -553,7 +580,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="ccg" style="background:var(--gold);"></div>
         <div class="cctop"><div class="ccico" style="background:rgba(245,200,66,.09);">🔬</div><span class="kb k4">4-KURS</span></div>
         <h3>Kvant fizikasi</h3>
-        <p>Shredinger tenglamasi, to'lqin funksiyasi, kvant mexanikasi asoslari</p>
+        <p>Shredinger tenglamasi, tolqin funksiyasi, kvant mexanikasi asoslari</p>
         <div class="ccch"><span class="chip">12 maruza</span><span class="chip">Shredinger</span><span class="chip">Spin</span></div>
       </div>
       <div class="cc" onclick="showPage('videos')">
@@ -600,7 +627,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
           <div class="fg" style="margin-bottom:0;"><label>Guruh</label><input class="fi" type="text" id="regGroup" placeholder="FIZ-21"></div>
         </div>
         <div class="fg" style="margin-top:.85rem;"><label>Parol</label><input class="fi" type="password" id="regPass" placeholder="Kamida 6 ta belgi"></div>
-        <button class="bblock" onclick="doRegister()">Royxatdan o'tish</button>
+        <button class="bblock" onclick="doRegister()">Royxatdan otish</button>
         <div class="anote">Royxatdan otish bilan qoidalarga rozilik bildirasiz</div>
       </div>
     </div>
@@ -609,9 +636,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 
 <!-- VIDEOS -->
 <div class="page" id="page-videos">
-  <div class="vhdr"><h2>Video ma'ruzalar</h2><p>Kurs va bo'limlar bo'yicha barcha video darslar</p></div>
+  <div class="vhdr"><h2>Video maruzalar</h2><p>Kurs va bolimlar boyicha barcha video darslar</p></div>
   <div class="vlyt">
-    <div class="tpan"><div class="tph">Bo'limlar</div><div id="topicsSidebar"></div></div>
+    <div class="tpan"><div class="tph">Bolimlar</div><div id="topicsSidebar"></div></div>
     <div class="vgrid" id="videosGrid"></div>
   </div>
 </div>
@@ -620,17 +647,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 <div class="page" id="page-test">
   <div class="twrap">
     <div class="tstart" id="testIntro">
-      <h3>Bilimingizni sinab ko'ring</h3>
-      <p>Bo'lim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
+      <h3>Bilimingizni sinab koring</h3>
+      <p>Bolim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
       <div class="selrow">
         <select id="testTopic">
           <option value="mix">Aralash barcha</option>
-          <option value="mexanika">Mexanika </option>
-          <option value="molterm">Mol. fizika va Termodinamika </option>
-          <option value="elektr">Elektrodinamika </option>
-          <option value="optika">Optika </option>
-          <option value="kvant">Kvant fizikasi </option>
-          <option value="yadro">Yadro fizikasi </option>
+          <option value="mexanika">Mexanika (1-kurs)</option>
+          <option value="molterm">Mol. fizika va Termodinamika (2-kurs)</option>
+          <option value="elektr">Elektrodinamika (3-kurs)</option>
+          <option value="optika">Optika (3-kurs)</option>
+          <option value="kvant">Kvant fizikasi (4-kurs)</option>
+          <option value="yadro">Yadro fizikasi (4-kurs)</option>
         </select>
         <select id="testCount">
           <option value="10">10 savol</option>
@@ -686,9 +713,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         </div>
         <div class="ahb-info">
           <div class="ahb-tag">FizikaNDU asoschisi</div>
-          <h2 class="ahb-name">Bekniyozov Sarvar Qudratovich</h2>
+          <h2 class="ahb-name">Sarvar Bekniyozov</h2>
           <div class="ahb-role">Aniq va tabiiy fanlarni o'qitish metodikasi (Fizika va Astronomiya) magistri · NDU</div>
-          <p class="ahb-desc"> Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
+          <p class="ahb-desc">NDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
           <div class="ahb-badges">
             <span class="ahb-badge">Fizika va Astronomiya</span>
             <span class="ahb-badge">NDU</span>
@@ -727,7 +754,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <div class="stitle" style="margin-bottom:.7rem;">FizikaNDU</div>
       <p style="color:var(--muted2);line-height:1.85;font-size:.9rem;max-width:680px;">Navoiy Davlat Universiteti talabalariga mo'ljallangan fizika ta'lim platformasi. Barcha ma'ruzalar video formatda, testlar real vaqtda tekshiriladi va natijalar hamda yangi ro'yxatdan o'tishlar Telegram bot orqali muallimga yuboriladi.</p>
       <div class="aplatform-stats">
-        <div class="aps"><div class="aps-num">50+</div><div class="aps-lbl">Faol talaba</div></div>
+        <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Faol talaba</div></div>
         <div class="aps"><div class="aps-num">60+</div><div class="aps-lbl">Video ma'ruza</div></div>
         <div class="aps"><div class="aps-num">120+</div><div class="aps-lbl">Test savoli</div></div>
         <div class="aps"><div class="aps-num">6</div><div class="aps-lbl">Fan bo'limi</div></div>
@@ -967,8 +994,25 @@ function doRegister() {
 function notifyNewStudent(user) {
   var token = localStorage.getItem('tgToken') || window._tgToken || '';
   var chatId = localStorage.getItem('tgChatId') || window._tgChatId || '';
-  if (!token || !chatId) return;
-  var msg = "Yangi talaba royxatdan o'tdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
+  if (!token || !chatId) {
+    window.db.ref('settings').once('value').then(function(snap){
+      if(snap.exists()){
+        var s = snap.val();
+        if(s.token && s.chatId){
+          window._tgToken = s.token; window._tgChatId = s.chatId;
+          localStorage.setItem('tgToken', s.token);
+          localStorage.setItem('tgChatId', s.chatId);
+          _sendTgMsg(s.token, s.chatId, user);
+        }
+      }
+    });
+    return;
+  }
+  _sendTgMsg(token, chatId, user);
+}
+
+function _sendTgMsg(token, chatId, user) {
+  var msg = "Yangi talaba royxatdan otdi!\n\nIsm: " + user.name + "\nTel: " + user.phone + "\nKurs: " + user.course + "\nGuruh: " + user.group + "\nSana: " + user.regDate + "\n\nFizikaNDU - Navoiy Davlat Universiteti";
   fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: chatId, text: msg })
@@ -1009,10 +1053,10 @@ function changeAdminPass() {
   if (np !== cp) { showToast("Parollar mos emas", 'err'); return; }
   localStorage.setItem('adminPassNDU', np);
   window._adminPass = np;
-  db.ref('settings/adminPass').set(np);
+  window.db.ref('settings').update({ adminPass: np });
   document.getElementById('newAdminPass').value = '';
   document.getElementById('confirmAdminPass').value = '';
-  showToast("Parol o'zgartirildi!");
+  showToast("Parol ozgartirildi!");
 }
 
 var defaultTopics = [
@@ -1030,7 +1074,7 @@ function getTopics() {
 }
 function saveTopics(a) {
   localStorage.setItem('fnduTopics', JSON.stringify(a));
-  db.ref('topics').set(a);
+  window.db.ref('topics').set(a);
 }
 function topicName(k) {
   var topics = getTopics();
@@ -1146,7 +1190,7 @@ function getVideos() {
 }
 function saveVideos(a) {
   localStorage.setItem('fnduVideos', JSON.stringify(a));
-  db.ref('videos').set(a);
+  window.db.ref('videos').set(a);
 }
 
 function extractYtId(input) {
@@ -1239,7 +1283,7 @@ function saveTgSettings() {
   if (!t || !c) { showToast("Ikkala maydonni toldiring", 'err'); return; }
   localStorage.setItem('tgToken', t); localStorage.setItem('tgChatId', c);
   window._tgToken = t; window._tgChatId = c;
-  db.ref('settings').set({ token: t, chatId: c });
+  window.db.ref('settings').update({ token: t, chatId: c });
   showToast('Telegram bot saqlandi!');
 }
 
@@ -1834,44 +1878,16 @@ function initMolBg() { /* removed - no molBg element anymore */ }
 
 
 // INIT
+initFirebase();
 updateNav();
 updateHeroBtns();
 loadTeacherPhoto();
 initAtom();
 initMolBg();
-
-// Firebase dan ma'lumotlarni yuklash
-db.ref('videos').on('value', function(snap) {
-  if (snap.exists()) {
-    var data = snap.val();
-    // Firebase array bo'lishi mumkin
-    if (Array.isArray(data)) {
-      localStorage.setItem('fnduVideos', JSON.stringify(data));
-    } else {
-      var arr = Object.values(data);
-      localStorage.setItem('fnduVideos', JSON.stringify(arr));
-    }
-    renderVideos('all');
-  }
-});
-
-db.ref('topics').on('value', function(snap) {
-  if (snap.exists()) {
-    var data = snap.val();
-    if (Array.isArray(data)) {
-      localStorage.setItem('fnduTopics', JSON.stringify(data));
-    } else {
-      var arr = Object.values(data);
-      localStorage.setItem('fnduTopics', JSON.stringify(arr));
-    }
-    renderSidebar();
-  } else {
-    renderSidebar();
-  }
-});
-
 renderSidebar();
 renderVideos('all');
+
+// Firebase dan ma'lumotlarni yuklash
 
 // About particles animation
 function createAboutParticles() {
