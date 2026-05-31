@@ -27,7 +27,7 @@ function initFirebase() {
         if(s.adminPass){ window._adminPass = s.adminPass; localStorage.setItem('adminPassNDU', s.adminPass); }
       }
     });
-    window.window.db.ref('videos').on('value', function(snap){
+    window.db.ref('videos').on('value', function(snap){
       if(snap.exists()){
         var data = snap.val();
         var arr = Array.isArray(data) ? data : Object.values(data);
@@ -35,7 +35,7 @@ function initFirebase() {
         if(typeof renderVideos === 'function') renderVideos('all');
       }
     });
-    window.window.db.ref('topics').on('value', function(snap){
+    window.db.ref('topics').on('value', function(snap){
       if(snap.exists()){
         var data = snap.val();
         var arr = Array.isArray(data) ? data : Object.values(data);
@@ -434,10 +434,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   <div class="hero">
     <div class="hbadge"><div class="pulse"></div>NDU — Navoiy Davlat Universiteti</div>
     <h1>Fizikani <span class="shimmer-text">chuqur</span> va<br>professional o'rganing</h1>
-    <p class="hsub">Mexanika, Elektrodinamika, Kvant fizikasi va boshqa OTM kurslari boyicha video maruzalar, nazariy materiallar va interaktiv testlar.</p>
+    <p class="hsub">Mexanika, Elektrodinamika, Kvant fizikasi va boshqa OTM kurslari bo'yicha video maruzalar, nazariy materiallar va interaktiv testlar.</p>
     <div class="hbtns" id="heroBtns">
-      <button class="bp" onclick="showPage('auth')">Royxatdan otish</button>
-      <button class="bg2btn" onclick="showPage('videos')">Maruzalarga qarang</button>
+      <button class="bp" onclick="showPage('auth')">Ro'yxatdan otish</button>
+      <button class="bg2btn" onclick="showPage('videos')">Ma'ruzalarga qarang</button>
     </div>
   </div>
 
@@ -451,13 +451,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="nst"><strong>1983</strong><span>Tashkil yili</span></div>
         <div class="nst"><strong>4</strong><span>Kurs</span></div>
         <div class="nst"><strong>6</strong><span>Fan</span></div>
-        <div class="nst"><strong>120+</strong><span>Talaba</span></div>
+        <div class="nst"><strong>50+</strong><span>Talaba</span></div>
       </div>
     </div>
   </div>
 
   <div class="srow">
-    <div class="si"><strong>120+</strong><span>Talaba</span></div>
+    <div class="si"><strong>50+</strong><span>Talaba</span></div>
     <div class="si"><strong>60+</strong><span>Maruza</span></div>
     <div class="si"><strong>120+</strong><span>Test savoli</span></div>
     <div class="si"><strong>6</strong><span>Fan bolimi</span></div>
@@ -544,7 +544,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
   </div>
 
   <div class="sec">
-    <span class="stag">Oquv dasturi</span>
+    <span class="stag">O'quv dasturi</span>
     <div class="stitle">Kurslar boyicha fanlar</div>
     <div class="ssub">1-kursdan 4-kursgacha OTM darajasida fizika kurslari</div>
     <div class="cgrid">
@@ -566,21 +566,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="ccg" style="background:var(--accent2);"></div>
         <div class="cctop"><div class="ccico" style="background:rgba(124,92,252,.13);">⚡</div><span class="kb k3">3-KURS</span></div>
         <h3>Elektrodinamika</h3>
-        <p>Maksvell tenglamalari, elektromagnit tolqinlar, retard potensiallar</p>
+        <p>Maksvell tenglamalari, elektromagnit to'lqinlar, retard potensiallar</p>
         <div class="ccch"><span class="chip">16 maruza</span><span class="chip">Maksvell</span><span class="chip">Tolqinlar</span></div>
       </div>
       <div class="cc" onclick="showPage('videos')">
         <div class="ccg" style="background:var(--accent2);"></div>
         <div class="cctop"><div class="ccico" style="background:rgba(124,92,252,.1);">💡</div><span class="kb k3">3-KURS</span></div>
         <h3>Optika</h3>
-        <p>Tolqin optikasi, interferensiya, diffraktsiya, lazer fizikasi asoslari</p>
+        <p>To'lqin optikasi, interferensiya, diffraktsiya, lazer fizikasi asoslari</p>
         <div class="ccch"><span class="chip">10 maruza</span><span class="chip">Diffraktsiya</span><span class="chip">Lazer</span></div>
       </div>
       <div class="cc" onclick="showPage('videos')">
         <div class="ccg" style="background:var(--gold);"></div>
         <div class="cctop"><div class="ccico" style="background:rgba(245,200,66,.09);">🔬</div><span class="kb k4">4-KURS</span></div>
         <h3>Kvant fizikasi</h3>
-        <p>Shredinger tenglamasi, tolqin funksiyasi, kvant mexanikasi asoslari</p>
+        <p>Shredinger tenglamasi, to'lqin funksiyasi, kvant mexanikasi asoslari</p>
         <div class="ccch"><span class="chip">12 maruza</span><span class="chip">Shredinger</span><span class="chip">Spin</span></div>
       </div>
       <div class="cc" onclick="showPage('videos')">
@@ -588,7 +588,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="cctop"><div class="ccico" style="background:rgba(245,200,66,.08);">☢️</div><span class="kb k4">4-KURS</span></div>
         <h3>Yadro fizikasi</h3>
         <p>Yadro tuzilishi, radioaktivlik, parchalanish qonunlari, elementar zarralar</p>
-        <div class="ccch"><span class="chip">8 maruza</span><span class="chip">Radioaktivlik</span><span class="chip">Kvarklar</span></div>
+        <div class="ccch"><span class="chip">8 ma'ruza</span><span class="chip">Radioaktivlik</span><span class="chip">Kvarklar</span></div>
       </div>
     </div>
   </div>
@@ -627,8 +627,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
           <div class="fg" style="margin-bottom:0;"><label>Guruh</label><input class="fi" type="text" id="regGroup" placeholder="FIZ-21"></div>
         </div>
         <div class="fg" style="margin-top:.85rem;"><label>Parol</label><input class="fi" type="password" id="regPass" placeholder="Kamida 6 ta belgi"></div>
-        <button class="bblock" onclick="doRegister()">Royxatdan otish</button>
-        <div class="anote">Royxatdan otish bilan qoidalarga rozilik bildirasiz</div>
+        <button class="bblock" onclick="doRegister()">Ro'yxatdan o'tish</button>
+        <div class="anote">Ro'yxatdan o'tish bilan qoidalarga rozilik bildirasiz</div>
       </div>
     </div>
   </div>
@@ -636,7 +636,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 
 <!-- VIDEOS -->
 <div class="page" id="page-videos">
-  <div class="vhdr"><h2>Video maruzalar</h2><p>Kurs va bolimlar boyicha barcha video darslar</p></div>
+  <div class="vhdr"><h2>Video ma'ruzalar</h2><p>Kurs va bo'limlar bo'yicha barcha video darslar</p></div>
   <div class="vlyt">
     <div class="tpan"><div class="tph">Bolimlar</div><div id="topicsSidebar"></div></div>
     <div class="vgrid" id="videosGrid"></div>
@@ -647,8 +647,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 <div class="page" id="page-test">
   <div class="twrap">
     <div class="tstart" id="testIntro">
-      <h3>Bilimingizni sinab koring</h3>
-      <p>Bolim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
+      <h3>Bilimingizni sinab ko'ring</h3>
+      <p>Bo'lim va savollar sonini tanlang. Test tugagach natija Telegram botga yuboriladi.</p>
       <div class="selrow">
         <select id="testTopic">
           <option value="mix">Aralash barcha</option>
@@ -673,7 +673,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <div class="qnav">
         <span class="qcnt" id="qCounter">1 / 20</span>
         <div style="display:flex;gap:.65rem;">
-          <button class="bcl" onclick="skipQ()" style="padding:.52rem 1rem;">Otkazish</button>
+          <button class="bcl" onclick="skipQ()" style="padding:.52rem 1rem;">O'tkazish</button>
           <button class="bp" onclick="nextQ()" style="padding:.52rem 1.25rem;font-size:.85rem;">Keyingisi</button>
         </div>
       </div>
@@ -715,7 +715,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
           <div class="ahb-tag">FizikaNDU asoschisi</div>
           <h2 class="ahb-name">Sarvar Bekniyozov</h2>
           <div class="ahb-role">Aniq va tabiiy fanlarni o'qitish metodikasi (Fizika va Astronomiya) magistri · NDU</div>
-          <p class="ahb-desc">NDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
+          <p class="ahb-desc">NDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boriladi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
           <div class="ahb-badges">
             <span class="ahb-badge">Fizika va Astronomiya</span>
             <span class="ahb-badge">NDU</span>
