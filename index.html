@@ -795,7 +795,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <button class="bcl" onclick="document.getElementById('adminLoginModal').classList.remove('on')">Bekor</button>
       <button class="bblock" onclick="checkAdminPass()" style="flex:2;margin-top:0;">Kirish</button>
     </div>
-    <div style="margin-top:.9rem;font-size:.72rem;color:var(--muted);text-align:center;">Standart parol: <span style="color:var(--accent);">admin001</span></div>
+    <div style="margin-top:.9rem;font-size:.72rem;color:var(--muted);text-align:center;">Standart parol: <span style="color:var(--accent);">admin123</span></div>
   </div>
 </div>
 
@@ -1032,7 +1032,7 @@ function logoClick() {
 
 function checkAdminPass() {
   var input = document.getElementById('adminPassInput').value;
-  var saved = localStorage.getItem('adminPassNDU') || window._adminPass || 'admin001';
+  var saved = localStorage.getItem('adminPassNDU') || window._adminPass || 'admin123';
   if (input === saved) {
     isAdmin = true;
     document.getElementById('adminBtn').style.display = 'inline-block';
