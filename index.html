@@ -89,7 +89,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
 .bg2btn{background:transparent;color:var(--text);padding:.8rem 2rem;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--border);cursor:pointer;transition:.25s;font-family:'Inter',sans-serif;}
 .bg2btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* NDU */
+/* NavDU */
 .ndu{margin:2rem 5rem;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.2rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:flex-start;position:relative;overflow:hidden;}
 .ndu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));}
 .ndu-ic{width:70px;height:70px;border-radius:14px;background:linear-gradient(135deg,rgba(79,142,247,.15),rgba(124,92,252,.15));border:1px solid rgba(79,142,247,.2);display:flex;align-items:center;justify-content:center;font-size:1.9rem;flex-shrink:0;}
@@ -652,12 +652,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <div class="selrow">
         <select id="testTopic">
           <option value="mix">Aralash barcha</option>
-          <option value="mexanika">Mexanika (1-kurs)</option>
-          <option value="molterm">Mol. fizika va Termodinamika (2-kurs)</option>
-          <option value="elektr">Elektrodinamika (3-kurs)</option>
-          <option value="optika">Optika (3-kurs)</option>
-          <option value="kvant">Kvant fizikasi (4-kurs)</option>
-          <option value="yadro">Yadro fizikasi (4-kurs)</option>
+          <option value="mexanika">Mexanika (-kurs)</option>
+          <option value="molterm">Mol. fizika va Termodinamika (-kurs)</option>
+          <option value="elektr">Elektrodinamika (-kurs)</option>
+          <option value="optika">Optika (-kurs)</option>
+          <option value="kvant">Kvant fizikasi (-kurs)</option>
+          <option value="yadro">Yadro fizikasi (-kurs)</option>
         </select>
         <select id="testCount">
           <option value="10">10 savol</option>
@@ -714,8 +714,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
         <div class="ahb-info">
           <div class="ahb-tag">FizikaNDU asoschisi</div>
           <h2 class="ahb-name">Sarvar Bekniyozov</h2>
-          <div class="ahb-role">Aniq va tabiiy fanlarni o'qitish metodikasi (Fizika va Astronomiya) magistri · NDU</div>
-          <p class="ahb-desc">NDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
+          <div class="ahb-role">Aniq va tabiiy fanlarni o'qitish metodikasi (Fizika va Astronomiya) magistri · NavDU</div>
+          <p class="ahb-desc">NavDU Aniq fanlar fakulteti. Mexanika, molekulyar fizika va elektrodinamika kurslarini FizikaNDU platformasida olib boradi. Talabalarning chuqur nazariy bilim olishlari va ilmiy fikrlashni rivojlantirish asosiy maqsad.</p>
           <div class="ahb-badges">
             <span class="ahb-badge">Fizika va Astronomiya</span>
             <span class="ahb-badge">NDU</span>
@@ -730,7 +730,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 2.5rem;displa
       <div class="acard acard-anim">
         <div class="acard-icon">🏛</div>
         <h4>Navoiy Davlat Universiteti</h4>
-        <p>1983-yilda tashkil etilgan NDU Aniq fanlar kafedrasi. O'zbekistonning yetakchi oliy ta'lim muassasalaridan biri.</p>
+        <p>1983-yilda tashkil etilgan NavDU Aniq fanlar kafedrasi. O'zbekistonning yetakchi oliy ta'lim muassasalaridan biri.</p>
       </div>
       <div class="acard acard-anim" style="animation-delay:.1s;">
         <div class="acard-icon">🎓</div>
@@ -1086,10 +1086,10 @@ function topicColor(k) {
   for (var i = 0; i < topics.length; i++) {
     if (topics[i].key === k) {
       var kurs = topics[i].kurs || '';
-      if (kurs === '1-kurs') return 'color:var(--accent);background:rgba(79,142,247,.1);';
-      if (kurs === '2-kurs') return 'color:var(--accent3);background:rgba(0,212,170,.09);';
-      if (kurs === '3-kurs') return 'color:var(--accent2);background:rgba(124,92,252,.1);';
-      if (kurs === '4-kurs') return 'color:var(--gold);background:rgba(245,200,66,.09);';
+      if (kurs === '-kurs') return 'color:var(--accent);background:rgba(79,142,247,.1);';
+      if (kurs === '-kurs') return 'color:var(--accent3);background:rgba(0,212,170,.09);';
+      if (kurs === '-kurs') return 'color:var(--accent2);background:rgba(124,92,252,.1);';
+      if (kurs === '-kurs') return 'color:var(--gold);background:rgba(245,200,66,.09);';
     }
   }
   return 'color:var(--accent);background:rgba(79,142,247,.1);';
